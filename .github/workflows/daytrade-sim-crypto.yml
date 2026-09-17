@@ -1,0 +1,74 @@
+name: Daytrade simulation (Crypto)
+
+# 暗号資産は土日含め24時間365日取引されるため、曜日を問わず15分おきに
+# 売買判定（チェック）だけを行う。Discord通知は毎回ではなく、前回の通知から
+# 11時間以上経過した回だけ index.ts 側の判定で追加送信する（見た目上は
+# 1日2回程度になる想定だが、時刻を固定していないのでcronの遅延に強い —
+# 詳細は src/features/daytrade-sim-crypto/index.ts の NOTIFY_INTERVAL_HOURS
+# コメント参照）。
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daytrade-sim-crypto
+  cancel-in-progress: false
+
+jobs:
+  daytrade-sim-crypto:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # See daytrade-sim.yml's Checkout step for why: github.sha can be a
+          # few minutes stale given how frequently the daytrade-sim*/
+          # strategy-lab workflows commit to main.
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run daytrade simulation (Crypto)
+        run: npm run daytrade-crypto:run
+        env:
+          DISCORD_WEBHOOK_DAYTRADE: ${{ secrets.DISCORD_WEBHOOK_DAYTRADE }}
+
+      - name: Commit updated simulation state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/daytrade-sim-crypto-state.json docs/daytrade-sim-crypto/data.json
+          if git diff --cached --quiet; then
+            echo "No state changes to commit"
+          else
+            # Deliberately not tagged with the CI-skip commit marker — see the
+            # same-dated comment in daytrade-sim.yml's commit step. This
+            # commit touches docs/daytrade-sim-crypto/data.json, which
+            # Cloudflare's git-connected build also watches.
+            git commit -m "chore: update daytrade-sim-crypto state"
+            # See daytrade-sim.yml's commit step for why this retries instead
+            # of a single pull --rebase && push.
+            for i in 1 2 3 4 5; do
+              if git pull --rebase origin main && git push; then
+                break
+              fi
+              if [ "$i" = "5" ]; then
+                echo "::error::failed to push after 5 attempts"
+                exit 1
+              fi
+              echo "push attempt $i failed, retrying after re-fetch..."
+              git rebase --abort 2>/dev/null || true
+              sleep $((i * 3))
+            done
+          fi

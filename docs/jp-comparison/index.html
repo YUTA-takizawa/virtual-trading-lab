@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#2563eb" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <script src="/pwa.js" defer></script>
+    <title>日本株 横断比較</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --fg: #1a1a1a;
+        --bg: #fafafa;
+        --card-bg: #ffffff;
+        --border: #e0e0e0;
+        --accent: #2563eb;
+        --pos: #15803d;
+        --neg: #dc2626;
+        --muted: #6b7280;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --fg: #e5e7eb;
+          --bg: #14161c;
+          --card-bg: #1c1f28;
+          --border: #2c2f3a;
+          --muted: #9ca3af;
+          --pos: #4ade80;
+          --neg: #f87171;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 24px;
+        font-family: -apple-system, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+      }
+      h1 {
+        font-size: 20px;
+        margin: 0 0 4px;
+      }
+      a {
+        color: var(--accent);
+      }
+      .updated {
+        color: var(--muted);
+        font-size: 13px;
+        margin-bottom: 4px;
+      }
+      .note {
+        color: var(--muted);
+        font-size: 13px;
+        margin-bottom: 20px;
+      }
+      section {
+        margin-bottom: 32px;
+      }
+      section h2 {
+        font-size: 15px;
+        margin: 0 0 12px;
+        color: var(--muted);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+      .chart-wrap {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 16px;
+        /* Chart.jsはデフォルトでmaintainAspectRatio:trueかつaspectRatio:2のため、
+           全幅コンテナだと横幅に応じて高さが際限なく伸びてしまう。高さを固定して
+           position:relativeにし、options側でmaintainAspectRatio:falseと組み合わせる。 */
+        height: 340px;
+        position: relative;
+      }
+      .pos {
+        color: var(--pos);
+      }
+      .neg {
+        color: var(--neg);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        font-size: 13px;
+      }
+      th,
+      td {
+        padding: 8px 10px;
+        text-align: right;
+        border-bottom: 1px solid var(--border);
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      th:first-child,
+      td:first-child,
+      th.text,
+      td.text {
+        text-align: left;
+        font-variant-numeric: normal;
+        white-space: normal;
+      }
+      th {
+        cursor: pointer;
+        user-select: none;
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 12px;
+        padding: 14px 10px;
+      }
+      th:hover {
+        color: var(--fg);
+      }
+      th:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: -2px;
+        color: var(--fg);
+      }
+      th .sort-arrow {
+        display: inline-block;
+        width: 1em;
+        color: var(--accent);
+      }
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+      .desc {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .table-scroll {
+        overflow-x: auto;
+      }
+      .empty {
+        color: var(--muted);
+        padding: 16px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>日本株 横断比較</h1>
+    <div class="updated" id="updated">読み込み中...</div>
+    <p class="note">元本の異なる複数の運用（100万円／300万円など）を横並びで見比べるため、金額ではなく開始来の騰落率（％）を基準に比較しています。</p>
+    <p><a href="../">← ダッシュボード一覧に戻る</a></p>
+
+    <section>
+      <h2>成績比較（開始来の騰落率順）</h2>
+      <div class="table-scroll">
+        <table id="rankingTable">
+          <thead>
+            <tr>
+              <th class="text" data-key="name">運用</th>
+              <th data-key="changePct">騰落率</th>
+              <th data-key="maxDrawdownPct">最大ドローダウン</th>
+              <th data-key="winRatePct">勝率</th>
+              <th data-key="avgHoldingDays">平均保有日数</th>
+              <th data-key="initialCapitalYen">元本</th>
+              <th data-key="totalEquityYen">評価額</th>
+              <th class="text" data-key="source">詳細ページ</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>騰落率の推移（％ベース、重ね合わせ）</h2>
+      <div class="chart-wrap"><canvas id="pctChart" height="300"></canvas></div>
+    </section>
+
+    <script>
+      const pctStr = (v) => (v === null || v === undefined ? '—' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%');
+      const ddStr = (v) => (v === null || v === undefined ? '—' : v.toFixed(2) + '%');
+      const winRateStr = (v) => (v === null || v === undefined ? '—（未決済）' : v.toFixed(1) + '%');
+      const holdingDaysStr = (v) => (v === null || v === undefined ? '—' : v.toFixed(1) + '日');
+      const yen = (v) => (v === null || v === undefined ? '—' : Math.round(v).toLocaleString('ja-JP') + '円');
+      const posNeg = (v) => (v === null || v === undefined ? '' : v >= 0 ? 'pos' : 'neg');
+
+      // 各運用のdata.jsonは既存ダッシュボードがそのまま公開しているものを再利用し、
+      // このページ専用のデータファイルは持たない（表示専用の集計ページ）。
+      const SOURCES = [
+        { path: '../daytrade-sim/data.json', href: '../daytrade-sim/', kind: 'flat' },
+        { path: '../daytrade-sim-cheap/data.json', href: '../daytrade-sim-cheap/', kind: 'flat' },
+        { path: '../daytrade-sim-highbudget/data.json', href: '../daytrade-sim-highbudget/', kind: 'flat' },
+        { path: '../jp-strategy-lab/data.json', href: '../jp-strategy-lab/', kind: 'lab' },
+      ];
+
+      function dayBefore(dateStr) {
+        const d = new Date(dateStr + 'T00:00:00Z');
+        d.setUTCDate(d.getUTCDate() - 1);
+        return d.toISOString().slice(0, 10);
+      }
+
+      // 「実データがある日」だけを横軸に使うと、土日を挟んだ間隔も1日分の間隔も
+      // 同じ幅で描画されてしまい、区切りが不自然に見える。最古日〜最新日の
+      // 暦日を1日も飛ばさず埋めることで、横軸の間隔が実際の経過日数と一致するようにする。
+      function allDatesInRange(sortedDates) {
+        if (sortedDates.length === 0) return [];
+        const start = new Date(sortedDates[0] + 'T00:00:00Z');
+        const end = new Date(sortedDates[sortedDates.length - 1] + 'T00:00:00Z');
+        const result = [];
+        for (let d = start; d <= end; d.setUTCDate(d.getUTCDate() + 1)) {
+          result.push(d.toISOString().slice(0, 10));
+        }
+        return result;
+      }
+
+      // 記録初日からすでに騰落率が乗っていると、グラフの開始地点が0%からズレて見えるため、
+      // 「最初の記録日の前日=騰落率0%」のダミー点を先頭に足して起点を揃える。zeroDateを渡すと
+      // そちらを優先する——あとから追加された運用（新しい戦略・profileなど）が自分の最初の
+      // 記録日ではなく、重ね合わせグラフ全体の最古日から揃って始まるようにするため。
+      function withDayZero(byDate, zeroDate) {
+        if (byDate.size === 0) return byDate;
+        const date = zeroDate ?? dayBefore([...byDate.keys()].sort()[0]);
+        const withZero = new Map(byDate);
+        withZero.set(date, 0);
+        return withZero;
+      }
+
+      // 通常運用（flat形式）: equityHistoryは1日に複数セッション分の点を持つので、
+      // 同じ日付のうち最後のセッション（＝その日の最終評価額）だけを残して日次に揃える。
+      function rawDailyPctFromFlat(equityHistory, initialCapitalYen) {
+        const byDate = new Map();
+        for (const p of equityHistory) {
+          byDate.set(p.date, ((p.totalEquity - initialCapitalYen) / initialCapitalYen) * 100);
+        }
+        return byDate;
+      }
+
+      function rawDailyPctFromLab(equityHistory, initialCapitalYen) {
+        const byDate = new Map();
+        for (const p of equityHistory) {
+          byDate.set(p.date, ((p.totalEquityJpy - initialCapitalYen) / initialCapitalYen) * 100);
+        }
+        return byDate;
+      }
+
+      // ％の系列（byDate）から最大ドローダウンを求める。Mapはinsertion order（末尾に
+      // ダミーの0日目を追加した順）を保持するため、必ず日付でソートしてから辿る。
+      // 騰落率pctは (100+pct) を仮想的な資産価値とみなせば、通常のピーク→ボトム下落率
+      // の式がそのまま使える（元本・通貨に依存しない）。
+      function maxDrawdownFromPctMap(byDate) {
+        const sorted = [...byDate.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+        let peakPct = -Infinity;
+        let worst = 0;
+        for (const [, pct] of sorted) {
+          if (pct > peakPct) peakPct = pct;
+          const dd = ((pct - peakPct) / (100 + peakPct)) * 100;
+          if (dd < worst) worst = dd;
+        }
+        return worst;
+      }
+
+      // 売買履歴から「銘柄ごとの買い→売りの往復」を切り出し、勝率と平均保有日数を求める。
+      // 複数回に分けて買い増しても、その銘柄の建玉が空になるまでは同じ往復として扱い、
+      // 保有日数は最初の買いの日付を起点にする（tranche/積立方式のどの戦略にも共通の近似）。
+      function winRateAndHolding(trades, pnlField) {
+        const sorted = [...trades].sort((a, b) => a.date.localeCompare(b.date));
+        const openBySymbol = new Map();
+        const roundTrips = [];
+        for (const t of sorted) {
+          if (t.action === 'buy') {
+            if (!openBySymbol.has(t.symbol)) openBySymbol.set(t.symbol, t.date);
+          } else if (t.action === 'sell') {
+            const buyDate = openBySymbol.get(t.symbol);
+            if (buyDate !== undefined) {
+              const holdingDays = (new Date(t.date) - new Date(buyDate)) / 86400000;
+              roundTrips.push({ holdingDays, win: (t[pnlField] ?? 0) > 0 });
+              openBySymbol.delete(t.symbol);
+            }
+          }
+        }
+        if (roundTrips.length === 0) return { winRatePct: null, avgHoldingDays: null };
+        const wins = roundTrips.filter((r) => r.win).length;
+        const avgHoldingDays = roundTrips.reduce((sum, r) => sum + r.holdingDays, 0) / roundTrips.length;
+        return { winRatePct: (wins / roundTrips.length) * 100, avgHoldingDays };
+      }
+
+      async function loadSeries() {
+        const series = [];
+        let latestGeneratedAt = null;
+
+        for (const source of SOURCES) {
+          let d;
+          try {
+            const res = await fetch(source.path, { cache: 'no-store' });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            d = await res.json();
+          } catch (err) {
+            console.warn(`skip ${source.path}:`, err);
+            continue;
+          }
+          if (d.generatedAt && (!latestGeneratedAt || d.generatedAt > latestGeneratedAt)) {
+            latestGeneratedAt = d.generatedAt;
+          }
+
+          if (source.kind === 'flat') {
+            const byDate = rawDailyPctFromFlat(d.equityHistory, d.summary.initialCapitalYen);
+            const { winRatePct, avgHoldingDays } = winRateAndHolding(d.trades, 'realizedPnl');
+            series.push({
+              label: labelFor(source.path),
+              changePct: d.summary.changePct,
+              maxDrawdownPct: maxDrawdownFromPctMap(withDayZero(byDate)),
+              winRatePct,
+              avgHoldingDays,
+              initialCapitalYen: d.summary.initialCapitalYen,
+              totalEquityYen: d.summary.totalEquity,
+              href: source.href,
+              byDate,
+            });
+          } else {
+            for (const s of d.strategies) {
+              const byDate = rawDailyPctFromLab(d.equityHistories[s.id], s.initialCapitalYen);
+              const { winRatePct, avgHoldingDays } = winRateAndHolding(d.trades[s.id] ?? [], 'realizedPnlJpy');
+              series.push({
+                label: `日本株・戦略ラボ — ${s.name}`,
+                changePct: s.changePct,
+                maxDrawdownPct: maxDrawdownFromPctMap(withDayZero(byDate)),
+                winRatePct,
+                avgHoldingDays,
+                initialCapitalYen: s.initialCapitalYen,
+                totalEquityYen: s.totalEquityJpy,
+                href: source.href,
+                byDate,
+              });
+            }
+          }
+        }
+
+        // グラフは各運用がバラバラの開始日ではなく、全運用の中で最も古い記録日から
+        // 揃って始まるようにする（あとから追加された運用が途中から生えて見えないように）。
+        const allRealDates = series.flatMap((s) => [...s.byDate.keys()]);
+        const globalZeroDate = allRealDates.length > 0 ? dayBefore([...allRealDates].sort()[0]) : undefined;
+        for (const s of series) {
+          s.byDate = withDayZero(s.byDate, globalZeroDate);
+        }
+
+        return { series, latestGeneratedAt };
+      }
+
+      function labelFor(path) {
+        if (path.includes('daytrade-sim-cheap')) return '日本株デイトレシミュ — 1単元10万円未満限定版';
+        if (path.includes('daytrade-sim-highbudget')) return '日本株デイトレシミュ — 元本300万円版';
+        return '日本株デイトレシミュ — 通常版';
+      }
+
+      function makeSortable(tableId, rows, renderRow) {
+        const table = document.getElementById(tableId);
+        const tbody = table.querySelector('tbody');
+        let sortKey = null;
+        let sortDir = 1;
+
+        function draw() {
+          if (rows.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="8" class="empty">データなし</td></tr>`;
+            return;
+          }
+          tbody.innerHTML = rows.map(renderRow).join('');
+        }
+
+        const headers = table.querySelectorAll('th');
+        const arrows = new Map();
+
+        function applySort(key) {
+          sortDir = sortKey === key ? -sortDir : 1;
+          sortKey = key;
+          rows.sort((a, b) => {
+            const av = a[key];
+            const bv = b[key];
+            if (av === null || av === undefined) return 1;
+            if (bv === null || bv === undefined) return -1;
+            if (typeof av === 'string') return av.localeCompare(bv) * sortDir;
+            return (av - bv) * sortDir;
+          });
+          headers.forEach((h) => {
+            const isActive = h.dataset.key === key;
+            h.setAttribute('aria-sort', isActive ? (sortDir === 1 ? 'ascending' : 'descending') : 'none');
+            arrows.get(h.dataset.key).textContent = isActive ? (sortDir === 1 ? '▲' : '▼') : '';
+          });
+          draw();
+        }
+
+        headers.forEach((th) => {
+          th.setAttribute('tabindex', '0');
+          th.setAttribute('role', 'button');
+          th.setAttribute('aria-sort', 'none');
+          const arrow = document.createElement('span');
+          arrow.className = 'sort-arrow';
+          th.appendChild(arrow);
+          arrows.set(th.dataset.key, arrow);
+
+          th.addEventListener('click', () => applySort(th.dataset.key));
+          th.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              applySort(th.dataset.key);
+            }
+          });
+        });
+
+        draw();
+      }
+
+      function renderRanking(series) {
+        const rows = series.map((s) => ({ ...s, name: s.label, source: s.href }));
+        makeSortable('rankingTable', rows, (s) => `
+          <tr>
+            <td class="text">${s.label}</td>
+            <td class="${posNeg(s.changePct)}">${pctStr(s.changePct)}</td>
+            <td class="${s.maxDrawdownPct < 0 ? 'neg' : ''}">${ddStr(s.maxDrawdownPct)}</td>
+            <td>${winRateStr(s.winRatePct)}</td>
+            <td>${holdingDaysStr(s.avgHoldingDays)}</td>
+            <td>${yen(s.initialCapitalYen)}</td>
+            <td>${yen(s.totalEquityYen)}</td>
+            <td class="text"><a href="${s.href}">開く →</a></td>
+          </tr>`);
+      }
+
+      // 土日や未実行日はnullのまま線で結ぶと、Chart.jsが前後の実データを斜めの
+      // 直線で繋いでしまい「その間ずっと連続的に変化していた」ように見えて誤解を招く。
+      // 実際は「変化なし（横ばい）」なので、直近の値をそのまま引き延ばして埋める。
+      function forwardFill(allDates, byDate) {
+        let lastValue = null;
+        return allDates.map((d) => {
+          if (byDate.has(d)) lastValue = byDate.get(d);
+          return lastValue;
+        });
+      }
+
+      function renderPctChart(series) {
+        const colors = series.map((_, i) => `hsl(${Math.round((360 / Math.max(series.length, 1)) * i)}, 65%, 55%)`);
+        const allDates = allDatesInRange([...new Set(series.flatMap((s) => [...s.byDate.keys()]))].sort());
+        const datasets = series.map((s, i) => ({
+          label: s.label,
+          data: forwardFill(allDates, s.byDate).map((v) => (v === null ? null : Number(v.toFixed(3)))),
+          borderColor: colors[i],
+          backgroundColor: 'transparent',
+          spanGaps: true,
+          pointRadius: 1,
+          tension: 0.1,
+        }));
+        new Chart(document.getElementById('pctChart'), {
+          type: 'line',
+          data: { labels: allDates.map((d) => d.slice(5)), datasets },
+          options: {
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: true, position: 'bottom' },
+              title: { display: true, text: '開始来の騰落率（％）の推移（全運用重ね合わせ）' },
+            },
+            // Chart.jsの自動目盛り計算が浮動小数点誤差（例: -0.19999999999999999）を
+            // そのまま表示してしまうことがあるため、丸めてから%を付ける。
+            scales: { y: { beginAtZero: false, ticks: { callback: (v) => Math.round(v * 1000) / 1000 + '%' } } },
+          },
+        });
+      }
+
+      async function main() {
+        const { series, latestGeneratedAt } = await loadSeries();
+
+        if (series.length === 0) {
+          document.getElementById('updated').textContent = 'データがまだありません。';
+          return;
+        }
+
+        document.getElementById('updated').textContent = latestGeneratedAt
+          ? `各運用の最新データ生成時刻: 〜${new Date(latestGeneratedAt).toLocaleString('ja-JP')}（このページ自体はデータを持たず、各ダッシュボードのdata.jsonをその場で集計しています）`
+          : '';
+
+        renderRanking(series);
+        renderPctChart(series);
+      }
+
+      main().catch((err) => {
+        document.getElementById('updated').textContent = 'データの読み込みに失敗しました: ' + err;
+      });
+    </script>
+  </body>
+</html>

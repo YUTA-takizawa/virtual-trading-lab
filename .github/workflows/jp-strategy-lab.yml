@@ -1,0 +1,69 @@
+name: JP strategy lab
+
+# スイングトレード戦略（数日〜数週間の保有を想定）は前場/後場の区切りを
+# 見る必要がないため、daytrade-sim.ymlと違い1日1回・大引け後のみ実行する。
+# 候補527銘柄はconfig/daytrade.jsonをdaytrade-sim.ymlと共有する。
+on:
+  schedule:
+    - cron: '35 6 * * 1-5' # 15:35 JST, after TSE's afternoon close (大引け), Mon-Fri — daytrade-sim.ymlの後場実行と同じ時刻
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: jp-strategy-lab
+  cancel-in-progress: false
+
+jobs:
+  jp-strategy-lab:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # See daytrade-sim.yml's Checkout step for why: github.sha can be a
+          # few minutes stale given how frequently the daytrade-sim*/
+          # strategy-lab workflows commit to main.
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run JP strategy lab
+        run: npm run jp-strategy-lab:run
+        env:
+          DISCORD_WEBHOOK_DAYTRADE: ${{ secrets.DISCORD_WEBHOOK_DAYTRADE }}
+
+      - name: Commit updated state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/jp-strategy-lab-*.json docs/jp-strategy-lab/data.json
+          if git diff --cached --quiet; then
+            echo "No state changes to commit"
+          else
+            # Deliberately not tagged with the CI-skip commit marker — see
+            # the same-dated comment in daytrade-sim.yml's commit step.
+            git commit -m "chore: update jp-strategy-lab state"
+            # See daytrade-sim.yml's commit step for why this retries instead
+            # of a single pull --rebase && push.
+            for i in 1 2 3 4 5; do
+              if git pull --rebase origin main && git push; then
+                break
+              fi
+              if [ "$i" = "5" ]; then
+                echo "::error::failed to push after 5 attempts"
+                exit 1
+              fi
+              echo "push attempt $i failed, retrying after re-fetch..."
+              git rebase --abort 2>/dev/null || true
+              sleep $((i * 3))
+            done
+          fi

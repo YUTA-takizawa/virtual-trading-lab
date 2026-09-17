@@ -1,0 +1,82 @@
+{
+  "note": "GMOコインの現物取引（販売所）で取扱いのある暗号資産のうち、Yahoo Finance APIで円建て（-JPYティッカー）データが実在確認できた16銘柄を候補とする（2026年8月29日確認）。GMOコイン取扱いの残り約8〜10銘柄（SUI・ジパングコイン系・FCR・ASTR・NAC・WILD等）はYahoo Financeに円建てティッカーが存在しないため対象外とした（ASTR・WILDはドル建てなら存在するが、2銘柄のためだけに為替換算を持ち込む複雑化は避けた）。暗号資産は土日含め24時間365日取引されるため、日本株版・米国株版と異なり曜日を問わず毎日2回（早朝・夜）実行する。ルールは米国株版（config/daytrade-us.json、src/features/daytrade-sim-us/rules.ts）に準拠し、前日終値比の値動き（dailyMovePct）で急落/急騰を判定する。GMOコインの現物取引「販売所」は手数料自体は無料だが、売値と買値の差（スプレッド）が実質的なコストとして発生する（公開情報からビットコインで概ね1%程度〈買値と売値の差の例〉と確認、正確な料率は非公開のため近似値。src/features/daytrade-sim-crypto/portfolio.tsのSPREAD_PCT参照）。暗号資産の利益は株式等とは異なり雑所得（総合課税、他の所得と合算した5%〜45%の累進税率＋住民税10%）扱いのため、個人の所得水準に依存し一律の税率でモデル化できない。本シミュレーターは意図的に税金を計算せず、実現損益は常に税引き前の値のみを表示する。仮想元本100万円は日本株版・米国株版とは別会計。",
+  "virtualCapitalYen": 1000000,
+  "maxPositionYen": 100000,
+  "marginMultiplier": 1,
+  "thresholds": {
+    "crashPct": 3,
+    "surgePct": 3,
+    "flatDayPct": 1,
+    "rsiBuyConfirmMax": 60,
+    "rsiSellConfirmMin": 55,
+    "volumeRatioMin": 1.2,
+    "stopLossPct": 0,
+    "tranche2ConfirmPct": 1
+  },
+  "items": [
+    {
+      "symbol": "BTC-JPY",
+      "name": "ビットコイン"
+    },
+    {
+      "symbol": "ETH-JPY",
+      "name": "イーサリアム"
+    },
+    {
+      "symbol": "BCH-JPY",
+      "name": "ビットコインキャッシュ"
+    },
+    {
+      "symbol": "LTC-JPY",
+      "name": "ライトコイン"
+    },
+    {
+      "symbol": "XRP-JPY",
+      "name": "エックスアールピー"
+    },
+    {
+      "symbol": "XLM-JPY",
+      "name": "ステラルーメン"
+    },
+    {
+      "symbol": "DOT-JPY",
+      "name": "ポルカドット"
+    },
+    {
+      "symbol": "ATOM-JPY",
+      "name": "コスモス"
+    },
+    {
+      "symbol": "ADA-JPY",
+      "name": "カルダノ"
+    },
+    {
+      "symbol": "LINK-JPY",
+      "name": "チェーンリンク"
+    },
+    {
+      "symbol": "DOGE-JPY",
+      "name": "ドージコイン"
+    },
+    {
+      "symbol": "SOL-JPY",
+      "name": "ソラナ"
+    },
+    {
+      "symbol": "FIL-JPY",
+      "name": "ファイルコイン"
+    },
+    {
+      "symbol": "SAND-JPY",
+      "name": "ザ・サンドボックス"
+    },
+    {
+      "symbol": "CHZ-JPY",
+      "name": "チリーズ"
+    },
+    {
+      "symbol": "AVAX-JPY",
+      "name": "アバランチ"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+name: Daytrade simulation (high budget)
+
+# daytrade-sim.ymlと完全に同じ売買規律・候補銘柄・スケジュールで並行実行する
+# 別プロファイル（--profile=highbudget、2026年9月4日追加）。唯一の違いは
+# 総予算（virtualCapitalYen、config/daytrade-highbudget.json）。「買いたいけど
+# 予算がないからあきらめる、ということが成績の優位差を生むか確認したい」
+# というユーザー要望で追加。state・ダッシュボードは完全に別ファイルのため、
+# daytrade-sim.ymlとは独立して動く（同時に走っても互いに影響しない）。
+on:
+  schedule:
+    - cron: '35 2 * * 1-5' # 11:35 JST, after TSE's morning close (前場引け), Mon-Fri
+    - cron: '35 6 * * 1-5' # 15:35 JST, after TSE's afternoon close (大引け), Mon-Fri
+  workflow_dispatch:
+    inputs:
+      session:
+        description: 'Which session to run (only used for manual workflow_dispatch)'
+        required: true
+        type: choice
+        options: [morning, afternoon]
+        default: afternoon
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daytrade-sim-highbudget
+  cancel-in-progress: false
+
+jobs:
+  daytrade-sim-highbudget:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # See daytrade-sim.yml's Checkout step for why: github.sha can be a
+          # few minutes stale given how frequently the daytrade-sim*/
+          # strategy-lab workflows commit to main.
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine session
+        id: session
+        run: |
+          if [ "${{ github.event.schedule }}" = "35 2 * * 1-5" ]; then
+            echo "value=morning" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "35 6 * * 1-5" ]; then
+            echo "value=afternoon" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=${{ inputs.session }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run daytrade simulation (high budget)
+        run: npm run daytrade-highbudget:run:${{ steps.session.outputs.value }}
+        env:
+          DISCORD_WEBHOOK_DAYTRADE: ${{ secrets.DISCORD_WEBHOOK_DAYTRADE }}
+
+      - name: Commit updated simulation state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/daytrade-sim-highbudget-state.json docs/daytrade-sim-highbudget/data.json
+          if git diff --cached --quiet; then
+            echo "No state changes to commit"
+          else
+            # Deliberately not tagged with the CI-skip commit marker — see the
+            # same-dated comment in daytrade-sim.yml's commit step.
+            git commit -m "chore: update daytrade-sim-highbudget state"
+            # See daytrade-sim.yml's commit step for why this retries instead
+            # of a single pull --rebase && push.
+            for i in 1 2 3 4 5; do
+              if git pull --rebase origin main && git push; then
+                break
+              fi
+              if [ "$i" = "5" ]; then
+                echo "::error::failed to push after 5 attempts"
+                exit 1
+              fi
+              echo "push attempt $i failed, retrying after re-fetch..."
+              git rebase --abort 2>/dev/null || true
+              sleep $((i * 3))
+            done
+          fi

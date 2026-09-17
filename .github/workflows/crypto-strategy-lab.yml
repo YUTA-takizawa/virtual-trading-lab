@@ -1,0 +1,70 @@
+name: Crypto strategy lab
+
+# 暗号資産版と同じく土日含め15分おきにチェックする。ダッシュボードのみで
+# 比較する方針（Discord通知なし、2026年8月31日ユーザー指示）のため、公開
+# （gitコミット・Cloudflareデプロイ）はindex.ts内のPUBLISH_INTERVAL_HOURS
+# （8時間）で間引かれる。
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: crypto-strategy-lab
+  cancel-in-progress: false
+
+jobs:
+  crypto-strategy-lab:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # See daytrade-sim.yml's Checkout step for why: github.sha can be a
+          # few minutes stale given how frequently the daytrade-sim*/
+          # strategy-lab workflows commit to main.
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run crypto strategy lab
+        run: npm run crypto-strategy-lab:run
+        env:
+          DISCORD_WEBHOOK_DAYTRADE: ${{ secrets.DISCORD_WEBHOOK_DAYTRADE }}
+
+      - name: Commit updated state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/crypto-strategy-lab-*.json docs/crypto-strategy-lab/data.json
+          if git diff --cached --quiet; then
+            echo "No state changes to commit"
+          else
+            # Deliberately not tagged with the CI-skip commit marker — see the
+            # same-dated comment in daytrade-sim.yml's commit step.
+            git commit -m "chore: update crypto-strategy-lab state"
+            # See daytrade-sim.yml's commit step for why this retries instead
+            # of a single pull --rebase && push.
+            for i in 1 2 3 4 5; do
+              if git pull --rebase origin main && git push; then
+                break
+              fi
+              if [ "$i" = "5" ]; then
+                echo "::error::failed to push after 5 attempts"
+                exit 1
+              fi
+              echo "push attempt $i failed, retrying after re-fetch..."
+              git rebase --abort 2>/dev/null || true
+              sleep $((i * 3))
+            done
+          fi

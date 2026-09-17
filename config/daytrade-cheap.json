@@ -1,0 +1,4 @@
+{
+  "note": "src/features/daytrade-sim/index.tsの--profile=cheap用の追加設定。候補銘柄・元本（virtualCapitalYen）・1銘柄あたりの取得コスト上限（maxPositionYen）・thresholds・売買ルールはすべてconfig/daytrade.json（既定プロファイル）と完全に共有し、二重管理しない。ここではmaxUnitCostYenだけを持つ——1単元（100株、src/features/daytrade-sim/portfolio.tsのLOT_SIZE）の取得コストがこの金額未満の銘柄だけを新規建て対象とする追加フィルタ（ユーザー要望「日本株新戦略追加、ルールはすべて同じ、異なるのは銘柄で1単元取得するのが10万円未満の株だけをピックアップする」、2026年9月3日）。既に保有中の銘柄は値上がりでこの基準を超えても対象から外さない（新規建てのみを絞り込む）。株価は日々変動するため、固定の銘柄リストを別途持たず、実行のたびにconfig/daytrade.jsonの候補全銘柄に対して動的に判定する。",
+  "maxUnitCostYen": 100000
+}

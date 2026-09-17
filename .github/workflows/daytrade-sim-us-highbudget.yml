@@ -1,0 +1,70 @@
+name: Daytrade simulation (US, high budget)
+
+# daytrade-sim-us.ymlと完全に同じ売買規律・候補銘柄・スケジュールで並行
+# 実行する別プロファイル（--profile=highbudget、2026年9月4日追加）。唯一の
+# 違いは総予算（virtualCapitalYen、config/daytrade-us-highbudget.json）。
+# state・ダッシュボードは完全に別ファイル。
+on:
+  schedule:
+    - cron: '20 20 * * 1-5' # 20:20 UTC = 米国市場引けの約20分後（EDT基準）。daytrade-sim-us.ymlと同じ理由・同じ時刻
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daytrade-sim-us-highbudget
+  cancel-in-progress: false
+
+jobs:
+  daytrade-sim-us-highbudget:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # See daytrade-sim.yml's Checkout step for why: github.sha can be a
+          # few minutes stale given how frequently the daytrade-sim*/
+          # strategy-lab workflows commit to main.
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run daytrade simulation (US, high budget)
+        run: npm run daytrade-us-highbudget:run
+        env:
+          DISCORD_WEBHOOK_DAYTRADE: ${{ secrets.DISCORD_WEBHOOK_DAYTRADE }}
+
+      - name: Commit updated simulation state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/daytrade-sim-us-highbudget-state.json docs/daytrade-sim-us-highbudget/data.json
+          if git diff --cached --quiet; then
+            echo "No state changes to commit"
+          else
+            # Deliberately not tagged with the CI-skip commit marker — see
+            # the same-dated comment in daytrade-sim.yml's commit step.
+            git commit -m "chore: update daytrade-sim-us-highbudget state"
+            # See daytrade-sim.yml's commit step for why this retries instead
+            # of a single pull --rebase && push.
+            for i in 1 2 3 4 5; do
+              if git pull --rebase origin main && git push; then
+                break
+              fi
+              if [ "$i" = "5" ]; then
+                echo "::error::failed to push after 5 attempts"
+                exit 1
+              fi
+              echo "push attempt $i failed, retrying after re-fetch..."
+              git rebase --abort 2>/dev/null || true
+              sleep $((i * 3))
+            done
+          fi

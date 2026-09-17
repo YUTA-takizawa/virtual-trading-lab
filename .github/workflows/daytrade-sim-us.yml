@@ -1,0 +1,77 @@
+name: Daytrade simulation (US)
+
+# 米国市場（NYダウ30・NASDAQ100）は前場/後場の区切りがない連続取引のため、
+# 日本株版と異なり1日1回のみ実行する。米国市場の引け（16:00 ET）はUTCで
+# 夏時間（EDT, 3月〜11月）は20:00、冬時間（EST, 11月〜3月）は21:00と、
+# 年2回のDST切り替えでズレる。cronはUTC固定のため自動追従できず、この
+# 20:20 UTC はEDT側に合わせた設定 — EST期間中は引けの約80分後に実行される
+# ことになるが、日次1回のバッチなので実害は小さいと判断し、手動調整は
+# 現時点では行わない（必要になれば season ごとに2本のcronを持たせる運用に
+# 切り替える）。
+on:
+  schedule:
+    - cron: '20 20 * * 1-5' # 20:20 UTC = 米国市場引けの約20分後（EDT基準）。ET(UTC-4/5)は日付を跨がずUTCに変換されるためMon-Friで一致
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daytrade-sim-us
+  cancel-in-progress: false
+
+jobs:
+  daytrade-sim-us:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # See daytrade-sim.yml's Checkout step for why: github.sha can be a
+          # few minutes stale given how frequently the daytrade-sim*/
+          # strategy-lab workflows commit to main.
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run daytrade simulation (US)
+        run: npm run daytrade-us:run
+        env:
+          DISCORD_WEBHOOK_DAYTRADE: ${{ secrets.DISCORD_WEBHOOK_DAYTRADE }}
+
+      - name: Commit updated simulation state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/daytrade-sim-us-state.json docs/daytrade-sim-us/data.json
+          if git diff --cached --quiet; then
+            echo "No state changes to commit"
+          else
+            # Deliberately not tagged with the CI-skip commit marker — see
+            # the same-dated comment in daytrade-sim.yml's commit step for
+            # why (Cloudflare's dashboard build honors that marker too, and
+            # its match is a plain substring search over the whole commit
+            # message, so don't write the literal marker text here either).
+            git commit -m "chore: update daytrade-sim-us state"
+            # See daytrade-sim.yml's commit step for why this retries instead
+            # of a single pull --rebase && push.
+            for i in 1 2 3 4 5; do
+              if git pull --rebase origin main && git push; then
+                break
+              fi
+              if [ "$i" = "5" ]; then
+                echo "::error::failed to push after 5 attempts"
+                exit 1
+              fi
+              echo "push attempt $i failed, retrying after re-fetch..."
+              git rebase --abort 2>/dev/null || true
+              sleep $((i * 3))
+            done
+          fi

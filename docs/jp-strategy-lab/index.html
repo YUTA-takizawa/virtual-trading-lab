@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#8b5cf6" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <script src="/pwa.js" defer></script>
+    <title>JP Strategy Lab</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --fg: #1a1a1a;
+        --bg: #fafafa;
+        --card-bg: #ffffff;
+        --border: #e0e0e0;
+        --accent: #8b5cf6;
+        /* Same WCAG AA fix as the other daytrade-sim dashboards. */
+        --pos: #15803d;
+        --neg: #dc2626;
+        --muted: #6b7280;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --fg: #e5e7eb;
+          --bg: #14161c;
+          --card-bg: #1c1f28;
+          --border: #2c2f3a;
+          --muted: #9ca3af;
+          --pos: #4ade80;
+          --neg: #f87171;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 24px;
+        font-family: -apple-system, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+      }
+      h1 {
+        font-size: 20px;
+        margin: 0 0 4px;
+      }
+      a {
+        color: var(--accent);
+      }
+      .updated {
+        color: var(--muted);
+        font-size: 13px;
+        margin-bottom: 20px;
+      }
+      section {
+        margin-bottom: 32px;
+      }
+      section h2 {
+        font-size: 15px;
+        margin: 0 0 12px;
+        color: var(--muted);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 14px 16px;
+      }
+      .card .label {
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+      .card .value {
+        font-size: 20px;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+      }
+      .chart-wrap {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 16px;
+      }
+      .pos {
+        color: var(--pos);
+      }
+      .neg {
+        color: var(--neg);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        font-size: 13px;
+      }
+      th,
+      td {
+        padding: 8px 10px;
+        text-align: right;
+        border-bottom: 1px solid var(--border);
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      th:first-child,
+      td:first-child,
+      th.text,
+      td.text {
+        text-align: left;
+        font-variant-numeric: normal;
+        white-space: normal;
+      }
+      th {
+        cursor: pointer;
+        user-select: none;
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 12px;
+        padding: 14px 10px;
+      }
+      th:hover {
+        color: var(--fg);
+      }
+      th:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: -2px;
+        color: var(--fg);
+      }
+      th .sort-arrow {
+        display: inline-block;
+        width: 1em;
+        color: var(--accent);
+      }
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+      .desc {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .table-scroll {
+        overflow-x: auto;
+      }
+      .empty {
+        color: var(--muted);
+        padding: 16px;
+        text-align: center;
+      }
+      select {
+        font-size: 14px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--card-bg);
+        color: var(--fg);
+        margin-bottom: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="pageTitle">JP Strategy Lab — 日本株戦略比較</h1>
+    <div class="updated" id="updated">読み込み中...</div>
+    <p><a href="../">← ダッシュボード一覧に戻る</a></p>
+
+    <!-- 戦略が1本だけの間はドロップダウン選択や1行だけのランキング表が邪魔なので、
+         単一ダッシュボード風（daytrade-simと同じカード＋グラフ＋テーブル）で表示する。
+         data.jsonの形は今後戦略が増える場合に備えて変えていないので、2本目が
+         増えたら自動的に下のラボ風表示（ランキング表＋ドロップダウン）に切り替わる。 -->
+    <div id="singleMode" style="display: none">
+      <p class="desc" id="strategyDesc"></p>
+      <div class="cards" id="cards"></div>
+
+      <section id="pendingSectionSingle" style="display: none">
+        <h2>売買待ちのシグナル</h2>
+        <div class="cards" id="pendingListSingle"></div>
+      </section>
+
+      <section>
+        <h2>資産推移</h2>
+        <div class="chart-wrap" style="height: 300px; position: relative;"><canvas id="equityChartSingle" height="260"></canvas></div>
+      </section>
+
+      <section>
+        <h2>保有ポジション</h2>
+        <div class="table-scroll">
+          <table id="positionsTableSingle">
+            <thead>
+              <tr>
+                <th class="text" data-key="name">銘柄</th>
+                <th data-key="quantity">数量</th>
+                <th data-key="avgEntryPriceJpy">平均取得単価</th>
+                <th data-key="currentPriceJpy">現在値</th>
+                <th data-key="marketValueJpy">評価額</th>
+                <th data-key="unrealizedPnlJpy">含み損益</th>
+                <th data-key="firstEntryDate">保有開始日</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>売買履歴（直近から）</h2>
+        <div class="table-scroll">
+          <table id="tradesTableSingle">
+            <thead>
+              <tr>
+                <th class="text" data-key="date">日付</th>
+                <th class="text" data-key="action">売買</th>
+                <th class="text" data-key="name">銘柄</th>
+                <th data-key="quantity">数量</th>
+                <th data-key="priceJpy">価格</th>
+                <th data-key="realizedPnlJpy">実現損益</th>
+                <th class="text" data-key="reason">理由</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <!-- 戦略が2本以上になったときのラボ風表示（既存のドロップダウン切り替え式）。 -->
+    <div id="labMode" style="display: none">
+      <section>
+        <h2>成績比較（開始来の騰落率順）</h2>
+        <div class="table-scroll">
+          <table id="rankingTable">
+            <thead>
+              <tr>
+                <th class="text" data-key="name">戦略</th>
+                <th data-key="changePct">騰落率</th>
+                <th data-key="maxDrawdownPct">最大ドローダウン</th>
+                <th data-key="winRatePct">勝率</th>
+                <th data-key="avgHoldingDays">平均保有日数</th>
+                <th data-key="totalEquityJpy">評価額</th>
+                <th data-key="realizedPnlJpy">実現損益</th>
+                <th data-key="unrealizedPnlJpy">含み損益</th>
+                <th data-key="tradeCount">取引回数</th>
+                <th data-key="openPositions">保有銘柄数</th>
+                <th data-key="pendingOrderCount">発注中</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="pendingSectionLab" style="display: none">
+        <h2>売買待ちのシグナル（全戦略）</h2>
+        <div class="cards" id="pendingListLab"></div>
+      </section>
+
+      <section>
+        <h2>資産推移（全戦略）</h2>
+        <div class="chart-wrap" style="height: 340px; position: relative;"><canvas id="equityChart" height="300"></canvas></div>
+      </section>
+
+      <section>
+        <h2>戦略別の詳細</h2>
+        <select id="strategySelect"></select>
+        <div class="table-scroll">
+          <table id="positionsTable">
+            <thead>
+              <tr>
+                <th class="text" data-key="name">銘柄</th>
+                <th data-key="quantity">数量</th>
+                <th data-key="avgEntryPriceJpy">平均取得単価</th>
+                <th data-key="currentPriceJpy">現在値</th>
+                <th data-key="marketValueJpy">評価額</th>
+                <th data-key="unrealizedPnlJpy">含み損益</th>
+                <th data-key="firstEntryDate">保有開始日</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="table-scroll" style="margin-top: 16px">
+          <table id="tradesTable">
+            <thead>
+              <tr>
+                <th class="text" data-key="date">日付</th>
+                <th class="text" data-key="action">売買</th>
+                <th class="text" data-key="name">銘柄</th>
+                <th data-key="quantity">数量</th>
+                <th data-key="priceJpy">価格</th>
+                <th data-key="realizedPnlJpy">実現損益</th>
+                <th class="text" data-key="reason">理由</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      const yen = (v) => (v === null || v === undefined ? '—' : Math.round(v).toLocaleString('ja-JP') + '円');
+      const signedYen = (v) => (v === null || v === undefined ? '—' : (v >= 0 ? '+' : '') + yen(v));
+      const pctStr = (v) => (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+      const ddStr = (v) => (v === null || v === undefined ? '—' : v.toFixed(2) + '%');
+      const winRateStr = (v) => (v === null || v === undefined ? '—（未決済）' : v.toFixed(1) + '%');
+      const holdingDaysStr = (v) => (v === null || v === undefined ? '—' : v.toFixed(1) + '日');
+      const posNeg = (v) => (v === null || v === undefined ? '' : v >= 0 ? 'pos' : 'neg');
+      const formatQuantity = (v) => `${v.toLocaleString('ja-JP')}株`;
+
+      function dayBefore(dateStr) {
+        const d = new Date(dateStr + 'T00:00:00Z');
+        d.setUTCDate(d.getUTCDate() - 1);
+        return d.toISOString().slice(0, 10);
+      }
+
+      // 「実データがある日」だけを横軸に使うと、土日を挟んだ間隔も1日分の間隔も
+      // 同じ幅で描画されてしまい、区切りが不自然に見える。最古日〜最新日の
+      // 暦日を1日も飛ばさず埋めることで、横軸の間隔が実際の経過日数と一致するようにする。
+      function allDatesInRange(sortedDates) {
+        if (sortedDates.length === 0) return [];
+        const start = new Date(sortedDates[0] + 'T00:00:00Z');
+        const end = new Date(sortedDates[sortedDates.length - 1] + 'T00:00:00Z');
+        const result = [];
+        for (let d = start; d <= end; d.setUTCDate(d.getUTCDate() + 1)) {
+          result.push(d.toISOString().slice(0, 10));
+        }
+        return result;
+      }
+
+      // 1日目からすでに含み損益が乗っていると、グラフの開始地点が0%地点からズレて見えるため、
+      // 「最初の記録日の前日=元本」のダミー点を足して起点を揃える。zeroDateを渡すと
+      // そちらを優先する——あとから追加された戦略（バイ・アンド・ホールド等）が自分の
+      // 最初の記録日ではなく、重ね合わせグラフ全体の最古日から揃って始まるようにするため。
+      function withDayZero(points, initialCapital, zeroDate) {
+        if (points.length === 0) return points;
+        const sorted = [...points].sort((a, b) => a.date.localeCompare(b.date));
+        const date = zeroDate ?? dayBefore(sorted[0].date);
+        return [{ date, totalEquityJpy: initialCapital }, ...sorted];
+      }
+
+      function extractRuleTag(reason) {
+        const m = reason.match(/（([^（）]+)）$/);
+        return m ? m[1] : reason;
+      }
+
+      function makeSortable(tableId, rows, renderRow) {
+        const table = document.getElementById(tableId);
+        const tbody = table.querySelector('tbody');
+        let sortKey = null;
+        let sortDir = 1;
+
+        function draw() {
+          if (rows.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="11" class="empty">データなし</td></tr>`;
+            return;
+          }
+          tbody.innerHTML = rows.map(renderRow).join('');
+        }
+
+        const headers = table.querySelectorAll('th');
+        const arrows = new Map();
+
+        function applySort(key) {
+          sortDir = sortKey === key ? -sortDir : 1;
+          sortKey = key;
+          rows.sort((a, b) => {
+            const av = a[key];
+            const bv = b[key];
+            if (av === null || av === undefined) return 1;
+            if (bv === null || bv === undefined) return -1;
+            if (typeof av === 'string') return av.localeCompare(bv) * sortDir;
+            return (av - bv) * sortDir;
+          });
+          headers.forEach((h) => {
+            const isActive = h.dataset.key === key;
+            h.setAttribute('aria-sort', isActive ? (sortDir === 1 ? 'ascending' : 'descending') : 'none');
+            arrows.get(h.dataset.key).textContent = isActive ? (sortDir === 1 ? '▲' : '▼') : '';
+          });
+          draw();
+        }
+
+        headers.forEach((th) => {
+          th.setAttribute('tabindex', '0');
+          th.setAttribute('role', 'button');
+          th.setAttribute('aria-sort', 'none');
+          const arrow = document.createElement('span');
+          arrow.className = 'sort-arrow';
+          th.appendChild(arrow);
+          arrows.set(th.dataset.key, arrow);
+
+          th.addEventListener('click', () => applySort(th.dataset.key));
+          th.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              applySort(th.dataset.key);
+            }
+          });
+        });
+
+        draw();
+        return { redraw: draw, setRows: (newRows) => { rows.length = 0; rows.push(...newRows); draw(); } };
+      }
+
+      // --- 単一戦略モード（現状デフォルト） ---
+
+      function renderCardsSingle(s) {
+        const cards = [
+          { label: '現金', value: yen(s.cashJpy) },
+          { label: '評価額（現金＋ポジション）', value: yen(s.totalEquityJpy) },
+          { label: '開始来の騰落率', value: pctStr(s.changePct), cls: posNeg(s.changePct) },
+          { label: '実現損益', value: signedYen(s.realizedPnlJpy), cls: posNeg(s.realizedPnlJpy) },
+          { label: '含み損益', value: signedYen(s.unrealizedPnlJpy), cls: posNeg(s.unrealizedPnlJpy) },
+          { label: '取引回数', value: `${s.tradeCount}回` },
+          { label: '保有銘柄数', value: `${s.openPositions}銘柄` },
+          { label: '発注中', value: `${s.pendingOrderCount}件` },
+        ];
+        document.getElementById('cards').innerHTML = cards
+          .map((c) => `<div class="card"><div class="label">${c.label}</div><div class="value ${c.cls ?? ''}">${c.value}</div></div>`)
+          .join('');
+      }
+
+      function renderEquityChartSingle(points, initialCapitalYen) {
+        const withZero = withDayZero(points, initialCapitalYen);
+        const rawByDate = new Map(withZero.map((p) => [p.date, Math.round(p.totalEquityJpy)]));
+        const allDates = allDatesInRange([...rawByDate.keys()].sort());
+        new Chart(document.getElementById('equityChartSingle'), {
+          type: 'line',
+          data: {
+            labels: allDates.map((d) => d.slice(5)),
+            datasets: [{ label: '資産評価額', data: forwardFill(allDates, rawByDate), borderColor: 'hsl(258, 65%, 55%)', backgroundColor: 'transparent', fill: false, pointRadius: 1, tension: 0.1 }],
+          },
+          options: {
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false }, title: { display: true, text: '資産評価額の推移（全期間）' } },
+            scales: { y: { beginAtZero: false } },
+          },
+        });
+      }
+
+      function pendingOrderLine(p) {
+        const label = p.action === 'buy' ? '買い予定' : '売り予定';
+        const priceNote = p.limitPriceJpy !== undefined ? `（指値 ${yen(p.limitPriceJpy)}）` : '（成行）';
+        return { label, priceNote };
+      }
+
+      function renderPendingSingle(pendingOrders) {
+        const section = document.getElementById('pendingSectionSingle');
+        if (!pendingOrders || pendingOrders.length === 0) {
+          section.style.display = 'none';
+          return;
+        }
+        section.style.display = '';
+        document.getElementById('pendingListSingle').innerHTML = pendingOrders
+          .map((p) => {
+            const { label, priceNote } = pendingOrderLine(p);
+            return `<div class="card"><div class="label">${p.name} (${p.symbol})　${p.queuedDate}検知</div><div class="value">${label}${priceNote}</div><div class="desc">${extractRuleTag(p.reason)}</div></div>`;
+          })
+          .join('');
+      }
+
+      // ラボモードは戦略が複数あるため、どのシグナルがどの戦略のものか分かるよう
+      // 戦略名を明示する（「どの銘柄が売買待ちか分からない」というユーザー指摘への対応）。
+      function renderPendingLab(strategies, pendingOrdersByStrategy) {
+        const section = document.getElementById('pendingSectionLab');
+        const items = strategies.flatMap((s) => (pendingOrdersByStrategy[s.id] ?? []).map((p) => ({ ...p, strategyName: s.name })));
+        if (items.length === 0) {
+          section.style.display = 'none';
+          return;
+        }
+        section.style.display = '';
+        document.getElementById('pendingListLab').innerHTML = items
+          .map((p) => {
+            const { label, priceNote } = pendingOrderLine(p);
+            return `<div class="card"><div class="label">${p.strategyName}<br>${p.name} (${p.symbol})　${p.queuedDate}検知</div><div class="value">${label}${priceNote}</div><div class="desc">${extractRuleTag(p.reason)}</div></div>`;
+          })
+          .join('');
+      }
+
+      function renderSingleMode(d) {
+        document.getElementById('pageTitle').textContent = `JP Strategy Lab — ${d.strategies[0].name}`;
+        document.getElementById('singleMode').style.display = '';
+        document.getElementById('labMode').style.display = 'none';
+
+        const s = d.strategies[0];
+        document.getElementById('strategyDesc').textContent = s.description;
+        renderCardsSingle(s);
+        renderPendingSingle(d.pendingOrders[s.id]);
+        renderEquityChartSingle(d.equityHistories[s.id] ?? [], s.initialCapitalYen);
+
+        const positions = (d.positions[s.id] ?? []).slice();
+        makeSortable('positionsTableSingle', positions, (p) => `
+          <tr>
+            <td class="text">${p.name} (${p.symbol})</td>
+            <td>${formatQuantity(p.quantity)}</td>
+            <td>${yen(p.avgEntryPriceJpy)}</td>
+            <td>${yen(p.currentPriceJpy)}</td>
+            <td>${yen(p.marketValueJpy)}</td>
+            <td class="${posNeg(p.unrealizedPnlJpy)}">${signedYen(p.unrealizedPnlJpy)}</td>
+            <td>${p.firstEntryDate}</td>
+          </tr>`);
+
+        const trades = (d.trades[s.id] ?? []).slice().reverse();
+        makeSortable('tradesTableSingle', trades, (t) => `
+          <tr>
+            <td class="text">${t.date}</td>
+            <td class="text">${t.action === 'buy' ? '買い' : '売り'}</td>
+            <td class="text">${t.name} (${t.symbol})</td>
+            <td>${formatQuantity(t.quantity)}</td>
+            <td>${yen(t.priceJpy)}</td>
+            <td class="${posNeg(t.realizedPnlJpy)}">${t.realizedPnlJpy === undefined ? '—' : signedYen(t.realizedPnlJpy)}</td>
+            <td class="text desc">${extractRuleTag(t.reason)}</td>
+          </tr>`);
+      }
+
+      // --- 複数戦略モード（今後2本目以降が追加されたら自動的にこちらに切り替わる） ---
+
+      // ％の系列（byDate）や絶対値の系列（points）から最大ドローダウンを求める。
+      function maxDrawdownFromEquity(points, valueField) {
+        let peak = -Infinity;
+        let worst = 0;
+        for (const p of points) {
+          const v = p[valueField];
+          if (v > peak) peak = v;
+          if (peak > 0) {
+            const dd = ((v - peak) / peak) * 100;
+            if (dd < worst) worst = dd;
+          }
+        }
+        return worst;
+      }
+
+      // 売買履歴から「銘柄ごとの買い→売りの往復」を切り出し、勝率と平均保有日数を求める。
+      function winRateAndHolding(trades, pnlField) {
+        const sorted = [...trades].sort((a, b) => a.date.localeCompare(b.date));
+        const openBySymbol = new Map();
+        const roundTrips = [];
+        for (const t of sorted) {
+          if (t.action === 'buy') {
+            if (!openBySymbol.has(t.symbol)) openBySymbol.set(t.symbol, t.date);
+          } else if (t.action === 'sell') {
+            const buyDate = openBySymbol.get(t.symbol);
+            if (buyDate !== undefined) {
+              const holdingDays = (new Date(t.date) - new Date(buyDate)) / 86400000;
+              roundTrips.push({ holdingDays, win: (t[pnlField] ?? 0) > 0 });
+              openBySymbol.delete(t.symbol);
+            }
+          }
+        }
+        if (roundTrips.length === 0) return { winRatePct: null, avgHoldingDays: null };
+        const wins = roundTrips.filter((r) => r.win).length;
+        const avgHoldingDays = roundTrips.reduce((sum, r) => sum + r.holdingDays, 0) / roundTrips.length;
+        return { winRatePct: (wins / roundTrips.length) * 100, avgHoldingDays };
+      }
+
+      function renderRanking(strategies, equityHistories, trades) {
+        const rows = strategies.map((s) => {
+          const withZero = withDayZero(equityHistories[s.id] ?? [], s.initialCapitalYen);
+          const { winRatePct, avgHoldingDays } = winRateAndHolding(trades[s.id] ?? [], 'realizedPnlJpy');
+          return { ...s, maxDrawdownPct: maxDrawdownFromEquity(withZero, 'totalEquityJpy'), winRatePct, avgHoldingDays };
+        });
+        makeSortable('rankingTable', rows, (s) => `
+          <tr>
+            <td class="text">${s.name}<div class="desc">${s.description}</div></td>
+            <td class="${posNeg(s.changePct)}">${pctStr(s.changePct)}</td>
+            <td class="${s.maxDrawdownPct < 0 ? 'neg' : ''}">${ddStr(s.maxDrawdownPct)}</td>
+            <td>${winRateStr(s.winRatePct)}</td>
+            <td>${holdingDaysStr(s.avgHoldingDays)}</td>
+            <td>${yen(s.totalEquityJpy)}</td>
+            <td class="${posNeg(s.realizedPnlJpy)}">${signedYen(s.realizedPnlJpy)}</td>
+            <td class="${posNeg(s.unrealizedPnlJpy)}">${signedYen(s.unrealizedPnlJpy)}</td>
+            <td>${s.tradeCount}</td>
+            <td>${s.openPositions}</td>
+            <td>${s.pendingOrderCount}</td>
+          </tr>`);
+      }
+
+      // 土日や未実行日はnullのまま線で結ぶと、Chart.jsが前後の実データを斜めの
+      // 直線で繋いでしまい「その間ずっと連続的に変化していた」ように見えて誤解を招く。
+      // 実際は「変化なし（横ばい）」なので、直近の値をそのまま引き延ばして埋める。
+      function forwardFill(allDates, byDate) {
+        let lastValue = null;
+        return allDates.map((d) => {
+          if (byDate.has(d)) lastValue = byDate.get(d);
+          return lastValue;
+        });
+      }
+
+      function renderEquityChart(strategies, equityHistories) {
+        const colors = strategies.map((_, i) => `hsl(${Math.round((360 / strategies.length) * i)}, 65%, 55%)`);
+        const allRealDates = strategies.flatMap((s) => (equityHistories[s.id] ?? []).map((p) => p.date));
+        const zeroDate = allRealDates.length > 0 ? dayBefore([...allRealDates].sort()[0]) : undefined;
+        const withZero = strategies.map((s) => withDayZero(equityHistories[s.id], s.initialCapitalYen, zeroDate));
+        const allDates = allDatesInRange([...new Set(withZero.flatMap((points) => points.map((p) => p.date)))].sort());
+        const datasets = strategies.map((s, i) => {
+          const byDate = new Map(withZero[i].map((p) => [p.date, Math.round(p.totalEquityJpy)]));
+          return {
+            label: s.name,
+            data: forwardFill(allDates, byDate),
+            borderColor: colors[i],
+            backgroundColor: 'transparent',
+            spanGaps: true,
+            pointRadius: 1,
+            tension: 0.1,
+          };
+        });
+        new Chart(document.getElementById('equityChart'), {
+          type: 'line',
+          data: { labels: allDates.map((d) => d.slice(5)), datasets },
+          options: {
+            maintainAspectRatio: false,
+            plugins: { legend: { display: true, position: 'bottom' }, title: { display: true, text: '資産評価額の推移（全戦略重ね合わせ）' } },
+            scales: { y: { beginAtZero: false } },
+          },
+        });
+      }
+
+      function renderLabMode(d) {
+        document.getElementById('singleMode').style.display = 'none';
+        document.getElementById('labMode').style.display = '';
+
+        renderRanking(d.strategies, d.equityHistories, d.trades);
+        renderPendingLab(d.strategies, d.pendingOrders);
+        renderEquityChart(d.strategies, d.equityHistories);
+
+        const select = document.getElementById('strategySelect');
+        select.innerHTML = d.strategies.map((s) => `<option value="${s.id}">${s.name}</option>`).join('');
+
+        let positionsSortable;
+        let tradesSortable;
+
+        function renderDetail(strategyId) {
+          const positions = (d.positions[strategyId] ?? []).slice();
+          const trades = (d.trades[strategyId] ?? []).slice().reverse();
+
+          if (positionsSortable) {
+            positionsSortable.setRows(positions);
+          } else {
+            positionsSortable = makeSortable('positionsTable', positions, (p) => `
+              <tr>
+                <td class="text">${p.name} (${p.symbol})</td>
+                <td>${formatQuantity(p.quantity)}</td>
+                <td>${yen(p.avgEntryPriceJpy)}</td>
+                <td>${yen(p.currentPriceJpy)}</td>
+                <td>${yen(p.marketValueJpy)}</td>
+                <td class="${posNeg(p.unrealizedPnlJpy)}">${signedYen(p.unrealizedPnlJpy)}</td>
+                <td>${p.firstEntryDate}</td>
+              </tr>`);
+          }
+
+          if (tradesSortable) {
+            tradesSortable.setRows(trades);
+          } else {
+            tradesSortable = makeSortable('tradesTable', trades, (t) => `
+              <tr>
+                <td class="text">${t.date}</td>
+                <td class="text">${t.action === 'buy' ? '買い' : '売り'}</td>
+                <td class="text">${t.name} (${t.symbol})</td>
+                <td>${formatQuantity(t.quantity)}</td>
+                <td>${yen(t.priceJpy)}</td>
+                <td class="${posNeg(t.realizedPnlJpy)}">${t.realizedPnlJpy === undefined ? '—' : signedYen(t.realizedPnlJpy)}</td>
+                <td class="text desc">${extractRuleTag(t.reason)}</td>
+              </tr>`);
+          }
+        }
+
+        select.addEventListener('change', () => renderDetail(select.value));
+        renderDetail(d.strategies[0].id);
+      }
+
+      async function main() {
+        const res = await fetch('./data.json', { cache: 'no-store' });
+        const d = await res.json();
+
+        document.getElementById('updated').textContent = `最終公開: ${new Date(d.lastPublishedAt).toLocaleString('ja-JP')}（データ生成 ${new Date(d.generatedAt).toLocaleString('ja-JP')}、公開は約1時間おき）`;
+
+        if (d.strategies.length === 1) {
+          renderSingleMode(d);
+        } else {
+          renderLabMode(d);
+        }
+      }
+
+      main().catch((err) => {
+        document.getElementById('updated').textContent = 'データの読み込みに失敗しました: ' + err;
+      });
+    </script>
+  </body>
+</html>

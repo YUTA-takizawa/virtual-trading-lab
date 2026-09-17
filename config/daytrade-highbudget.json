@@ -1,0 +1,4 @@
+{
+  "note": "src/features/daytrade-sim/index.tsの--profile=highbudget用の追加設定。候補銘柄・1銘柄あたりの取得コスト上限（maxPositionYen）・thresholds・売買ルールはすべてconfig/daytrade.json（既定プロファイル）と完全に共有し、二重管理しない。ここではvirtualCapitalYenだけを上書きする——「買いたいけど予算がないからあきらめる、ということが成績の優位差を生むか確認したい」というユーザー要望（2026年9月4日）を受け、総予算だけを変えた並行インスタンスとして追加した。1銘柄あたりの上限（maxPositionYen=350,000円）は据え置くため、既定プロファイル（元本100万円、maxPositionYenとの比率から同時に持てるのは2〜3銘柄前後）よりこちらは同時保有可能銘柄数が広がり、現金不足で新規シグナルを見送る頻度が減るはず——それが実際にリターンの差につながるかを検証する。",
+  "virtualCapitalYen": 3000000
+}

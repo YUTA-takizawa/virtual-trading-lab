@@ -1,0 +1,104 @@
+name: Daytrade simulation
+
+on:
+  schedule:
+    - cron: '35 2 * * 1-5' # 11:35 JST, after TSE's morning close (前場引け), Mon-Fri
+    - cron: '35 6 * * 1-5' # 15:35 JST, after TSE's afternoon close (大引け), Mon-Fri
+  workflow_dispatch:
+    inputs:
+      session:
+        description: 'Which session to run (only used for manual workflow_dispatch)'
+        required: true
+        type: choice
+        options: [morning, afternoon]
+        default: afternoon
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daytrade-sim
+  cancel-in-progress: false
+
+jobs:
+  daytrade-sim:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # github.sha (actions/checkout's default) can resolve to a commit
+          # that's already a few minutes stale by the time this job actually
+          # runs, since ~10 workflows commit to main this frequently —
+          # observed 2026-09-11: a run's checkout was pinned 16 min behind
+          # main, so it worked off stale state all the way through, and
+          # only the final rebase silently "succeeded" onto the wrong base.
+          # Pulling the branch tip instead of the pinned SHA avoids that.
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine session
+        id: session
+        run: |
+          if [ "${{ github.event.schedule }}" = "35 2 * * 1-5" ]; then
+            echo "value=morning" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "35 6 * * 1-5" ]; then
+            echo "value=afternoon" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=${{ inputs.session }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run daytrade simulation
+        run: npm run daytrade:run:${{ steps.session.outputs.value }}
+        env:
+          DISCORD_WEBHOOK_DAYTRADE: ${{ secrets.DISCORD_WEBHOOK_DAYTRADE }}
+
+      - name: Commit updated simulation state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/daytrade-sim-state.json docs/daytrade-sim/data.json
+          if git diff --cached --quiet; then
+            echo "No state changes to commit"
+          else
+            # Deliberately not tagged with the CI-skip commit marker: this
+            # commit touches docs/daytrade-sim/data.json, which Cloudflare's
+            # git-connected build also watches, and Cloudflare honors that
+            # same marker convention — a tagged commit here silently never
+            # redeployed the dashboard (discovered 2026-08-29 — the page was
+            # stuck on a build from hours earlier despite every state commit
+            # succeeding). Do not write the literal marker text anywhere in
+            # this repo's commit messages (not even to describe it, as this
+            # comment is careful to avoid) — Cloudflare's match is a plain
+            # substring search over the whole message, so even a commit
+            # explaining the problem can retrigger it. The remaining cost of
+            # not skipping is CI (ci.yml) re-running typecheck/test on every
+            # state commit, which is cheap and harmless.
+            git commit -m "chore: update daytrade-sim state"
+            # Other daytrade-sim* / strategy-lab workflows commit to the same
+            # main branch frequently enough that a single rebase+push can
+            # still lose the race to one of them landing in between — retry
+            # with a fresh fetch+rebase rather than failing outright (observed
+            # 2026-09-10: a push rejected here silently dropped that run's
+            # state update, with no error surfaced beyond the job going red).
+            for i in 1 2 3 4 5; do
+              if git pull --rebase origin main && git push; then
+                break
+              fi
+              if [ "$i" = "5" ]; then
+                echo "::error::failed to push after 5 attempts"
+                exit 1
+              fi
+              echo "push attempt $i failed, retrying after re-fetch..."
+              git rebase --abort 2>/dev/null || true
+              sleep $((i * 3))
+            done
+          fi

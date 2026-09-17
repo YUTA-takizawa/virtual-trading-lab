@@ -1,0 +1,52 @@
+{
+  "name": "virtual-trading-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Rule-based virtual trading simulators (JP/US stocks, crypto) with Discord webhook reports and static dashboards — split out from house-scraper so Actions runs on the free public-repo tier",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "daytrade:run:morning": "tsx src/features/daytrade-sim/index.ts --session=morning",
+    "daytrade:run:afternoon": "tsx src/features/daytrade-sim/index.ts --session=afternoon",
+    "daytrade:dry-run:morning": "tsx src/features/daytrade-sim/index.ts --session=morning --dry-run",
+    "daytrade:dry-run:afternoon": "tsx src/features/daytrade-sim/index.ts --session=afternoon --dry-run",
+    "daytrade-cheap:run:morning": "tsx src/features/daytrade-sim/index.ts --profile=cheap --session=morning",
+    "daytrade-cheap:run:afternoon": "tsx src/features/daytrade-sim/index.ts --profile=cheap --session=afternoon",
+    "daytrade-cheap:dry-run:morning": "tsx src/features/daytrade-sim/index.ts --profile=cheap --session=morning --dry-run",
+    "daytrade-cheap:dry-run:afternoon": "tsx src/features/daytrade-sim/index.ts --profile=cheap --session=afternoon --dry-run",
+    "daytrade-highbudget:run:morning": "tsx src/features/daytrade-sim/index.ts --profile=highbudget --session=morning",
+    "daytrade-highbudget:run:afternoon": "tsx src/features/daytrade-sim/index.ts --profile=highbudget --session=afternoon",
+    "daytrade-highbudget:dry-run:morning": "tsx src/features/daytrade-sim/index.ts --profile=highbudget --session=morning --dry-run",
+    "daytrade-highbudget:dry-run:afternoon": "tsx src/features/daytrade-sim/index.ts --profile=highbudget --session=afternoon --dry-run",
+    "daytrade-us:run": "tsx src/features/daytrade-sim-us/index.ts",
+    "daytrade-us:dry-run": "tsx src/features/daytrade-sim-us/index.ts --dry-run",
+    "daytrade-us-highbudget:run": "tsx src/features/daytrade-sim-us/index.ts --profile=highbudget",
+    "daytrade-us-highbudget:dry-run": "tsx src/features/daytrade-sim-us/index.ts --profile=highbudget --dry-run",
+    "daytrade-crypto:run": "tsx src/features/daytrade-sim-crypto/index.ts",
+    "daytrade-crypto:dry-run": "tsx src/features/daytrade-sim-crypto/index.ts --dry-run",
+    "daytrade-crypto-highbudget:run": "tsx src/features/daytrade-sim-crypto/index.ts --profile=highbudget",
+    "daytrade-crypto-highbudget:dry-run": "tsx src/features/daytrade-sim-crypto/index.ts --profile=highbudget --dry-run",
+    "crypto-strategy-lab:run": "tsx src/features/crypto-strategy-lab/index.ts",
+    "crypto-strategy-lab:dry-run": "tsx src/features/crypto-strategy-lab/index.ts --dry-run",
+    "us-strategy-lab:run": "tsx src/features/us-strategy-lab/index.ts",
+    "us-strategy-lab:dry-run": "tsx src/features/us-strategy-lab/index.ts --dry-run",
+    "jp-strategy-lab:run": "tsx src/features/jp-strategy-lab/index.ts",
+    "jp-strategy-lab:dry-run": "tsx src/features/jp-strategy-lab/index.ts --dry-run",
+    "watchdog:morning": "tsx scripts/watchdog-daytrade-sim.ts --session=morning",
+    "watchdog:afternoon": "tsx scripts/watchdog-daytrade-sim.ts --session=afternoon"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "dotenv": "^16.4.5",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}
