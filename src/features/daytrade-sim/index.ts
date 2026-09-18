@@ -5,7 +5,7 @@ import path from 'node:path';
 import { readJsonConfig } from '../../shared/personalConfig.ts';
 import { readJsonData, writeJsonData } from '../../shared/dataFile.ts';
 import { requireEnv } from '../../shared/env.ts';
-import { postDiscordEmbeds, postDiscordAlert } from '../../shared/discordClient.ts';
+import { postDiscordEmbeds, postDiscordAlert, joinWithinFieldLimit } from '../../shared/discordClient.ts';
 import { logger } from '../../util/logger.ts';
 import { todayJstDateString } from '../../shared/jstDate.ts';
 import { fetchIntradaySnapshot, fetchDailyHistory, type IntradaySnapshot, type DailyHistory } from './marketData.ts';
@@ -344,7 +344,13 @@ async function main(): Promise<void> {
   const embeds = pieEmbed ? [embed, pieEmbed] : [embed];
 
   if (failures.length > 0) {
-    embed.description = `${embed.description}\n\n取得できなかった銘柄: ${failures.join('・')}`;
+    // Discord's embed.description caps out at 4096 chars — a near-total
+    // market-data outage can produce hundreds of failed symbols, which
+    // blew past that limit and crashed the whole report with a 400
+    // (observed 2026-09-17). Cap the joined list to whatever room is left.
+    const prefix = '\n\n取得できなかった銘柄: ';
+    const budget = Math.max(4096 - (embed.description ?? '').length - prefix.length, 0);
+    embed.description = `${embed.description}${prefix}${joinWithinFieldLimit(failures, budget, '・')}`;
   }
 
   if (dryRun) {

@@ -79,19 +79,22 @@ export async function postDiscordAlert(webhookUrl: string, title: string, descri
  * 1024 chars — daytrade-sim's per-symbol trade/position lists blew past that
  * once candidate lists grew large enough (see its README), so any feature
  * joining a variable-length list of lines into one field should route
- * through this rather than a plain `.join('\n')`.
+ * through this rather than a plain `.join('\n')`. Also reused for
+ * `embed.description` (limit 4096) when appending an unbounded list like
+ * fetch failures — a near-total market-data outage (e.g. hundreds of
+ * candidates) can otherwise push description past Discord's limit and crash
+ * the whole report with a 400, observed 2026-09-17.
  */
-export function joinWithinFieldLimit(lines: string[]): string {
-  const LIMIT = 1024;
-  const OMISSION_BUDGET = 20; // room reserved for "\n…ほかNNN件" once truncation starts
+export function joinWithinFieldLimit(lines: string[], limit = 1024, separator = '\n'): string {
+  const OMISSION_BUDGET = 20; // room reserved for "<sep>…ほかNNN件" once truncation starts
   let result = '';
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i] ?? '';
-    const next = result ? `${result}\n${line}` : line;
+    const next = result ? `${result}${separator}${line}` : line;
     const remaining = lines.length - i - 1;
-    const budget = remaining > 0 ? LIMIT - OMISSION_BUDGET : LIMIT;
+    const budget = remaining > 0 ? limit - OMISSION_BUDGET : limit;
     if (next.length > budget) {
-      return `${result}\n…ほか${lines.length - i}件`;
+      return `${result}${separator}…ほか${lines.length - i}件`;
     }
     result = next;
   }
