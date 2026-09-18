@@ -1,9 +1,9 @@
 {
-  "cashJpy": 2779220.5155601646,
-  "realizedPnlTotalJpy": 0,
+  "cashJpy": 2798516.716100755,
+  "realizedPnlTotalJpy": -2790.463214697258,
   "taxPaidTotalJpy": 0,
-  "secFeeTotalUsd": 0,
-  "finraFeeTotalUsd": 0,
+  "secFeeTotalUsd": 0.01,
+  "finraFeeTotalUsd": 0.01,
   "positions": {
     "ADBE": {
       "tranches": [
@@ -125,24 +125,6 @@
         }
       ]
     },
-    "CMCSA": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 2.88617,
-          "entryPriceUsd": 24.600000381469727,
-          "entryFxRate": 154.54900207519532,
-          "entryDate": "2026-09-11"
-        },
-        {
-          "trancheNumber": 2,
-          "shares": 5.64547,
-          "entryPriceUsd": 25.329999923706055,
-          "entryFxRate": 154.525,
-          "entryDate": "2026-09-15"
-        }
-      ]
-    },
     "CPRT": {
       "tranches": [
         {
@@ -164,22 +146,49 @@
           "entryDate": "2026-09-17"
         }
       ]
+    },
+    "VZ": {
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 1.47368,
+          "entryPriceUsd": 47.5,
+          "entryFxRate": 156.9050048828125,
+          "entryDate": "2026-09-19"
+        }
+      ]
     }
   },
   "pendingOrders": {
-    "CMCSA": {
+    "CCEP": {
       "action": "sell",
       "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
-      "queuedDate": "2026-09-17"
+      "queuedDate": "2026-09-19"
     },
-    "VZ": {
+    "CPRT": {
+      "action": "sell",
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "queuedDate": "2026-09-19"
+    },
+    "CRWD": {
       "action": "buy",
       "trancheNumber": 1,
-      "reason": "前日比急落（-3.3%）を確認、RSI 47・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-09-17"
+      "reason": "前日比急落（-3.3%）を確認、RSI 59・出来高1.5倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "queuedDate": "2026-09-19"
+    },
+    "NFLX": {
+      "action": "sell",
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "queuedDate": "2026-09-19"
+    },
+    "PANW": {
+      "action": "buy",
+      "trancheNumber": 1,
+      "reason": "前日比急落（-3.1%）を確認、RSI 47・出来高2.0倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "queuedDate": "2026-09-19"
     }
   },
-  "lastRunDate": "2026-09-17",
+  "lastRunDate": "2026-09-19",
   "log": [
     {
       "date": "2026-09-08",
@@ -340,6 +349,29 @@
       "shares": 0.03841,
       "reason": "前日比急落（-3.8%）を確認、RSI 31・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
       "trancheNumber": 1
+    },
+    {
+      "date": "2026-09-19",
+      "symbol": "CMCSA",
+      "action": "sell",
+      "priceUsd": 22.665000915527344,
+      "fxRate": 156.6050048828125,
+      "shares": 8.53164,
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "realizedPnlJpy": -2790.463214697258,
+      "tax": 0,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-09-19",
+      "symbol": "VZ",
+      "action": "buy",
+      "priceUsd": 47.5,
+      "fxRate": 156.9050048828125,
+      "shares": 1.47368,
+      "reason": "前日比急落（-3.3%）を確認、RSI 47・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
     }
   ],
   "equityHistory": [
@@ -378,6 +410,10 @@
     {
       "date": "2026-09-17",
       "totalEquityJpy": 2997053.0062158396
+    },
+    {
+      "date": "2026-09-19",
+      "totalEquityJpy": 2992808.781869915
     }
   ]
 }
