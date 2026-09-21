@@ -1,9 +1,9 @@
 {
-  "cashJpy": 798515.7041247567,
-  "realizedPnlTotalJpy": -2790.463214697258,
+  "cashJpy": 806888.0127374834,
+  "realizedPnlTotalJpy": -5373.242131834049,
   "taxPaidTotalJpy": 0,
-  "secFeeTotalUsd": 0.01,
-  "finraFeeTotalUsd": 0.01,
+  "secFeeTotalUsd": 0.04,
+  "finraFeeTotalUsd": 0.04,
   "positions": {
     "ADBE": {
       "tranches": [
@@ -11,28 +11,6 @@
           "trancheNumber": 1,
           "shares": 0.25868,
           "entryPriceUsd": 274.4700012207031,
-          "entryFxRate": 154.51500549316407,
-          "entryDate": "2026-09-08"
-        }
-      ]
-    },
-    "CCEP": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.65997,
-          "entryPriceUsd": 107.58000183105469,
-          "entryFxRate": 154.51500549316407,
-          "entryDate": "2026-09-08"
-        }
-      ]
-    },
-    "NFLX": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.86406,
-          "entryPriceUsd": 82.16999816894531,
           "entryFxRate": 154.51500549316407,
           "entryDate": "2026-09-08"
         }
@@ -125,17 +103,6 @@
         }
       ]
     },
-    "CPRT": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 2.24929,
-          "entryPriceUsd": 32.0099983215332,
-          "entryFxRate": 153.80699768066407,
-          "entryDate": "2026-09-12"
-        }
-      ]
-    },
     "MELI": {
       "tranches": [
         {
@@ -157,38 +124,38 @@
           "entryDate": "2026-09-19"
         }
       ]
+    },
+    "CRWD": {
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 0.30221,
+          "entryPriceUsd": 231.6199951171875,
+          "entryFxRate": 157.5739959716797,
+          "entryDate": "2026-09-22"
+        }
+      ]
+    },
+    "PANW": {
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 0.19226,
+          "entryPriceUsd": 364.0899963378906,
+          "entryFxRate": 157.5739959716797,
+          "entryDate": "2026-09-22"
+        }
+      ]
     }
   },
   "pendingOrders": {
-    "CCEP": {
-      "action": "sell",
-      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
-      "queuedDate": "2026-09-19"
-    },
-    "CPRT": {
-      "action": "sell",
-      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
-      "queuedDate": "2026-09-19"
-    },
     "CRWD": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "reason": "前日比急落（-3.3%）を確認、RSI 59・出来高1.5倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-09-19"
-    },
-    "NFLX": {
       "action": "sell",
-      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
-      "queuedDate": "2026-09-19"
-    },
-    "PANW": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "reason": "前日比急落（-3.1%）を確認、RSI 47・出来高2.0倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-09-19"
+      "reason": "前日比急騰（4.9%）＋RSI 58で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "queuedDate": "2026-09-22"
     }
   },
-  "lastRunDate": "2026-09-19",
+  "lastRunDate": "2026-09-22",
   "log": [
     {
       "date": "2026-09-08",
@@ -372,6 +339,65 @@
       "shares": 1.47368,
       "reason": "前日比急落（-3.3%）を確認、RSI 47・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
       "trancheNumber": 1
+    },
+    {
+      "date": "2026-09-22",
+      "symbol": "CCEP",
+      "action": "sell",
+      "priceUsd": 99.7699966430664,
+      "fxRate": 157.27399597167968,
+      "shares": 0.65997,
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "realizedPnlJpy": -617.9065606346921,
+      "tax": 0,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-09-22",
+      "symbol": "CPRT",
+      "action": "sell",
+      "priceUsd": 29.190000534057617,
+      "fxRate": 157.27399597167968,
+      "shares": 2.24929,
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "realizedPnlJpy": -751.1102311651684,
+      "tax": 0,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-09-22",
+      "symbol": "CRWD",
+      "action": "buy",
+      "priceUsd": 231.6199951171875,
+      "fxRate": 157.5739959716797,
+      "shares": 0.30221,
+      "reason": "前日比急落（-3.3%）を確認、RSI 59・出来高1.5倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
+    },
+    {
+      "date": "2026-09-22",
+      "symbol": "NFLX",
+      "action": "sell",
+      "priceUsd": 71.81999969482422,
+      "fxRate": 157.27399597167968,
+      "shares": 0.86406,
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "realizedPnlJpy": -1213.7621253369307,
+      "tax": 0,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-09-22",
+      "symbol": "PANW",
+      "action": "buy",
+      "priceUsd": 364.0899963378906,
+      "fxRate": 157.5739959716797,
+      "shares": 0.19226,
+      "reason": "前日比急落（-3.1%）を確認、RSI 47・出来高2.0倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
     }
   ],
   "equityHistory": [
@@ -414,6 +440,10 @@
     {
       "date": "2026-09-19",
       "totalEquityJpy": 992807.7698939166
+    },
+    {
+      "date": "2026-09-22",
+      "totalEquityJpy": 995733.5239347159
     }
   ]
 }
