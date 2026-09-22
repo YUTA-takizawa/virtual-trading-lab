@@ -9,7 +9,7 @@ import type { DaytradeSession, DaytradeState } from '../src/features/daytrade-si
  * Runs independently of GitHub Actions (intended for Windows Task Scheduler
  * on a machine that already has this repo checked out) so a GitHub-side
  * outage that silences the scheduled workflow doesn't also silence the
- * watchdog. Checks the *committed* state on origin/master (not the local
+ * watchdog. Checks the *committed* state on origin/main (not the local
  * working tree, which could be stale) for whether today's expected session
  * actually completed; if not, sends a Discord alert so a human notices
  * faster than "happened to check the channel". Doesn't retry/re-trigger the
@@ -36,8 +36,8 @@ async function main(): Promise<void> {
     return;
   }
 
-  execSync('git fetch origin master', { stdio: 'ignore' });
-  const raw = execSync('git show origin/master:data/daytrade-sim-state.json', { encoding: 'utf-8' });
+  execSync('git fetch origin main', { stdio: 'ignore' });
+  const raw = execSync('git show origin/main:data/daytrade-sim-state.json', { encoding: 'utf-8' });
   const state = JSON.parse(raw) as DaytradeState;
 
   // lastRunSession alone records only the most recently completed session, not
