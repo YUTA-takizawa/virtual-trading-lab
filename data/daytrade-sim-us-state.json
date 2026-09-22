@@ -1,9 +1,9 @@
 {
-  "cashJpy": 806888.0127374834,
-  "realizedPnlTotalJpy": -5373.242131834049,
-  "taxPaidTotalJpy": 0,
-  "secFeeTotalUsd": 0.04,
-  "finraFeeTotalUsd": 0.04,
+  "cashJpy": 818524.2611921717,
+  "realizedPnlTotalJpy": -4612.241950433456,
+  "taxPaidTotalJpy": 154.5971868515306,
+  "secFeeTotalUsd": 0.05,
+  "finraFeeTotalUsd": 0.05,
   "positions": {
     "ADBE": {
       "tranches": [
@@ -125,17 +125,6 @@
         }
       ]
     },
-    "CRWD": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.30221,
-          "entryPriceUsd": 231.6199951171875,
-          "entryFxRate": 157.5739959716797,
-          "entryDate": "2026-09-22"
-        }
-      ]
-    },
     "PANW": {
       "tranches": [
         {
@@ -149,13 +138,25 @@
     }
   },
   "pendingOrders": {
-    "CRWD": {
+    "AMGN": {
+      "action": "buy",
+      "trancheNumber": 2,
+      "reason": "平均取得単価比+4.6%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
+      "queuedDate": "2026-09-23"
+    },
+    "PANW": {
+      "action": "buy",
+      "trancheNumber": 2,
+      "reason": "平均取得単価比+2.9%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
+      "queuedDate": "2026-09-23"
+    },
+    "SHOP": {
       "action": "sell",
-      "reason": "前日比急騰（4.9%）＋RSI 58で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
-      "queuedDate": "2026-09-22"
+      "reason": "前日比急騰（7.1%）＋RSI 57で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "queuedDate": "2026-09-23"
     }
   },
-  "lastRunDate": "2026-09-22",
+  "lastRunDate": "2026-09-23",
   "log": [
     {
       "date": "2026-09-08",
@@ -398,6 +399,19 @@
       "shares": 0.19226,
       "reason": "前日比急落（-3.1%）を確認、RSI 47・出来高2.0倍で裏付けあり（ルール1: 急落は買い、打診買い）",
       "trancheNumber": 1
+    },
+    {
+      "date": "2026-09-23",
+      "symbol": "CRWD",
+      "action": "sell",
+      "priceUsd": 248.2100067138672,
+      "fxRate": 157.22899780273437,
+      "shares": 0.30221,
+      "reason": "前日比急騰（4.9%）＋RSI 58で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "realizedPnlJpy": 761.0001814005936,
+      "tax": 154.5971868515306,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
     }
   ],
   "equityHistory": [
@@ -444,6 +458,10 @@
     {
       "date": "2026-09-22",
       "totalEquityJpy": 995733.5239347159
+    },
+    {
+      "date": "2026-09-23",
+      "totalEquityJpy": 995882.5842286383
     }
   ]
 }
