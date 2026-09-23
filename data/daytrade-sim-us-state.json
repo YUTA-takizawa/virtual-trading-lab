@@ -1,9 +1,9 @@
 {
-  "cashJpy": 818524.2611921717,
-  "realizedPnlTotalJpy": -4612.241950433456,
-  "taxPaidTotalJpy": 154.5971868515306,
-  "secFeeTotalUsd": 0.05,
-  "finraFeeTotalUsd": 0.05,
+  "cashJpy": 786019.3496144509,
+  "realizedPnlTotalJpy": -3585.95362136165,
+  "taxPaidTotalJpy": 363.08766090246786,
+  "secFeeTotalUsd": 0.060000000000000005,
+  "finraFeeTotalUsd": 0.060000000000000005,
   "positions": {
     "ADBE": {
       "tranches": [
@@ -35,6 +35,13 @@
           "entryPriceUsd": 392.20001220703125,
           "entryFxRate": 153.49800720214844,
           "entryDate": "2026-09-10"
+        },
+        {
+          "trancheNumber": 2,
+          "shares": 0.34138,
+          "entryPriceUsd": 410.0899963378906,
+          "entryFxRate": 158.48299255371094,
+          "entryDate": "2026-09-24"
         }
       ]
     },
@@ -71,17 +78,6 @@
           "entryPriceUsd": 117.51000213623047,
           "entryFxRate": 155.22000732421876,
           "entryDate": "2026-09-16"
-        }
-      ]
-    },
-    "SHOP": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.5209,
-          "entryPriceUsd": 138.22000122070312,
-          "entryFxRate": 153.49800720214844,
-          "entryDate": "2026-09-10"
         }
       ]
     },
@@ -133,30 +129,41 @@
           "entryPriceUsd": 364.0899963378906,
           "entryFxRate": 157.5739959716797,
           "entryDate": "2026-09-22"
+        },
+        {
+          "trancheNumber": 2,
+          "shares": 0.36861,
+          "entryPriceUsd": 379.79998779296875,
+          "entryFxRate": 158.48299255371094,
+          "entryDate": "2026-09-24"
         }
       ]
     }
   },
   "pendingOrders": {
-    "AMGN": {
-      "action": "buy",
-      "trancheNumber": 2,
-      "reason": "平均取得単価比+4.6%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
-      "queuedDate": "2026-09-23"
+    "ABNB": {
+      "action": "sell",
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "queuedDate": "2026-09-24"
     },
     "PANW": {
-      "action": "buy",
-      "trancheNumber": 2,
-      "reason": "平均取得単価比+2.9%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
-      "queuedDate": "2026-09-23"
+      "action": "sell",
+      "reason": "前日比急騰（5.8%）＋RSI 61で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "queuedDate": "2026-09-24"
+    },
+    "PAYX": {
+      "action": "sell",
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "queuedDate": "2026-09-24"
     },
     "SHOP": {
-      "action": "sell",
-      "reason": "前日比急騰（7.1%）＋RSI 57で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
-      "queuedDate": "2026-09-23"
+      "action": "buy",
+      "trancheNumber": 1,
+      "reason": "前日比急落（-3.7%）を確認、RSI 50・出来高2.2倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "queuedDate": "2026-09-24"
     }
   },
-  "lastRunDate": "2026-09-23",
+  "lastRunDate": "2026-09-24",
   "log": [
     {
       "date": "2026-09-08",
@@ -412,6 +419,39 @@
       "tax": 154.5971868515306,
       "secFeeUsd": 0.01,
       "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-09-24",
+      "symbol": "AMGN",
+      "action": "buy",
+      "priceUsd": 410.0899963378906,
+      "fxRate": 158.48299255371094,
+      "shares": 0.34138,
+      "reason": "平均取得単価比+4.6%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
+      "trancheNumber": 2
+    },
+    {
+      "date": "2026-09-24",
+      "symbol": "PANW",
+      "action": "buy",
+      "priceUsd": 379.79998779296875,
+      "fxRate": 158.48299255371094,
+      "shares": 0.36861,
+      "reason": "平均取得単価比+2.9%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
+      "trancheNumber": 2
+    },
+    {
+      "date": "2026-09-24",
+      "symbol": "SHOP",
+      "action": "sell",
+      "priceUsd": 146.6199951171875,
+      "fxRate": 158.18299255371093,
+      "shares": 0.5209,
+      "reason": "前日比急騰（7.1%）＋RSI 57で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "realizedPnlJpy": 1026.2883290718055,
+      "tax": 208.49047405093728,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
     }
   ],
   "equityHistory": [
@@ -462,6 +502,10 @@
     {
       "date": "2026-09-23",
       "totalEquityJpy": 995882.5842286383
+    },
+    {
+      "date": "2026-09-24",
+      "totalEquityJpy": 994073.5630505284
     }
   ]
 }
