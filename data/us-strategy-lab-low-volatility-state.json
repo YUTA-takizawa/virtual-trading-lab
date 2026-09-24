@@ -1,7 +1,7 @@
 {
-  "cashUsd": 4945.616692794881,
-  "realizedPnlTotalUsd": -54.39111655540103,
-  "feesPaidTotalUsd": 0.33548630651113565,
+  "cashUsd": 4906.6589445674545,
+  "realizedPnlTotalUsd": -93.35279806590802,
+  "feesPaidTotalUsd": 0.3652842980362761,
   "positions": {
     "KO": {
       "lots": [
@@ -30,15 +30,6 @@
         }
       ]
     },
-    "MCD": {
-      "lots": [
-        {
-          "quantity": 4.00946,
-          "entryPriceUsd": 249.41000366210938,
-          "entryDate": "2026-09-22"
-        }
-      ]
-    },
     "PG": {
       "lots": [
         {
@@ -47,19 +38,28 @@
           "entryDate": "2026-09-23"
         }
       ]
+    },
+    "LIN": {
+      "lots": [
+        {
+          "quantity": 2.12765,
+          "entryPriceUsd": 470,
+          "entryDate": "2026-09-25"
+        }
+      ]
     }
   },
   "pendingOrders": {
     "LIN": {
+      "action": "sell",
+      "reason": "上位5位から陥落（値動きが荒くなった）、手仕舞い",
+      "queuedDate": "2026-09-25"
+    },
+    "WBD": {
       "action": "buy",
       "budgetUsd": 1000,
       "reason": "値動きの穏やかさ（ATR/終値比）で全銘柄中5位、上位5入りのため買い",
-      "queuedDate": "2026-09-24"
-    },
-    "MCD": {
-      "action": "sell",
-      "reason": "上位5位から陥落（値動きが荒くなった）、手仕舞い",
-      "queuedDate": "2026-09-24"
+      "queuedDate": "2026-09-25"
     }
   },
   "log": [
@@ -300,6 +300,24 @@
       "reason": "上位5位から陥落（値動きが荒くなった）、手仕舞い",
       "realizedPnlUsd": 88.59751460803875,
       "feesUsd": 0.03242577394604371
+    },
+    {
+      "date": "2026-09-25",
+      "symbol": "LIN",
+      "action": "buy",
+      "priceUsd": 470,
+      "quantity": 2.12765,
+      "reason": "値動きの穏やかさ（ATR/終値比）で全銘柄中5位、上位5入りのため買い"
+    },
+    {
+      "date": "2026-09-25",
+      "symbol": "MCD",
+      "action": "sell",
+      "priceUsd": 239.6999969482422,
+      "quantity": 4.00946,
+      "reason": "上位5位から陥落（値動きが荒くなった）、手仕舞い",
+      "realizedPnlUsd": -38.96168151050699,
+      "feesUsd": 0.02979799152514044
     }
   ],
   "equityHistory": [
@@ -358,6 +376,10 @@
     {
       "date": "2026-09-24",
       "totalEquityUsd": 9878.274564939962
+    },
+    {
+      "date": "2026-09-25",
+      "totalEquityUsd": 9876.344447965434
     }
   ]
 }
