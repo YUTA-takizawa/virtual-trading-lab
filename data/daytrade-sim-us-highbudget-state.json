@@ -1,21 +1,10 @@
 {
-  "cashJpy": 2838567.953947194,
-  "realizedPnlTotalJpy": -5970.783397553991,
+  "cashJpy": 2703680.16612863,
+  "realizedPnlTotalJpy": -7550.787807232742,
   "taxPaidTotalJpy": 713.7894998856707,
-  "secFeeTotalUsd": 0.09999999999999999,
-  "finraFeeTotalUsd": 0.09999999999999999,
+  "secFeeTotalUsd": 0.10999999999999999,
+  "finraFeeTotalUsd": 0.10999999999999999,
   "positions": {
-    "ADBE": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.25868,
-          "entryPriceUsd": 274.4700012207031,
-          "entryFxRate": 154.51500549316407,
-          "entryDate": "2026-09-08"
-        }
-      ]
-    },
     "AMGN": {
       "tranches": [
         {
@@ -31,6 +20,13 @@
           "entryPriceUsd": 410.0899963378906,
           "entryFxRate": 158.4850067138672,
           "entryDate": "2026-09-24"
+        },
+        {
+          "trancheNumber": 3,
+          "shares": 1.02082,
+          "entryPriceUsd": 414.3699951171875,
+          "entryFxRate": 157.51000061035157,
+          "entryDate": "2026-09-30"
         }
       ]
     },
@@ -49,6 +45,13 @@
           "entryPriceUsd": 86.05000305175781,
           "entryFxRate": 156.51399841308594,
           "entryDate": "2026-09-17"
+        },
+        {
+          "trancheNumber": 3,
+          "shares": 4.88283,
+          "entryPriceUsd": 86.62999725341797,
+          "entryFxRate": 157.51000061035157,
+          "entryDate": "2026-09-30"
         }
       ]
     },
@@ -98,34 +101,28 @@
           "entryDate": "2026-09-29"
         }
       ]
+    },
+    "REGN": {
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 0.09385,
+          "entryPriceUsd": 745.8499755859375,
+          "entryFxRate": 157.51000061035157,
+          "entryDate": "2026-09-30"
+        }
+      ]
     }
   },
   "pendingOrders": {
-    "ADBE": {
-      "action": "sell",
-      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
-      "queuedDate": "2026-09-29"
-    },
-    "AMGN": {
+    "SHOP": {
       "action": "buy",
       "trancheNumber": 3,
-      "reason": "RSI 66で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
-      "queuedDate": "2026-09-29"
-    },
-    "DXCM": {
-      "action": "buy",
-      "trancheNumber": 3,
-      "reason": "RSI 59で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
-      "queuedDate": "2026-09-29"
-    },
-    "REGN": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "reason": "前日比急落（-4.5%）を確認、RSI 31・出来高1.5倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-09-29"
+      "reason": "RSI 72で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
+      "queuedDate": "2026-09-30"
     }
   },
-  "lastRunDate": "2026-09-29",
+  "lastRunDate": "2026-09-30",
   "log": [
     {
       "date": "2026-09-08",
@@ -486,6 +483,49 @@
       "shares": 1.02144,
       "reason": "平均取得単価比+1.2%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
       "trancheNumber": 2
+    },
+    {
+      "date": "2026-09-30",
+      "symbol": "ADBE",
+      "action": "sell",
+      "priceUsd": 230.99000549316406,
+      "fxRate": 157.21000061035156,
+      "shares": 0.25868,
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "realizedPnlJpy": -1580.0044096787515,
+      "tax": 0,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-09-30",
+      "symbol": "AMGN",
+      "action": "buy",
+      "priceUsd": 414.3699951171875,
+      "fxRate": 157.51000061035157,
+      "shares": 1.02082,
+      "reason": "RSI 66で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
+      "trancheNumber": 3
+    },
+    {
+      "date": "2026-09-30",
+      "symbol": "DXCM",
+      "action": "buy",
+      "priceUsd": 86.62999725341797,
+      "fxRate": 157.51000061035157,
+      "shares": 4.88283,
+      "reason": "RSI 59で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
+      "trancheNumber": 3
+    },
+    {
+      "date": "2026-09-30",
+      "symbol": "REGN",
+      "action": "buy",
+      "priceUsd": 745.8499755859375,
+      "fxRate": 157.51000061035157,
+      "shares": 0.09385,
+      "reason": "前日比急落（-4.5%）を確認、RSI 31・出来高1.5倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
     }
   ],
   "equityHistory": [
@@ -552,6 +592,10 @@
     {
       "date": "2026-09-29",
       "totalEquityJpy": 2993975.7096369546
+    },
+    {
+      "date": "2026-09-30",
+      "totalEquityJpy": 2996301.8982839184
     }
   ]
 }
