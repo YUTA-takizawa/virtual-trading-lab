@@ -1,5 +1,5 @@
 {
-  "cash": 228099.94972473127,
+  "cash": 123059.94728332502,
   "realizedPnlTotal": -1259.99755859375,
   "taxPaidTotal": 1938.0514959716797,
   "commissionPaidTotal": 2882,
@@ -131,6 +131,12 @@
           "shares": 100,
           "entryPrice": 517.7000122070312,
           "entryDate": "2026-09-25"
+        },
+        {
+          "trancheNumber": 2,
+          "shares": 200,
+          "entryPrice": 525.2000122070312,
+          "entryDate": "2026-09-29"
         }
       ]
     },
@@ -146,15 +152,14 @@
     }
   },
   "pendingOrders": {
-    "4689.T": {
-      "action": "buy",
-      "trancheNumber": 2,
-      "reason": "平均取得単価比+2.2%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
+    "2222.T": {
+      "action": "sell",
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
       "queuedDate": "2026-09-29"
     }
   },
   "lastRunDate": "2026-09-29",
-  "lastRunSession": "morning",
+  "lastRunSession": "afternoon",
   "log": [
     {
       "date": "2026-09-07",
@@ -357,6 +362,15 @@
       "shares": 100,
       "reason": "朝の急落（-4.3%）を確認、RSI 45・出来高1.5倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
       "trancheNumber": 1
+    },
+    {
+      "date": "2026-09-29",
+      "symbol": "4689.T",
+      "action": "buy",
+      "price": 525.2000122070312,
+      "shares": 200,
+      "reason": "平均取得単価比+2.2%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
+      "trancheNumber": 2
     }
   ],
   "equityHistory": [
@@ -594,8 +608,13 @@
       "date": "2026-09-29",
       "session": "morning",
       "totalEquity": 2951899.949724731
+    },
+    {
+      "date": "2026-09-29",
+      "session": "afternoon",
+      "totalEquity": 2941429.9546075435
     }
   ],
   "lastMorningRunDate": "2026-09-29",
-  "lastAfternoonRunDate": "2026-09-28"
+  "lastAfternoonRunDate": "2026-09-29"
 }
