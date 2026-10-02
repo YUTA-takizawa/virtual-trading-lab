@@ -1,17 +1,8 @@
 {
-  "cashUsd": 8041.551276434063,
-  "realizedPnlTotalUsd": 41.54226763462202,
-  "feesPaidTotalUsd": 0.42926378597118264,
+  "cashUsd": 8110.2340414722175,
+  "realizedPnlTotalUsd": 110.22881508946443,
+  "feesPaidTotalUsd": 0.4612792394538257,
   "positions": {
-    "LITE": {
-      "lots": [
-        {
-          "quantity": 1.01467,
-          "entryPriceUsd": 985.5349731445312,
-          "entryDate": "2026-10-01"
-        }
-      ]
-    },
     "APP": {
       "lots": [
         {
@@ -20,19 +11,28 @@
           "entryDate": "2026-10-02"
         }
       ]
+    },
+    "SNPS": {
+      "lots": [
+        {
+          "quantity": 2.00861,
+          "entryPriceUsd": 497.8550109863281,
+          "entryDate": "2026-10-03"
+        }
+      ]
     }
   },
   "pendingOrders": {
-    "LITE": {
+    "APP": {
       "action": "sell",
       "reason": "保有期間1日の上限に到達、理由を問わず無条件で手仕舞い",
-      "queuedDate": "2026-10-02"
+      "queuedDate": "2026-10-03"
     },
-    "SNPS": {
+    "WDC": {
       "action": "buy",
       "budgetUsd": 1000,
-      "reason": "本日の値動き12.8%で全銘柄中最大、値幅ロトとして買い",
-      "queuedDate": "2026-10-02"
+      "reason": "本日の値動き-10.2%で全銘柄中最大、値幅ロトとして買い",
+      "queuedDate": "2026-10-03"
     }
   },
   "log": [
@@ -303,6 +303,24 @@
       "priceUsd": 291,
       "quantity": 3.43642,
       "reason": "本日の値動き-5.0%で全銘柄中最大、値幅ロトとして買い"
+    },
+    {
+      "date": "2026-10-03",
+      "symbol": "LITE",
+      "action": "sell",
+      "priceUsd": 1053.260009765625,
+      "quantity": 1.01467,
+      "reason": "保有期間1日の上限に到達、理由を問わず無条件で手仕舞い",
+      "realizedPnlUsd": 68.68654745484241,
+      "feesUsd": 0.032015453482643064
+    },
+    {
+      "date": "2026-10-03",
+      "symbol": "SNPS",
+      "action": "buy",
+      "priceUsd": 497.8550109863281,
+      "quantity": 2.00861,
+      "reason": "本日の値動き12.8%で全銘柄中最大、値幅ロトとして買い"
     }
   ],
   "equityHistory": [
@@ -385,6 +403,10 @@
     {
       "date": "2026-10-02",
       "totalEquityUsd": 10069.372200571026
+    },
+    {
+      "date": "2026-10-03",
+      "totalEquityUsd": 10015.968644807483
     }
   ]
 }
