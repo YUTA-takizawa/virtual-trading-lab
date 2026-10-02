@@ -1,8 +1,8 @@
 {
-  "cash": 313926.94850402814,
-  "realizedPnlTotal": -8109.99755859375,
+  "cash": 599873.9485040281,
+  "realizedPnlTotal": -18759.99755859375,
   "taxPaidTotal": 1938.0514959716797,
-  "commissionPaidTotal": 3135,
+  "commissionPaidTotal": 3388,
   "positions": {
     "2433.T": {
       "tranches": [
@@ -10,16 +10,6 @@
           "trancheNumber": 1,
           "shares": 100,
           "entryPrice": 1297,
-          "entryDate": "2026-09-08"
-        }
-      ]
-    },
-    "7203.T": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 100,
-          "entryPrice": 2968.5,
           "entryDate": "2026-09-08"
         }
       ]
@@ -152,14 +142,23 @@
     }
   },
   "pendingOrders": {
-    "7203.T": {
-      "action": "sell",
-      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+    "8628.T": {
+      "action": "buy",
+      "trancheNumber": 1,
+      "limitPrice": 1106,
+      "reason": "朝の急落（-3.5%）を確認、RSI 34・出来高1.4倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
+      "queuedDate": "2026-10-02"
+    },
+    "2175.T": {
+      "action": "buy",
+      "trancheNumber": 1,
+      "limitPrice": 2568,
+      "reason": "朝の急落（-5.0%）を確認、RSI 54・出来高1.8倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
       "queuedDate": "2026-10-02"
     }
   },
   "lastRunDate": "2026-10-02",
-  "lastRunSession": "morning",
+  "lastRunSession": "afternoon",
   "log": [
     {
       "date": "2026-09-07",
@@ -390,6 +389,16 @@
       "shares": 100,
       "reason": "朝の急落（-3.3%）を確認、RSI 49・出来高1.6倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
       "trancheNumber": 1
+    },
+    {
+      "date": "2026-10-02",
+      "symbol": "7203.T",
+      "action": "sell",
+      "price": 2862,
+      "shares": 100,
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "realizedPnl": -10650,
+      "tax": 0
     }
   ],
   "equityHistory": [
@@ -657,8 +666,13 @@
       "date": "2026-10-02",
       "session": "morning",
       "totalEquity": 2928496.952776489
+    },
+    {
+      "date": "2026-10-02",
+      "session": "afternoon",
+      "totalEquity": 2936933.9460626217
     }
   ],
   "lastMorningRunDate": "2026-10-02",
-  "lastAfternoonRunDate": "2026-10-01"
+  "lastAfternoonRunDate": "2026-10-02"
 }
