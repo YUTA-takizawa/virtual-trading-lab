@@ -1,5 +1,5 @@
 {
-  "cash": 243830.95094543457,
+  "cash": 192200.9521661377,
   "realizedPnlTotal": -8109.99755859375,
   "taxPaidTotal": 1938.0514959716797,
   "commissionPaidTotal": 1771,
@@ -43,19 +43,21 @@
           "entryDate": "2026-09-21"
         }
       ]
-    }
-  },
-  "pendingOrders": {
+    },
     "8766.T": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "limitPrice": 521,
-      "reason": "朝の急落（-3.3%）を確認、RSI 49・出来高1.6倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
-      "queuedDate": "2026-10-01"
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 100,
+          "entryPrice": 516.2999877929688,
+          "entryDate": "2026-10-02"
+        }
+      ]
     }
   },
-  "lastRunDate": "2026-10-01",
-  "lastRunSession": "afternoon",
+  "pendingOrders": {},
+  "lastRunDate": "2026-10-02",
+  "lastRunSession": "morning",
   "log": [
     {
       "date": "2026-09-07",
@@ -187,6 +189,15 @@
       "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
       "realizedPnl": -6850,
       "tax": 0
+    },
+    {
+      "date": "2026-10-02",
+      "symbol": "8766.T",
+      "action": "buy",
+      "price": 516.2999877929688,
+      "shares": 100,
+      "reason": "朝の急落（-3.3%）を確認、RSI 49・出来高1.6倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
+      "trancheNumber": 1
     }
   ],
   "equityHistory": [
@@ -439,8 +450,13 @@
       "date": "2026-10-01",
       "session": "afternoon",
       "totalEquity": 976880.9509454346
+    },
+    {
+      "date": "2026-10-02",
+      "session": "morning",
+      "totalEquity": 969760.9527764893
     }
   ],
-  "lastMorningRunDate": "2026-10-01",
+  "lastMorningRunDate": "2026-10-02",
   "lastAfternoonRunDate": "2026-10-01"
 }
