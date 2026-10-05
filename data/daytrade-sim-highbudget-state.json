@@ -1,5 +1,5 @@
 {
-  "cash": 599873.9485040281,
+  "cash": 233073.94850402814,
   "realizedPnlTotal": -18759.99755859375,
   "taxPaidTotal": 1938.0514959716797,
   "commissionPaidTotal": 3388,
@@ -139,26 +139,37 @@
           "entryDate": "2026-10-02"
         }
       ]
+    },
+    "8628.T": {
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 100,
+          "entryPrice": 1106,
+          "entryDate": "2026-10-05"
+        }
+      ]
+    },
+    "2175.T": {
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 100,
+          "entryPrice": 2562,
+          "entryDate": "2026-10-05"
+        }
+      ]
     }
   },
   "pendingOrders": {
-    "8628.T": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "limitPrice": 1106,
-      "reason": "朝の急落（-3.5%）を確認、RSI 34・出来高1.4倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
-      "queuedDate": "2026-10-02"
-    },
-    "2175.T": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "limitPrice": 2568,
-      "reason": "朝の急落（-5.0%）を確認、RSI 54・出来高1.8倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
-      "queuedDate": "2026-10-02"
+    "9843.T": {
+      "action": "sell",
+      "reason": "朝の急騰（3.8%）を確認、利益確定（ルール1: 朝の急騰は売り）",
+      "queuedDate": "2026-10-05"
     }
   },
-  "lastRunDate": "2026-10-02",
-  "lastRunSession": "afternoon",
+  "lastRunDate": "2026-10-05",
+  "lastRunSession": "morning",
   "log": [
     {
       "date": "2026-09-07",
@@ -399,6 +410,24 @@
       "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
       "realizedPnl": -10650,
       "tax": 0
+    },
+    {
+      "date": "2026-10-05",
+      "symbol": "8628.T",
+      "action": "buy",
+      "price": 1106,
+      "shares": 100,
+      "reason": "朝の急落（-3.5%）を確認、RSI 34・出来高1.4倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
+      "trancheNumber": 1
+    },
+    {
+      "date": "2026-10-05",
+      "symbol": "2175.T",
+      "action": "buy",
+      "price": 2562,
+      "shares": 100,
+      "reason": "朝の急落（-5.0%）を確認、RSI 54・出来高1.8倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
+      "trancheNumber": 1
     }
   ],
   "equityHistory": [
@@ -671,8 +700,13 @@
       "date": "2026-10-02",
       "session": "afternoon",
       "totalEquity": 2936933.9460626217
+    },
+    {
+      "date": "2026-10-05",
+      "session": "morning",
+      "totalEquity": 2951863.9478936763
     }
   ],
-  "lastMorningRunDate": "2026-10-02",
+  "lastMorningRunDate": "2026-10-05",
   "lastAfternoonRunDate": "2026-10-02"
 }
