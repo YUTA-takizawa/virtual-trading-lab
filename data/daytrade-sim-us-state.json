@@ -1,5 +1,5 @@
 {
-  "cashJpy": 615004.5989027283,
+  "cashJpy": 592829.7661131034,
   "realizedPnlTotalJpy": -7552.346005650701,
   "taxPaidTotalJpy": 713.6065669209981,
   "secFeeTotalUsd": 0.10999999999999999,
@@ -126,23 +126,43 @@
           "entryDate": "2026-10-02"
         }
       ]
+    },
+    "NBIS": {
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 0.31488,
+          "entryPriceUsd": 222.3000030517578,
+          "entryFxRate": 158.39800109863282,
+          "entryDate": "2026-10-10"
+        }
+      ]
+    },
+    "TER": {
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 0.17275,
+          "entryPriceUsd": 405.19000244140625,
+          "entryFxRate": 158.39800109863282,
+          "entryDate": "2026-10-10"
+        }
+      ]
     }
   },
   "pendingOrders": {
-    "NBIS": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "reason": "前日比急落（-7.4%）を確認、RSI 49・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-10-09"
+    "SHOP": {
+      "action": "sell",
+      "reason": "前日比急騰（3.8%）＋RSI 81で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "queuedDate": "2026-10-10"
     },
-    "TER": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "reason": "前日比急落（-3.2%）を確認、RSI 59・出来高1.3倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-10-09"
+    "VZ": {
+      "action": "sell",
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "queuedDate": "2026-10-10"
     }
   },
-  "lastRunDate": "2026-10-09",
+  "lastRunDate": "2026-10-10",
   "log": [
     {
       "date": "2026-09-08",
@@ -566,6 +586,26 @@
       "shares": 0.18264,
       "reason": "平均取得単価比+1.7%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
       "trancheNumber": 2
+    },
+    {
+      "date": "2026-10-10",
+      "symbol": "NBIS",
+      "action": "buy",
+      "priceUsd": 222.3000030517578,
+      "fxRate": 158.39800109863282,
+      "shares": 0.31488,
+      "reason": "前日比急落（-7.4%）を確認、RSI 49・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
+    },
+    {
+      "date": "2026-10-10",
+      "symbol": "TER",
+      "action": "buy",
+      "priceUsd": 405.19000244140625,
+      "fxRate": 158.39800109863282,
+      "shares": 0.17275,
+      "reason": "前日比急落（-3.2%）を確認、RSI 59・出来高1.3倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
     }
   ],
   "equityHistory": [
@@ -664,6 +704,10 @@
     {
       "date": "2026-10-09",
       "totalEquityJpy": 1002661.4316455224
+    },
+    {
+      "date": "2026-10-10",
+      "totalEquityJpy": 1009006.8725009992
     }
   ]
 }
