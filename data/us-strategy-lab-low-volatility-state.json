@@ -1,7 +1,7 @@
 {
-  "cashUsd": 3924.485301894769,
-  "realizedPnlTotalUsd": -75.51744332757255,
-  "feesPaidTotalUsd": 0.5798558080985731,
+  "cashUsd": 3979.9285922766967,
+  "realizedPnlTotalUsd": -20.07865813317551,
+  "feesPaidTotalUsd": 0.642199101860799,
   "positions": {
     "KO": {
       "lots": [
@@ -30,15 +30,6 @@
         }
       ]
     },
-    "PG": {
-      "lots": [
-        {
-          "quantity": 6.9252,
-          "entryPriceUsd": 144.39999389648438,
-          "entryDate": "2026-10-06"
-        }
-      ]
-    },
     "EXC": {
       "lots": [
         {
@@ -48,38 +39,47 @@
         }
       ]
     },
-    "XEL": {
+    "COST": {
       "lots": [
         {
-          "quantity": 13.6668,
-          "entryPriceUsd": 73.16999816894531,
-          "entryDate": "2026-10-10"
+          "quantity": 1.05323,
+          "entryPriceUsd": 949.4550170898438,
+          "entryDate": "2026-10-13"
+        }
+      ]
+    },
+    "CSX": {
+      "lots": [
+        {
+          "quantity": 21.14164,
+          "entryPriceUsd": 47.29999923706055,
+          "entryDate": "2026-10-13"
         }
       ]
     }
   },
   "pendingOrders": {
     "COST": {
-      "action": "buy",
-      "budgetUsd": 1000,
-      "reason": "値動きの穏やかさ（ATR/終値比）で全銘柄中5位、上位5入りのため買い",
-      "queuedDate": "2026-10-10"
+      "action": "sell",
+      "reason": "上位5位から陥落（値動きが荒くなった）、手仕舞い",
+      "queuedDate": "2026-10-13"
     },
-    "CSX": {
+    "EXC": {
+      "action": "sell",
+      "reason": "上位5位から陥落（値動きが荒くなった）、手仕舞い",
+      "queuedDate": "2026-10-13"
+    },
+    "JPM": {
       "action": "buy",
       "budgetUsd": 1000,
       "reason": "値動きの穏やかさ（ATR/終値比）で全銘柄中2位、上位5入りのため買い",
-      "queuedDate": "2026-10-10"
+      "queuedDate": "2026-10-13"
     },
-    "PG": {
-      "action": "sell",
-      "reason": "上位5位から陥落（値動きが荒くなった）、手仕舞い",
-      "queuedDate": "2026-10-10"
-    },
-    "XEL": {
-      "action": "sell",
-      "reason": "上位5位から陥落（値動きが荒くなった）、手仕舞い",
-      "queuedDate": "2026-10-10"
+    "TRV": {
+      "action": "buy",
+      "budgetUsd": 1000,
+      "reason": "値動きの穏やかさ（ATR/終値比）で全銘柄中5位、上位5入りのため買い",
+      "queuedDate": "2026-10-13"
     }
   },
   "log": [
@@ -472,6 +472,42 @@
       "priceUsd": 73.16999816894531,
       "quantity": 13.6668,
       "reason": "値動きの穏やかさ（ATR/終値比）で全銘柄中5位、上位5入りのため買い"
+    },
+    {
+      "date": "2026-10-13",
+      "symbol": "COST",
+      "action": "buy",
+      "priceUsd": 949.4550170898438,
+      "quantity": 1.05323,
+      "reason": "値動きの穏やかさ（ATR/終値比）で全銘柄中5位、上位5入りのため買い"
+    },
+    {
+      "date": "2026-10-13",
+      "symbol": "CSX",
+      "action": "buy",
+      "priceUsd": 47.29999923706055,
+      "quantity": 21.14164,
+      "reason": "値動きの穏やかさ（ATR/終値比）で全銘柄中2位、上位5入りのため買い"
+    },
+    {
+      "date": "2026-10-13",
+      "symbol": "PG",
+      "action": "sell",
+      "priceUsd": 151.25,
+      "quantity": 6.9252,
+      "reason": "上位5位から陥落（値動きが荒くなった）、手仕舞い",
+      "realizedPnlUsd": 47.406085076166505,
+      "feesUsd": 0.0315771919
+    },
+    {
+      "date": "2026-10-13",
+      "symbol": "XEL",
+      "action": "sell",
+      "priceUsd": 73.76000213623047,
+      "quantity": 13.6668,
+      "reason": "上位5位から陥落（値動きが荒くなった）、手仕舞い",
+      "realizedPnlUsd": 8.032700118230537,
+      "feesUsd": 0.030766101862225954
     }
   ],
   "equityHistory": [
@@ -578,6 +614,10 @@
     {
       "date": "2026-10-10",
       "totalEquityUsd": 10022.992083951749
+    },
+    {
+      "date": "2026-10-13",
+      "totalEquityUsd": 10083.289400208845
     }
   ]
 }
