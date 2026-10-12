@@ -1,9 +1,9 @@
 {
-  "cashJpy": 2592823.4181696405,
-  "realizedPnlTotalJpy": -7550.787807232742,
-  "taxPaidTotalJpy": 713.7894998856707,
-  "secFeeTotalUsd": 0.10999999999999999,
-  "finraFeeTotalUsd": 0.10999999999999999,
+  "cashJpy": 2718403.940873369,
+  "realizedPnlTotalJpy": 11422.53368458987,
+  "taxPaidTotalJpy": 4813.484135810479,
+  "secFeeTotalUsd": 0.1355854711505835,
+  "finraFeeTotalUsd": 0.12999999999999998,
   "positions": {
     "AMGN": {
       "tranches": [
@@ -73,42 +73,6 @@
         }
       ]
     },
-    "VZ": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 1.47368,
-          "entryPriceUsd": 47.5,
-          "entryFxRate": 156.9050048828125,
-          "entryDate": "2026-09-19"
-        }
-      ]
-    },
-    "SHOP": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.49089,
-          "entryPriceUsd": 140.55999755859375,
-          "entryFxRate": 159.06999816894532,
-          "entryDate": "2026-09-25"
-        },
-        {
-          "trancheNumber": 2,
-          "shares": 1.02144,
-          "entryPriceUsd": 138.0399932861328,
-          "entryFxRate": 157.52600708007813,
-          "entryDate": "2026-09-29"
-        },
-        {
-          "trancheNumber": 3,
-          "shares": 2.83831,
-          "entryPriceUsd": 148.67999267578125,
-          "entryFxRate": 157.67000427246094,
-          "entryDate": "2026-10-01"
-        }
-      ]
-    },
     "REGN": {
       "tranches": [
         {
@@ -151,18 +115,25 @@
     }
   },
   "pendingOrders": {
-    "SHOP": {
-      "action": "sell",
-      "reason": "前日比急騰（3.8%）＋RSI 81で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
-      "queuedDate": "2026-10-10"
+    "LITE": {
+      "action": "buy",
+      "trancheNumber": 1,
+      "reason": "前日比急落（-9.8%）を確認、RSI 55・出来高1.3倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "queuedDate": "2026-10-13"
     },
-    "VZ": {
+    "NBIS": {
       "action": "sell",
       "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
-      "queuedDate": "2026-10-10"
+      "queuedDate": "2026-10-13"
+    },
+    "TRI": {
+      "action": "buy",
+      "trancheNumber": 3,
+      "reason": "RSI 70で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
+      "queuedDate": "2026-10-13"
     }
   },
-  "lastRunDate": "2026-10-10",
+  "lastRunDate": "2026-10-13",
   "log": [
     {
       "date": "2026-09-08",
@@ -606,6 +577,32 @@
       "shares": 0.17275,
       "reason": "前日比急落（-3.2%）を確認、RSI 59・出来高1.3倍で裏付けあり（ルール1: 急落は買い、打診買い）",
       "trancheNumber": 1
+    },
+    {
+      "date": "2026-10-13",
+      "symbol": "SHOP",
+      "action": "sell",
+      "priceUsd": 173.89999389648438,
+      "fxRate": 158.48800048828124,
+      "shares": 4.35064,
+      "reason": "前日比急騰（3.8%）＋RSI 81で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "realizedPnlJpy": 20180.628284148697,
+      "tax": 4099.694635924808,
+      "secFeeUsd": 0.015585471150583495,
+      "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-10-13",
+      "symbol": "VZ",
+      "action": "sell",
+      "priceUsd": 41.869998931884766,
+      "fxRate": 158.48800048828124,
+      "shares": 1.47368,
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "realizedPnlJpy": -1207.306792326086,
+      "tax": 0,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
     }
   ],
   "equityHistory": [
@@ -708,6 +705,10 @@
     {
       "date": "2026-10-10",
       "totalEquityJpy": 3008997.8760332586
+    },
+    {
+      "date": "2026-10-13",
+      "totalEquityJpy": 3010729.4077420603
     }
   ]
 }
