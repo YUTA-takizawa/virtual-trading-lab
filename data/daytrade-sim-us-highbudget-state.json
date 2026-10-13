@@ -1,9 +1,9 @@
 {
-  "cashJpy": 2718403.940873369,
-  "realizedPnlTotalJpy": 11422.53368458987,
+  "cashJpy": 2650729.9024087237,
+  "realizedPnlTotalJpy": 10318.751150329088,
   "taxPaidTotalJpy": 4813.484135810479,
-  "secFeeTotalUsd": 0.1355854711505835,
-  "finraFeeTotalUsd": 0.12999999999999998,
+  "secFeeTotalUsd": 0.1455854711505835,
+  "finraFeeTotalUsd": 0.13999999999999999,
   "positions": {
     "AMGN": {
       "tranches": [
@@ -70,6 +70,13 @@
           "entryPriceUsd": 103.22000122070312,
           "entryFxRate": 155.22400512695313,
           "entryDate": "2026-09-16"
+        },
+        {
+          "trancheNumber": 3,
+          "shares": 3.99619,
+          "entryPriceUsd": 105.0999984741211,
+          "entryFxRate": 158.48599853515626,
+          "entryDate": "2026-10-14"
         }
       ]
     },
@@ -91,17 +98,6 @@
         }
       ]
     },
-    "NBIS": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.31488,
-          "entryPriceUsd": 222.3000030517578,
-          "entryFxRate": 158.3969940185547,
-          "entryDate": "2026-10-10"
-        }
-      ]
-    },
     "TER": {
       "tranches": [
         {
@@ -112,28 +108,21 @@
           "entryDate": "2026-10-10"
         }
       ]
-    }
-  },
-  "pendingOrders": {
+    },
     "LITE": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "reason": "前日比急落（-9.8%）を確認、RSI 55・出来高1.3倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-10-13"
-    },
-    "NBIS": {
-      "action": "sell",
-      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
-      "queuedDate": "2026-10-13"
-    },
-    "TRI": {
-      "action": "buy",
-      "trancheNumber": 3,
-      "reason": "RSI 70で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
-      "queuedDate": "2026-10-13"
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 0.07203,
+          "entryPriceUsd": 971.7849731445312,
+          "entryFxRate": 158.48599853515626,
+          "entryDate": "2026-10-14"
+        }
+      ]
     }
   },
-  "lastRunDate": "2026-10-13",
+  "pendingOrders": {},
+  "lastRunDate": "2026-10-14",
   "log": [
     {
       "date": "2026-09-08",
@@ -603,6 +592,39 @@
       "tax": 0,
       "secFeeUsd": 0.01,
       "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-10-14",
+      "symbol": "LITE",
+      "action": "buy",
+      "priceUsd": 971.7849731445312,
+      "fxRate": 158.48599853515626,
+      "shares": 0.07203,
+      "reason": "前日比急落（-9.8%）を確認、RSI 55・出来高1.3倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
+    },
+    {
+      "date": "2026-10-14",
+      "symbol": "NBIS",
+      "action": "sell",
+      "priceUsd": 200.5,
+      "fxRate": 158.18599853515624,
+      "shares": 0.31488,
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "realizedPnlJpy": -1103.7825342607812,
+      "tax": 0,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-10-14",
+      "symbol": "TRI",
+      "action": "buy",
+      "priceUsd": 105.0999984741211,
+      "fxRate": 158.48599853515626,
+      "shares": 3.99619,
+      "reason": "RSI 70で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
+      "trancheNumber": 3
     }
   ],
   "equityHistory": [
@@ -709,6 +731,10 @@
     {
       "date": "2026-10-13",
       "totalEquityJpy": 3010729.4077420603
+    },
+    {
+      "date": "2026-10-14",
+      "totalEquityJpy": 3007433.529519251
     }
   ]
 }
