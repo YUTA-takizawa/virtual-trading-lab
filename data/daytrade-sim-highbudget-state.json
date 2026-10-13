@@ -1,8 +1,8 @@
 {
-  "cash": 363504.06167297345,
+  "cash": 159451.06167297345,
   "realizedPnlTotal": -14700.003051757812,
   "taxPaidTotal": 3542.9364959716795,
-  "commissionPaidTotal": 4323,
+  "commissionPaidTotal": 4576,
   "positions": {
     "2433.T": {
       "tranches": [
@@ -145,19 +145,21 @@
           "entryDate": "2026-10-05"
         }
       ]
-    }
-  },
-  "pendingOrders": {
+    },
     "4443.T": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "limitPrice": 2045,
-      "reason": "朝の急落（-7.8%）を確認、RSI 44・出来高1.8倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
-      "queuedDate": "2026-10-13"
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 100,
+          "entryPrice": 2038,
+          "entryDate": "2026-10-13"
+        }
+      ]
     }
   },
+  "pendingOrders": {},
   "lastRunDate": "2026-10-13",
-  "lastRunSession": "morning",
+  "lastRunSession": "afternoon",
   "log": [
     {
       "date": "2026-09-07",
@@ -454,6 +456,15 @@
       "reason": "朝の急騰（3.9%）を確認、利益確定（ルール1: 朝の急騰は売り）",
       "realizedPnl": -3840.0054931640625,
       "tax": 0
+    },
+    {
+      "date": "2026-10-13",
+      "symbol": "4443.T",
+      "action": "buy",
+      "price": 2038,
+      "shares": 100,
+      "reason": "朝の急落（-7.8%）を確認、RSI 44・出来高1.8倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
+      "trancheNumber": 1
     }
   ],
   "equityHistory": [
@@ -791,8 +802,13 @@
       "date": "2026-10-13",
       "session": "morning",
       "totalEquity": 3003784.0543487547
+    },
+    {
+      "date": "2026-10-13",
+      "session": "afternoon",
+      "totalEquity": 3019081.0543487547
     }
   ],
   "lastMorningRunDate": "2026-10-13",
-  "lastAfternoonRunDate": "2026-10-12"
+  "lastAfternoonRunDate": "2026-10-13"
 }
