@@ -1,7 +1,7 @@
 {
-  "cashUsd": 4027.154976330629,
-  "realizedPnlTotalUsd": 27.149984972041466,
-  "feesPaidTotalUsd": 0.7043731762092655,
+  "cashUsd": 3989.4732039270084,
+  "realizedPnlTotalUsd": -10.530107484298128,
+  "feesPaidTotalUsd": 0.7341975386767584,
   "positions": {
     "KO": {
       "lots": [
@@ -39,15 +39,6 @@
         }
       ]
     },
-    "JPM": {
-      "lots": [
-        {
-          "quantity": 2.94143,
-          "entryPriceUsd": 339.9700012207031,
-          "entryDate": "2026-10-14"
-        }
-      ]
-    },
     "TRV": {
       "lots": [
         {
@@ -56,19 +47,39 @@
           "entryDate": "2026-10-14"
         }
       ]
+    },
+    "EXC": {
+      "lots": [
+        {
+          "quantity": 23.55157,
+          "entryPriceUsd": 42.459999084472656,
+          "entryDate": "2026-10-15"
+        }
+      ]
     }
   },
   "pendingOrders": {
+    "CTAS": {
+      "action": "buy",
+      "budgetUsd": 1000,
+      "reason": "値動きの穏やかさ（ATR/終値比）で全銘柄中4位、上位5入りのため買い",
+      "queuedDate": "2026-10-15"
+    },
     "EXC": {
+      "action": "sell",
+      "reason": "上位5位から陥落（値動きが荒くなった）、手仕舞い",
+      "queuedDate": "2026-10-15"
+    },
+    "MCD": {
       "action": "buy",
       "budgetUsd": 1000,
       "reason": "値動きの穏やかさ（ATR/終値比）で全銘柄中5位、上位5入りのため買い",
-      "queuedDate": "2026-10-14"
+      "queuedDate": "2026-10-15"
     },
-    "JPM": {
+    "TRV": {
       "action": "sell",
       "reason": "上位5位から陥落（値動きが荒くなった）、手仕舞い",
-      "queuedDate": "2026-10-14"
+      "queuedDate": "2026-10-15"
     }
   },
   "log": [
@@ -533,6 +544,24 @@
       "priceUsd": 373.760009765625,
       "quantity": 2.67551,
       "reason": "値動きの穏やかさ（ATR/終値比）で全銘柄中5位、上位5入りのため買い"
+    },
+    {
+      "date": "2026-10-15",
+      "symbol": "EXC",
+      "action": "buy",
+      "priceUsd": 42.459999084472656,
+      "quantity": 23.55157,
+      "reason": "値動きの穏やかさ（ATR/終値比）で全銘柄中5位、上位5入りのため買い"
+    },
+    {
+      "date": "2026-10-15",
+      "symbol": "JPM",
+      "action": "sell",
+      "priceUsd": 327.1700134277344,
+      "quantity": 2.94143,
+      "reason": "上位5位から陥落（値動きが荒くなった）、手仕舞い",
+      "realizedPnlUsd": -37.680092456339594,
+      "feesUsd": 0.029824362467492857
     }
   ],
   "equityHistory": [
@@ -647,6 +676,10 @@
     {
       "date": "2026-10-14",
       "totalEquityUsd": 10093.5229177171
+    },
+    {
+      "date": "2026-10-15",
+      "totalEquityUsd": 10130.370495292042
     }
   ]
 }
