@@ -1,35 +1,10 @@
 {
-  "cashJpy": 2650729.9024087237,
-  "realizedPnlTotalJpy": 10318.751150329088,
-  "taxPaidTotalJpy": 4813.484135810479,
-  "secFeeTotalUsd": 0.1455854711505835,
-  "finraFeeTotalUsd": 0.13999999999999999,
+  "cashJpy": 2742912.4035217157,
+  "realizedPnlTotalJpy": 15009.893195846864,
+  "taxPaidTotalJpy": 6125.357773691601,
+  "secFeeTotalUsd": 0.16945622203213692,
+  "finraFeeTotalUsd": 0.16,
   "positions": {
-    "AMGN": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.18357,
-          "entryPriceUsd": 392.20001220703125,
-          "entryFxRate": 153.493994140625,
-          "entryDate": "2026-09-10"
-        },
-        {
-          "trancheNumber": 2,
-          "shares": 0.34138,
-          "entryPriceUsd": 410.0899963378906,
-          "entryFxRate": 158.4850067138672,
-          "entryDate": "2026-09-24"
-        },
-        {
-          "trancheNumber": 3,
-          "shares": 1.02082,
-          "entryPriceUsd": 414.3699951171875,
-          "entryFxRate": 157.51000061035157,
-          "entryDate": "2026-09-30"
-        }
-      ]
-    },
     "DXCM": {
       "tranches": [
         {
@@ -98,17 +73,6 @@
         }
       ]
     },
-    "TER": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.17275,
-          "entryPriceUsd": 405.19000244140625,
-          "entryFxRate": 158.3969940185547,
-          "entryDate": "2026-10-10"
-        }
-      ]
-    },
     "LITE": {
       "tranches": [
         {
@@ -119,33 +83,45 @@
           "entryDate": "2026-10-14"
         }
       ]
+    },
+    "MRVL": {
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 0.30193,
+          "entryPriceUsd": 231.8350067138672,
+          "entryFxRate": 158.2090057373047,
+          "entryDate": "2026-10-16"
+        }
+      ]
+    },
+    "PANW": {
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 0.19085,
+          "entryPriceUsd": 366.7699890136719,
+          "entryFxRate": 158.2090057373047,
+          "entryDate": "2026-10-16"
+        }
+      ]
     }
   },
   "pendingOrders": {
-    "AMGN": {
-      "action": "sell",
-      "reason": "前日比急騰（3.2%）＋RSI 62で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
-      "queuedDate": "2026-10-15"
-    },
-    "MRVL": {
+    "FAST": {
       "action": "buy",
       "trancheNumber": 1,
-      "reason": "前日比急落（-8.7%）を確認、RSI 43・出来高1.3倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-10-15"
+      "reason": "前日比急落（-3.1%）を確認、RSI 50・出来高1.7倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "queuedDate": "2026-10-16"
     },
-    "PANW": {
+    "REGN": {
       "action": "buy",
-      "trancheNumber": 1,
-      "reason": "前日比急落（-5.5%）を確認、RSI 45・出来高1.2倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-10-15"
-    },
-    "TER": {
-      "action": "sell",
-      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
-      "queuedDate": "2026-10-15"
+      "trancheNumber": 3,
+      "reason": "RSI 52で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
+      "queuedDate": "2026-10-16"
     }
   },
-  "lastRunDate": "2026-10-15",
+  "lastRunDate": "2026-10-16",
   "log": [
     {
       "date": "2026-09-08",
@@ -648,6 +624,52 @@
       "shares": 3.99619,
       "reason": "RSI 70で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
       "trancheNumber": 3
+    },
+    {
+      "date": "2026-10-16",
+      "symbol": "AMGN",
+      "action": "sell",
+      "priceUsd": 435.6000061035156,
+      "fxRate": 157.90900573730468,
+      "shares": 1.54577,
+      "reason": "前日比急騰（3.2%）＋RSI 62で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "realizedPnlJpy": 6457.660043717071,
+      "tax": 1311.873637881123,
+      "secFeeUsd": 0.013870750881553408,
+      "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-10-16",
+      "symbol": "MRVL",
+      "action": "buy",
+      "priceUsd": 231.8350067138672,
+      "fxRate": 158.2090057373047,
+      "shares": 0.30193,
+      "reason": "前日比急落（-8.7%）を確認、RSI 43・出来高1.3倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
+    },
+    {
+      "date": "2026-10-16",
+      "symbol": "PANW",
+      "action": "buy",
+      "priceUsd": 366.7699890136719,
+      "fxRate": 158.2090057373047,
+      "shares": 0.19085,
+      "reason": "前日比急落（-5.5%）を確認、RSI 45・出来高1.2倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
+    },
+    {
+      "date": "2026-10-16",
+      "symbol": "TER",
+      "action": "sell",
+      "priceUsd": 341.79998779296875,
+      "fxRate": 157.90900573730468,
+      "shares": 0.17275,
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "realizedPnlJpy": -1766.517998199295,
+      "tax": 0,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
     }
   ],
   "equityHistory": [
@@ -762,6 +784,10 @@
     {
       "date": "2026-10-15",
       "totalEquityJpy": 3008460.4451101674
+    },
+    {
+      "date": "2026-10-16",
+      "totalEquityJpy": 3016708.850935557
     }
   ]
 }
