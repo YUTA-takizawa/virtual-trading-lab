@@ -1,5 +1,5 @@
 {
-  "cashJpy": 742909.1905232077,
+  "cashJpy": 665264.9194486971,
   "realizedPnlTotalJpy": 14998.646905736437,
   "taxPaidTotalJpy": 6123.615938400544,
   "secFeeTotalUsd": 0.16945622203213692,
@@ -70,6 +70,13 @@
           "entryPriceUsd": 766.530029296875,
           "entryFxRate": 158.18199768066407,
           "entryDate": "2026-10-02"
+        },
+        {
+          "trancheNumber": 3,
+          "shares": 0.52427,
+          "entryPriceUsd": 803.010009765625,
+          "entryFxRate": 158.13699951171876,
+          "entryDate": "2026-10-17"
         }
       ]
     },
@@ -105,23 +112,56 @@
           "entryDate": "2026-10-16"
         }
       ]
+    },
+    "FAST": {
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 1.37876,
+          "entryPriceUsd": 50.77000045776367,
+          "entryFxRate": 158.13699951171876,
+          "entryDate": "2026-10-17"
+        }
+      ]
     }
   },
   "pendingOrders": {
-    "FAST": {
+    "CRWD": {
       "action": "buy",
       "trancheNumber": 1,
-      "reason": "前日比急落（-3.1%）を確認、RSI 50・出来高1.7倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-10-16"
+      "reason": "前日比急落（-7.0%）を確認、RSI 33・出来高1.5倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "queuedDate": "2026-10-17"
     },
-    "REGN": {
+    "FTNT": {
       "action": "buy",
-      "trancheNumber": 3,
-      "reason": "RSI 52で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
-      "queuedDate": "2026-10-16"
+      "trancheNumber": 1,
+      "reason": "前日比急落（-7.0%）を確認、RSI 43・出来高1.5倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "queuedDate": "2026-10-17"
+    },
+    "LITE": {
+      "action": "sell",
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "queuedDate": "2026-10-17"
+    },
+    "MSTR": {
+      "action": "buy",
+      "trancheNumber": 1,
+      "reason": "前日比急落（-9.6%）を確認、RSI 35・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "queuedDate": "2026-10-17"
+    },
+    "PANW": {
+      "action": "sell",
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "queuedDate": "2026-10-17"
+    },
+    "PLTR": {
+      "action": "buy",
+      "trancheNumber": 1,
+      "reason": "前日比急落（-7.2%）を確認、RSI 48・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "queuedDate": "2026-10-17"
     }
   },
-  "lastRunDate": "2026-10-16",
+  "lastRunDate": "2026-10-17",
   "log": [
     {
       "date": "2026-09-08",
@@ -670,6 +710,26 @@
       "tax": 0,
       "secFeeUsd": 0.01,
       "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-10-17",
+      "symbol": "FAST",
+      "action": "buy",
+      "priceUsd": 50.77000045776367,
+      "fxRate": 158.13699951171876,
+      "shares": 1.37876,
+      "reason": "前日比急落（-3.1%）を確認、RSI 50・出来高1.7倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
+    },
+    {
+      "date": "2026-10-17",
+      "symbol": "REGN",
+      "action": "buy",
+      "priceUsd": 803.010009765625,
+      "fxRate": 158.13699951171876,
+      "shares": 0.52427,
+      "reason": "RSI 52で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
+      "trancheNumber": 3
     }
   ],
   "equityHistory": [
@@ -788,6 +848,10 @@
     {
       "date": "2026-10-16",
       "totalEquityJpy": 1016672.7037707025
+    },
+    {
+      "date": "2026-10-17",
+      "totalEquityJpy": 1012425.5853394817
     }
   ]
 }
