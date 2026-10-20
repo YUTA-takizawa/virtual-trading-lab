@@ -1,9 +1,9 @@
 {
-  "cashJpy": 641541.2262648061,
-  "realizedPnlTotalJpy": 13542.125202047197,
-  "taxPaidTotalJpy": 6123.615938400544,
-  "secFeeTotalUsd": 0.18945622203213694,
-  "finraFeeTotalUsd": 0.18000000000000002,
+  "cashJpy": 630699.9961877713,
+  "realizedPnlTotalJpy": 13814.789533977508,
+  "taxPaidTotalJpy": 6179.007697432186,
+  "secFeeTotalUsd": 0.19945622203213695,
+  "finraFeeTotalUsd": 0.19000000000000003,
   "positions": {
     "DXCM": {
       "tranches": [
@@ -88,6 +88,13 @@
           "entryPriceUsd": 231.8350067138672,
           "entryFxRate": 158.18999328613282,
           "entryDate": "2026-10-16"
+        },
+        {
+          "trancheNumber": 2,
+          "shares": 0.60228,
+          "entryPriceUsd": 232.4499969482422,
+          "entryFxRate": 158.33499755859376,
+          "entryDate": "2026-10-21"
         }
       ]
     },
@@ -134,33 +141,33 @@
           "entryDate": "2026-10-20"
         }
       ]
-    },
-    "PLTR": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.37433,
-          "entryPriceUsd": 187,
-          "entryFxRate": 158.69200744628907,
-          "entryDate": "2026-10-20"
-        }
-      ]
     }
   },
   "pendingOrders": {
-    "MRVL": {
+    "FAST": {
       "action": "buy",
       "trancheNumber": 2,
-      "reason": "平均取得単価比+2.3%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
-      "queuedDate": "2026-10-20"
+      "reason": "平均取得単価比+1.7%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
+      "queuedDate": "2026-10-21"
     },
-    "PLTR": {
+    "MSTR": {
+      "action": "buy",
+      "trancheNumber": 2,
+      "reason": "平均取得単価比+2.6%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
+      "queuedDate": "2026-10-21"
+    },
+    "REGN": {
       "action": "sell",
-      "reason": "前日比急騰（4.4%）＋RSI 56で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
-      "queuedDate": "2026-10-20"
+      "reason": "前日比急騰（3.3%）＋RSI 65で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "queuedDate": "2026-10-21"
+    },
+    "TRI": {
+      "action": "sell",
+      "reason": "前日比急騰（4.2%）＋RSI 86で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "queuedDate": "2026-10-21"
     }
   },
-  "lastRunDate": "2026-10-20",
+  "lastRunDate": "2026-10-21",
   "log": [
     {
       "date": "2026-09-08",
@@ -795,6 +802,29 @@
       "shares": 0.37433,
       "reason": "前日比急落（-7.2%）を確認、RSI 48・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
       "trancheNumber": 1
+    },
+    {
+      "date": "2026-10-21",
+      "symbol": "MRVL",
+      "action": "buy",
+      "priceUsd": 232.4499969482422,
+      "fxRate": 158.33499755859376,
+      "shares": 0.60228,
+      "reason": "平均取得単価比+2.3%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
+      "trancheNumber": 2
+    },
+    {
+      "date": "2026-10-21",
+      "symbol": "PLTR",
+      "action": "sell",
+      "priceUsd": 192.44000244140625,
+      "fxRate": 158.03499755859374,
+      "shares": 0.37433,
+      "reason": "前日比急騰（4.4%）＋RSI 56で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "realizedPnlJpy": 272.66433193031116,
+      "tax": 55.391759031642714,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
     }
   ],
   "equityHistory": [
@@ -921,6 +951,10 @@
     {
       "date": "2026-10-20",
       "totalEquityJpy": 1012991.9762161667
+    },
+    {
+      "date": "2026-10-21",
+      "totalEquityJpy": 1020857.1776040711
     }
   ]
 }
