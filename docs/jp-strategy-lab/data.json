@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-21T06:36:10.832Z",
-  "lastPublishedAt": "2026-10-21T06:36:10.832Z",
+  "generatedAt": "2026-10-22T06:35:53.982Z",
+  "lastPublishedAt": "2026-10-22T06:35:53.982Z",
   "strategies": [
     {
       "id": "buy-and-hold",
@@ -8,10 +8,10 @@
       "description": "トヨタ自動車(7203.T)に元本の約95%を一点集中投下し、一度買ったら二度と売らない。他の戦略群が「何もしない」より本当に優れているかを測るベンチマーク",
       "initialCapitalYen": 3000000,
       "cashJpy": 345000,
-      "totalEquityJpy": 3132300,
-      "changePct": 4.41,
+      "totalEquityJpy": 3126900,
+      "changePct": 4.2299999999999995,
       "realizedPnlJpy": 0,
-      "unrealizedPnlJpy": 132300,
+      "unrealizedPnlJpy": 126900,
       "tradeCount": 1,
       "openPositions": 1,
       "pendingOrderCount": 0
@@ -22,13 +22,13 @@
       "description": "¥3,000,000を¥500,000×6枠に分散。1単元(100株)¥200,000〜¥500,000の値動きが穏やかな大型株を対象に、前日比急落＋RSI・出来高裏付け＋75日トレンド内で1単元だけ買い、含み損益が±¥20,000に達したら理由を問わず機械的に手仕舞う（リスクリワード1:1、勝率51%あれば理論上資産が増える設計）",
       "initialCapitalYen": 3000000,
       "cashJpy": 1914900,
-      "totalEquityJpy": 3072450,
-      "changePct": 2.415,
+      "totalEquityJpy": 3051300,
+      "changePct": 1.71,
       "realizedPnlJpy": 51350,
-      "unrealizedPnlJpy": 21100,
+      "unrealizedPnlJpy": -50,
       "tradeCount": 14,
       "openPositions": 4,
-      "pendingOrderCount": 0
+      "pendingOrderCount": 1
     }
   ],
   "equityHistories": {
@@ -176,6 +176,10 @@
       {
         "date": "2026-10-21",
         "totalEquityJpy": 3072450
+      },
+      {
+        "date": "2026-10-22",
+        "totalEquityJpy": 3051300
       }
     ],
     "buy-and-hold": [
@@ -306,6 +310,10 @@
       {
         "date": "2026-10-21",
         "totalEquityJpy": 3132300
+      },
+      {
+        "date": "2026-10-22",
+        "totalEquityJpy": 3126900
       }
     ]
   },
@@ -316,9 +324,9 @@
         "name": "寿スピリッツ",
         "quantity": 100,
         "avgEntryPriceJpy": 2509.5,
-        "currentPriceJpy": 2620.5,
-        "marketValueJpy": 262050,
-        "unrealizedPnlJpy": 11100,
+        "currentPriceJpy": 2581,
+        "marketValueJpy": 258100,
+        "unrealizedPnlJpy": 7150,
         "firstEntryDate": "2026-09-07"
       },
       {
@@ -326,9 +334,9 @@
         "name": "トヨタ自動車",
         "quantity": 100,
         "avgEntryPriceJpy": 2950,
-        "currentPriceJpy": 3097,
-        "marketValueJpy": 309700,
-        "unrealizedPnlJpy": 14700,
+        "currentPriceJpy": 3091,
+        "marketValueJpy": 309100,
+        "unrealizedPnlJpy": 14100,
         "firstEntryDate": "2026-09-09"
       },
       {
@@ -336,9 +344,9 @@
         "name": "エスエムエス",
         "quantity": 100,
         "avgEntryPriceJpy": 2580,
-        "currentPriceJpy": 2646,
-        "marketValueJpy": 264600,
-        "unrealizedPnlJpy": 6600,
+        "currentPriceJpy": 2610,
+        "marketValueJpy": 261000,
+        "unrealizedPnlJpy": 3000,
         "firstEntryDate": "2026-10-05"
       },
       {
@@ -346,9 +354,9 @@
         "name": "山口FG",
         "quantity": 100,
         "avgEntryPriceJpy": 3325,
-        "currentPriceJpy": 3212,
-        "marketValueJpy": 321200,
-        "unrealizedPnlJpy": -11300,
+        "currentPriceJpy": 3082,
+        "marketValueJpy": 308200,
+        "unrealizedPnlJpy": -24300,
         "firstEntryDate": "2026-10-14"
       }
     ],
@@ -358,9 +366,9 @@
         "name": "トヨタ自動車",
         "quantity": 900,
         "avgEntryPriceJpy": 2950,
-        "currentPriceJpy": 3097,
-        "marketValueJpy": 2787300,
-        "unrealizedPnlJpy": 132300,
+        "currentPriceJpy": 3091,
+        "marketValueJpy": 2781900,
+        "unrealizedPnlJpy": 126900,
         "firstEntryDate": "2026-09-09"
       }
     ]
@@ -512,7 +520,15 @@
     ]
   },
   "pendingOrders": {
-    "swing-bracket": [],
+    "swing-bracket": [
+      {
+        "symbol": "8418.T",
+        "name": "山口FG",
+        "action": "sell",
+        "reason": "含み損が-¥24,300に到達、機械的に損切り（-¥20,000ブラケット、絶対に妥協しない）",
+        "queuedDate": "2026-10-22"
+      }
+    ],
     "buy-and-hold": []
   }
 }
