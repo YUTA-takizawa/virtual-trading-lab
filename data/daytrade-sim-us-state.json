@@ -1,5 +1,5 @@
 {
-  "cashJpy": 842140.3098465765,
+  "cashJpy": 731624.8831539154,
   "realizedPnlTotalJpy": 16637.6799448748,
   "taxPaidTotalJpy": 8244.997315100707,
   "secFeeTotalUsd": 0.23893921439026267,
@@ -38,6 +38,13 @@
           "entryPriceUsd": 51.88999938964844,
           "entryFxRate": 158.33800354003907,
           "entryDate": "2026-10-22"
+        },
+        {
+          "trancheNumber": 3,
+          "shares": 8.04477,
+          "entryPriceUsd": 52.70500183105469,
+          "entryFxRate": 156.9850067138672,
+          "entryDate": "2026-10-24"
         }
       ]
     },
@@ -94,41 +101,54 @@
           "entryDate": "2026-10-22"
         }
       ]
-    }
-  },
-  "pendingOrders": {
+    },
     "ADI": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "reason": "前日比急落（-5.0%）を確認、RSI 30・出来高2.2倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-10-23"
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 0.18282,
+          "entryPriceUsd": 382.8699951171875,
+          "entryFxRate": 156.9850067138672,
+          "entryDate": "2026-10-24"
+        }
+      ]
     },
     "DDOG": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "reason": "前日比急落（-5.6%）を確認、RSI 42・出来高1.3倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-10-23"
-    },
-    "FAST": {
-      "action": "buy",
-      "trancheNumber": 3,
-      "reason": "RSI 63で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
-      "queuedDate": "2026-10-23"
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 0.26991,
+          "entryPriceUsd": 259.3399963378906,
+          "entryFxRate": 156.9850067138672,
+          "entryDate": "2026-10-24"
+        }
+      ]
     },
     "META": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "reason": "前日比急落（-7.0%）を確認、RSI 30・出来高2.1倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-10-23"
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 0.10969,
+          "entryPriceUsd": 638.1199951171875,
+          "entryFxRate": 156.9850067138672,
+          "entryDate": "2026-10-24"
+        }
+      ]
     },
     "TSLA": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "reason": "前日比急落（-3.1%）を確認、RSI 52・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-10-23"
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 0.18756,
+          "entryPriceUsd": 373.20001220703125,
+          "entryFxRate": 156.9850067138672,
+          "entryDate": "2026-10-24"
+        }
+      ]
     }
   },
-  "lastRunDate": "2026-10-23",
+  "pendingOrders": {},
+  "lastRunDate": "2026-10-24",
   "log": [
     {
       "date": "2026-09-08",
@@ -865,6 +885,56 @@
       "shares": 0.80932,
       "reason": "平均取得単価比+1.8%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
       "trancheNumber": 2
+    },
+    {
+      "date": "2026-10-24",
+      "symbol": "ADI",
+      "action": "buy",
+      "priceUsd": 382.8699951171875,
+      "fxRate": 156.9850067138672,
+      "shares": 0.18282,
+      "reason": "前日比急落（-5.0%）を確認、RSI 30・出来高2.2倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
+    },
+    {
+      "date": "2026-10-24",
+      "symbol": "DDOG",
+      "action": "buy",
+      "priceUsd": 259.3399963378906,
+      "fxRate": 156.9850067138672,
+      "shares": 0.26991,
+      "reason": "前日比急落（-5.6%）を確認、RSI 42・出来高1.3倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
+    },
+    {
+      "date": "2026-10-24",
+      "symbol": "FAST",
+      "action": "buy",
+      "priceUsd": 52.70500183105469,
+      "fxRate": 156.9850067138672,
+      "shares": 8.04477,
+      "reason": "RSI 63で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
+      "trancheNumber": 3
+    },
+    {
+      "date": "2026-10-24",
+      "symbol": "META",
+      "action": "buy",
+      "priceUsd": 638.1199951171875,
+      "fxRate": 156.9850067138672,
+      "shares": 0.10969,
+      "reason": "前日比急落（-7.0%）を確認、RSI 30・出来高2.1倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
+    },
+    {
+      "date": "2026-10-24",
+      "symbol": "TSLA",
+      "action": "buy",
+      "priceUsd": 373.20001220703125,
+      "fxRate": 156.9850067138672,
+      "shares": 0.18756,
+      "reason": "前日比急落（-3.1%）を確認、RSI 52・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
     }
   ],
   "equityHistory": [
@@ -1003,6 +1073,10 @@
     {
       "date": "2026-10-23",
       "totalEquityJpy": 1006894.3681760747
+    },
+    {
+      "date": "2026-10-24",
+      "totalEquityJpy": 1010741.2831145392
     }
   ]
 }
