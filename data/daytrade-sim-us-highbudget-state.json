@@ -1,9 +1,9 @@
 {
-  "cashJpy": 2731618.756284267,
-  "realizedPnlTotalJpy": 16632.526856816905,
-  "taxPaidTotalJpy": 8243.516436678836,
-  "secFeeTotalUsd": 0.23893921439026267,
-  "finraFeeTotalUsd": 0.22000000000000006,
+  "cashJpy": 2698966.218057751,
+  "realizedPnlTotalJpy": 17411.61815862128,
+  "taxPaidTotalJpy": 8401.788834640394,
+  "secFeeTotalUsd": 0.24893921439026268,
+  "finraFeeTotalUsd": 0.23000000000000007,
   "positions": {
     "MRVL": {
       "tranches": [
@@ -110,6 +110,13 @@
           "entryPriceUsd": 382.8699951171875,
           "entryFxRate": 156.98799743652344,
           "entryDate": "2026-10-24"
+        },
+        {
+          "trancheNumber": 2,
+          "shares": 0.33955,
+          "entryPriceUsd": 412.30999755859375,
+          "entryFxRate": 158.07999267578126,
+          "entryDate": "2026-10-28"
         }
       ]
     },
@@ -121,6 +128,13 @@
           "entryPriceUsd": 259.3399963378906,
           "entryFxRate": 156.98799743652344,
           "entryDate": "2026-10-24"
+        },
+        {
+          "trancheNumber": 2,
+          "shares": 0.50184,
+          "entryPriceUsd": 278.9700012207031,
+          "entryFxRate": 158.07999267578126,
+          "entryDate": "2026-10-28"
         }
       ]
     },
@@ -134,39 +148,27 @@
           "entryDate": "2026-10-24"
         }
       ]
-    },
-    "TSLA": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.18756,
-          "entryPriceUsd": 373.20001220703125,
-          "entryFxRate": 156.98799743652344,
-          "entryDate": "2026-10-24"
-        }
-      ]
     }
   },
   "pendingOrders": {
     "ADI": {
-      "action": "buy",
-      "trancheNumber": 2,
-      "reason": "平均取得単価比+6.5%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
-      "queuedDate": "2026-10-27"
-    },
-    "DDOG": {
-      "action": "buy",
-      "trancheNumber": 2,
-      "reason": "平均取得単価比+8.1%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
-      "queuedDate": "2026-10-27"
-    },
-    "TSLA": {
       "action": "sell",
-      "reason": "前日比急騰（5.2%）＋RSI 55で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
-      "queuedDate": "2026-10-27"
+      "reason": "前日比急騰（4.3%）＋RSI 57で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "queuedDate": "2026-10-28"
+    },
+    "CRWD": {
+      "action": "buy",
+      "trancheNumber": 3,
+      "reason": "RSI 51で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
+      "queuedDate": "2026-10-28"
+    },
+    "META": {
+      "action": "sell",
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "queuedDate": "2026-10-28"
     }
   },
-  "lastRunDate": "2026-10-27",
+  "lastRunDate": "2026-10-28",
   "log": [
     {
       "date": "2026-09-08",
@@ -953,6 +955,39 @@
       "shares": 0.18756,
       "reason": "前日比急落（-3.1%）を確認、RSI 52・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
       "trancheNumber": 1
+    },
+    {
+      "date": "2026-10-28",
+      "symbol": "ADI",
+      "action": "buy",
+      "priceUsd": 412.30999755859375,
+      "fxRate": 158.07999267578126,
+      "shares": 0.33955,
+      "reason": "平均取得単価比+6.5%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
+      "trancheNumber": 2
+    },
+    {
+      "date": "2026-10-28",
+      "symbol": "DDOG",
+      "action": "buy",
+      "priceUsd": 278.9700012207031,
+      "fxRate": 158.07999267578126,
+      "shares": 0.50184,
+      "reason": "平均取得単価比+8.1%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
+      "trancheNumber": 2
+    },
+    {
+      "date": "2026-10-28",
+      "symbol": "TSLA",
+      "action": "sell",
+      "priceUsd": 397.760009765625,
+      "fxRate": 157.77999267578124,
+      "shares": 0.18756,
+      "reason": "前日比急騰（5.2%）＋RSI 55で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "realizedPnlJpy": 779.0913018043757,
+      "tax": 158.2723979615589,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
     }
   ],
   "equityHistory": [
@@ -1099,6 +1134,10 @@
     {
       "date": "2026-10-27",
       "totalEquityJpy": 3014862.7959010475
+    },
+    {
+      "date": "2026-10-28",
+      "totalEquityJpy": 3017964.046587258
     }
   ]
 }
