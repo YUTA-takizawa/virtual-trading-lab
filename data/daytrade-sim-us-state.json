@@ -1,9 +1,9 @@
 {
-  "cashJpy": 698972.5211614752,
-  "realizedPnlTotalJpy": 17416.906615604617,
-  "taxPaidTotalJpy": 8403.29721325947,
-  "secFeeTotalUsd": 0.24893921439026268,
-  "finraFeeTotalUsd": 0.23000000000000007,
+  "cashJpy": 677745.5130861085,
+  "realizedPnlTotalJpy": 18969.436397008423,
+  "taxPaidTotalJpy": 8766.886119851211,
+  "secFeeTotalUsd": 0.2689392143902627,
+  "finraFeeTotalUsd": 0.25000000000000006,
   "positions": {
     "MRVL": {
       "tranches": [
@@ -63,6 +63,13 @@
           "entryPriceUsd": 242.60000610351562,
           "entryFxRate": 157.03499450683594,
           "entryDate": "2026-10-23"
+        },
+        {
+          "trancheNumber": 3,
+          "shares": 1.5566,
+          "entryPriceUsd": 270.4599914550781,
+          "entryFxRate": 158.01399841308594,
+          "entryDate": "2026-10-29"
         }
       ]
     },
@@ -102,24 +109,6 @@
         }
       ]
     },
-    "ADI": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.18282,
-          "entryPriceUsd": 382.8699951171875,
-          "entryFxRate": 156.9850067138672,
-          "entryDate": "2026-10-24"
-        },
-        {
-          "trancheNumber": 2,
-          "shares": 0.33955,
-          "entryPriceUsd": 412.30999755859375,
-          "entryFxRate": 158.0790008544922,
-          "entryDate": "2026-10-28"
-        }
-      ]
-    },
     "DDOG": {
       "tranches": [
         {
@@ -137,38 +126,10 @@
           "entryDate": "2026-10-28"
         }
       ]
-    },
-    "META": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.10969,
-          "entryPriceUsd": 638.1199951171875,
-          "entryFxRate": 156.9850067138672,
-          "entryDate": "2026-10-24"
-        }
-      ]
     }
   },
-  "pendingOrders": {
-    "ADI": {
-      "action": "sell",
-      "reason": "前日比急騰（4.3%）＋RSI 57で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
-      "queuedDate": "2026-10-28"
-    },
-    "CRWD": {
-      "action": "buy",
-      "trancheNumber": 3,
-      "reason": "RSI 51で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
-      "queuedDate": "2026-10-28"
-    },
-    "META": {
-      "action": "sell",
-      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
-      "queuedDate": "2026-10-28"
-    }
-  },
-  "lastRunDate": "2026-10-28",
+  "pendingOrders": {},
+  "lastRunDate": "2026-10-29",
   "log": [
     {
       "date": "2026-09-08",
@@ -988,6 +949,42 @@
       "tax": 158.29989815876263,
       "secFeeUsd": 0.01,
       "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-10-29",
+      "symbol": "ADI",
+      "action": "sell",
+      "priceUsd": 423.7699890136719,
+      "fxRate": 157.71399841308593,
+      "shares": 0.52237,
+      "reason": "前日比急騰（4.3%）＋RSI 57で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "realizedPnlJpy": 1789.7558778820676,
+      "tax": 363.58890659174205,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-10-29",
+      "symbol": "CRWD",
+      "action": "buy",
+      "priceUsd": 270.4599914550781,
+      "fxRate": 158.01399841308594,
+      "shares": 1.5566,
+      "reason": "RSI 51で上昇トレンドが明確になったため本買い（1:2:6の3段階目）",
+      "trancheNumber": 3
+    },
+    {
+      "date": "2026-10-29",
+      "symbol": "META",
+      "action": "sell",
+      "priceUsd": 621.6400146484375,
+      "fxRate": 157.71399841308593,
+      "shares": 0.10969,
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "realizedPnlJpy": -237.22609647826175,
+      "tax": 0,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
     }
   ],
   "equityHistory": [
@@ -1138,6 +1135,10 @@
     {
       "date": "2026-10-28",
       "totalEquityJpy": 1017968.3463423329
+    },
+    {
+      "date": "2026-10-29",
+      "totalEquityJpy": 1015566.9830622883
     }
   ]
 }
