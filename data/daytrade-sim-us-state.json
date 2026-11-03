@@ -1,9 +1,9 @@
 {
-  "cashJpy": 695656.4560611609,
-  "realizedPnlTotalJpy": 3609.724791872053,
+  "cashJpy": 705821.2500557458,
+  "realizedPnlTotalJpy": 2736.0559407036126,
   "taxPaidTotalJpy": 8766.886119851211,
-  "secFeeTotalUsd": 0.2989392143902627,
-  "finraFeeTotalUsd": 0.2800000000000001,
+  "secFeeTotalUsd": 0.30893921439026273,
+  "finraFeeTotalUsd": 0.2900000000000001,
   "positions": {
     "FAST": {
       "tranches": [
@@ -73,17 +73,6 @@
         }
       ]
     },
-    "PANW": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.18231,
-          "entryPriceUsd": 383.95001220703125,
-          "entryFxRate": 157.6969970703125,
-          "entryDate": "2026-10-31"
-        }
-      ]
-    },
     "WDAY": {
       "tranches": [
         {
@@ -141,13 +130,14 @@
     }
   },
   "pendingOrders": {
-    "PANW": {
-      "action": "sell",
-      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
-      "queuedDate": "2026-11-03"
+    "TRI": {
+      "action": "buy",
+      "trancheNumber": 1,
+      "reason": "前日比急落（-7.4%）を確認、RSI 59・出来高1.2倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "queuedDate": "2026-11-04"
     }
   },
-  "lastRunDate": "2026-11-03",
+  "lastRunDate": "2026-11-04",
   "log": [
     {
       "date": "2026-09-08",
@@ -1102,6 +1092,19 @@
       "shares": 0.44223,
       "reason": "前日比急落（-5.6%）を確認、RSI 27・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
       "trancheNumber": 1
+    },
+    {
+      "date": "2026-11-04",
+      "symbol": "PANW",
+      "action": "sell",
+      "priceUsd": 351.7200012207031,
+      "fxRate": 158.5720001220703,
+      "shares": 0.18231,
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "realizedPnlJpy": -873.6688511684406,
+      "tax": 0,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
     }
   ],
   "equityHistory": [
@@ -1268,6 +1271,10 @@
     {
       "date": "2026-11-03",
       "totalEquityJpy": 985378.2956761809
+    },
+    {
+      "date": "2026-11-04",
+      "totalEquityJpy": 986188.8746577662
     }
   ]
 }
