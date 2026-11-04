@@ -1,5 +1,5 @@
 {
-  "cashJpy": 705821.2500557458,
+  "cashJpy": 694716.3379264862,
   "realizedPnlTotalJpy": 2736.0559407036126,
   "taxPaidTotalJpy": 8766.886119851211,
   "secFeeTotalUsd": 0.30893921439026273,
@@ -127,17 +127,38 @@
           "entryDate": "2026-11-03"
         }
       ]
+    },
+    "TRI": {
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 0.62707,
+          "entryPriceUsd": 111.62999725341797,
+          "entryFxRate": 158.64200439453126,
+          "entryDate": "2026-11-05"
+        }
+      ]
     }
   },
   "pendingOrders": {
+    "ISRG": {
+      "action": "sell",
+      "reason": "前日比急騰（10.0%）＋RSI 72で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "queuedDate": "2026-11-05"
+    },
     "TRI": {
+      "action": "sell",
+      "reason": "前日比急騰（7.1%）＋RSI 60で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "queuedDate": "2026-11-05"
+    },
+    "WDAY": {
       "action": "buy",
-      "trancheNumber": 1,
-      "reason": "前日比急落（-7.4%）を確認、RSI 59・出来高1.2倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-11-04"
+      "trancheNumber": 2,
+      "reason": "平均取得単価比+1.9%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
+      "queuedDate": "2026-11-05"
     }
   },
-  "lastRunDate": "2026-11-04",
+  "lastRunDate": "2026-11-05",
   "log": [
     {
       "date": "2026-09-08",
@@ -1105,6 +1126,16 @@
       "tax": 0,
       "secFeeUsd": 0.01,
       "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-11-05",
+      "symbol": "TRI",
+      "action": "buy",
+      "priceUsd": 111.62999725341797,
+      "fxRate": 158.64200439453126,
+      "shares": 0.62707,
+      "reason": "前日比急落（-7.4%）を確認、RSI 59・出来高1.2倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
     }
   ],
   "equityHistory": [
@@ -1275,6 +1306,10 @@
     {
       "date": "2026-11-04",
       "totalEquityJpy": 986188.8746577662
+    },
+    {
+      "date": "2026-11-05",
+      "totalEquityJpy": 991768.686316988
     }
   ]
 }
