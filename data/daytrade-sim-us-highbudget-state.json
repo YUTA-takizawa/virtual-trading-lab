@@ -1,9 +1,9 @@
 {
-  "cashJpy": 2694710.6511526783,
-  "realizedPnlTotalJpy": 2725.582657075831,
-  "taxPaidTotalJpy": 8765.037356665734,
-  "secFeeTotalUsd": 0.30893921439026273,
-  "finraFeeTotalUsd": 0.2900000000000001,
+  "cashJpy": 2696162.3399680606,
+  "realizedPnlTotalJpy": 4482.630725147106,
+  "taxPaidTotalJpy": 9121.981671694415,
+  "secFeeTotalUsd": 0.32893921439026275,
+  "finraFeeTotalUsd": 0.3100000000000001,
   "positions": {
     "FAST": {
       "tranches": [
@@ -81,6 +81,13 @@
           "entryPriceUsd": 200.07000732421875,
           "entryFxRate": 157.6969970703125,
           "entryDate": "2026-10-31"
+        },
+        {
+          "trancheNumber": 2,
+          "shares": 0.68292,
+          "entryPriceUsd": 205,
+          "entryFxRate": 157.99100341796876,
+          "entryDate": "2026-11-06"
         }
       ]
     },
@@ -90,17 +97,6 @@
           "trancheNumber": 1,
           "shares": 0.16459,
           "entryPriceUsd": 425.2900085449219,
-          "entryFxRate": 158.08099975585938,
-          "entryDate": "2026-11-03"
-        }
-      ]
-    },
-    "ISRG": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.15916,
-          "entryPriceUsd": 439.7900085449219,
           "entryFxRate": 158.08099975585938,
           "entryDate": "2026-11-03"
         }
@@ -127,38 +123,38 @@
           "entryDate": "2026-11-03"
         }
       ]
-    },
-    "TRI": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.62707,
-          "entryPriceUsd": 111.62999725341797,
-          "entryFxRate": 158.64200439453126,
-          "entryDate": "2026-11-05"
-        }
-      ]
     }
   },
   "pendingOrders": {
-    "ISRG": {
-      "action": "sell",
-      "reason": "前日比急騰（10.0%）＋RSI 72で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
-      "queuedDate": "2026-11-05"
-    },
-    "TRI": {
-      "action": "sell",
-      "reason": "前日比急騰（7.1%）＋RSI 60で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
-      "queuedDate": "2026-11-05"
-    },
-    "WDAY": {
+    "ABNB": {
       "action": "buy",
-      "trancheNumber": 2,
-      "reason": "平均取得単価比+1.9%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
-      "queuedDate": "2026-11-05"
+      "trancheNumber": 1,
+      "reason": "前日比急落（-3.3%）を確認、RSI 47・出来高1.3倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "queuedDate": "2026-11-06"
+    },
+    "ADI": {
+      "action": "sell",
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "queuedDate": "2026-11-06"
+    },
+    "CRWD": {
+      "action": "sell",
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "queuedDate": "2026-11-06"
+    },
+    "MCHP": {
+      "action": "sell",
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "queuedDate": "2026-11-06"
+    },
+    "TXN": {
+      "action": "buy",
+      "trancheNumber": 1,
+      "reason": "前日比急落（-8.7%）を確認、RSI 54・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "queuedDate": "2026-11-06"
     }
   },
-  "lastRunDate": "2026-11-05",
+  "lastRunDate": "2026-11-06",
   "log": [
     {
       "date": "2026-09-08",
@@ -1136,6 +1132,42 @@
       "shares": 0.62707,
       "reason": "前日比急落（-7.4%）を確認、RSI 59・出来高1.2倍で裏付けあり（ルール1: 急落は買い、打診買い）",
       "trancheNumber": 1
+    },
+    {
+      "date": "2026-11-06",
+      "symbol": "ISRG",
+      "action": "sell",
+      "priceUsd": 482.8999938964844,
+      "fxRate": 157.69100341796874,
+      "shares": 0.15916,
+      "reason": "前日比急騰（10.0%）＋RSI 72で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "realizedPnlJpy": 1051.526342777479,
+      "tax": 213.61757653524484,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-11-06",
+      "symbol": "TRI",
+      "action": "sell",
+      "priceUsd": 119.47000122070312,
+      "fxRate": 157.69100341796874,
+      "shares": 0.62707,
+      "reason": "前日比急騰（7.1%）＋RSI 60で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "realizedPnlJpy": 705.5217252937964,
+      "tax": 143.32673849343473,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-11-06",
+      "symbol": "WDAY",
+      "action": "buy",
+      "priceUsd": 205,
+      "fxRate": 157.99100341796876,
+      "shares": 0.68292,
+      "reason": "平均取得単価比+1.9%まで上昇し思惑通りに動き始めたため追撃買い（1:2:6の2段階目）",
+      "trancheNumber": 2
     }
   ],
   "equityHistory": [
@@ -1310,6 +1342,10 @@
     {
       "date": "2026-11-05",
       "totalEquityJpy": 2991762.99954318
+    },
+    {
+      "date": "2026-11-06",
+      "totalEquityJpy": 2972303.620889478
     }
   ]
 }
