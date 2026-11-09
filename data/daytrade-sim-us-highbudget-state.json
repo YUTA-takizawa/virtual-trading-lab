@@ -1,9 +1,9 @@
 {
-  "cashJpy": 2781790.43787056,
-  "realizedPnlTotalJpy": -9582.635634925533,
-  "taxPaidTotalJpy": 9121.981671694415,
-  "secFeeTotalUsd": 0.36051888155144735,
-  "finraFeeTotalUsd": 0.34000000000000014,
+  "cashJpy": 2792915.2536478117,
+  "realizedPnlTotalJpy": -9557.254979596368,
+  "taxPaidTotalJpy": 9127.137751824535,
+  "secFeeTotalUsd": 0.37051888155144735,
+  "finraFeeTotalUsd": 0.35000000000000014,
   "positions": {
     "FAST": {
       "tranches": [
@@ -77,17 +77,6 @@
         }
       ]
     },
-    "ABNB": {
-      "tranches": [
-        {
-          "trancheNumber": 1,
-          "shares": 0.36524,
-          "entryPriceUsd": 191.64999389648438,
-          "entryFxRate": 158.64099731445313,
-          "entryDate": "2026-11-07"
-        }
-      ]
-    },
     "TXN": {
       "tranches": [
         {
@@ -101,13 +90,23 @@
     }
   },
   "pendingOrders": {
-    "ABNB": {
+    "FAST": {
       "action": "sell",
-      "reason": "前日比急騰（12.4%）＋RSI 62で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
-      "queuedDate": "2026-11-07"
+      "reason": "前日比急騰（3.6%）＋RSI 68で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "queuedDate": "2026-11-10"
+    },
+    "MSTR": {
+      "action": "sell",
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "queuedDate": "2026-11-10"
+    },
+    "TXN": {
+      "action": "sell",
+      "reason": "前日比急騰（6.6%）＋RSI 57で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "queuedDate": "2026-11-10"
     }
   },
-  "lastRunDate": "2026-11-07",
+  "lastRunDate": "2026-11-10",
   "log": [
     {
       "date": "2026-09-08",
@@ -1180,6 +1179,19 @@
       "shares": 0.2471,
       "reason": "前日比急落（-8.7%）を確認、RSI 54・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
       "trancheNumber": 1
+    },
+    {
+      "date": "2026-11-10",
+      "symbol": "ABNB",
+      "action": "sell",
+      "priceUsd": 193.3000030517578,
+      "fxRate": 157.69100341796874,
+      "shares": 0.36524,
+      "reason": "前日比急騰（12.4%）＋RSI 62で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "realizedPnlJpy": 25.380655329165165,
+      "tax": 5.1560801301199035,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
     }
   ],
   "equityHistory": [
@@ -1362,6 +1374,10 @@
     {
       "date": "2026-11-07",
       "totalEquityJpy": 2977251.981401199
+    },
+    {
+      "date": "2026-11-10",
+      "totalEquityJpy": 2980554.4241446247
     }
   ]
 }
