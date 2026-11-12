@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-12T02:37:40.630Z",
-  "lastPublishedAt": "2026-11-12T02:37:40.630Z",
+  "generatedAt": "2026-11-12T10:18:40.581Z",
+  "lastPublishedAt": "2026-11-12T10:18:40.581Z",
   "strategies": [
     {
       "id": "rsi-divergence",
@@ -8,11 +8,11 @@
       "description": "価格は10日前より下落しているのにRSIは上昇している強気ダイバージェンスで買い、逆（価格上昇・RSI下落）の弱気ダイバージェンスで手仕舞う",
       "initialCapitalYen": 1000000,
       "cashJpy": 2.6456837076693773e-7,
-      "totalEquityJpy": 1115878.7400655597,
-      "changePct": 11.587874006555975,
+      "totalEquityJpy": 1108731.5534421187,
+      "changePct": 10.873155344211868,
       "realizedPnlJpy": 297233.14765925094,
       "spreadCostTotalJpy": 24170.190393896657,
-      "unrealizedPnlJpy": -181354.4075936913,
+      "unrealizedPnlJpy": -188501.59421713237,
       "tradeCount": 47,
       "openPositions": 13
     },
@@ -59,32 +59,32 @@
       "openPositions": 0
     },
     {
+      "id": "macd",
+      "name": "MACD（12/26/9）",
+      "description": "MACD線（EMA12-EMA26）がシグナル線を上抜けたら買い、下抜けたら売り",
+      "initialCapitalYen": 1000000,
+      "cashJpy": 426184.0719041306,
+      "totalEquityJpy": 967276.4724204519,
+      "changePct": -3.272352757954807,
+      "realizedPnlJpy": 26184.02027736322,
+      "spreadCostTotalJpy": 35787.791665206634,
+      "unrealizedPnlJpy": -58907.54785691102,
+      "tradeCount": 72,
+      "openPositions": 6
+    },
+    {
       "id": "buy-and-hold",
       "name": "バイ・アンド・ホールド（BTC一点集中）",
       "description": "ビットコイン(BTC-JPY)だけに元本を一点集中投下し、一度買ったら二度と売らない。他の戦略群が「何もしない」より本当に優れているかを測るベンチマーク",
       "initialCapitalYen": 1000000,
       "cashJpy": 50000.003018654184,
-      "totalEquityJpy": 972471.6552764142,
-      "changePct": -2.7528344723585763,
+      "totalEquityJpy": 967268.3951932542,
+      "changePct": -3.2731604806745773,
       "realizedPnlJpy": 0,
       "spreadCostTotalJpy": 4726.368144185731,
-      "unrealizedPnlJpy": -27528.34472358573,
+      "unrealizedPnlJpy": -32731.60480674573,
       "tradeCount": 1,
       "openPositions": 1
-    },
-    {
-      "id": "macd",
-      "name": "MACD（12/26/9）",
-      "description": "MACD線（EMA12-EMA26）がシグナル線を上抜けたら買い、下抜けたら売り",
-      "initialCapitalYen": 1000000,
-      "cashJpy": 526184.0719032084,
-      "totalEquityJpy": 970002.3401318514,
-      "changePct": -2.9997659868148623,
-      "realizedPnlJpy": 26184.02027736322,
-      "spreadCostTotalJpy": 35290.279227400286,
-      "unrealizedPnlJpy": -56181.680145511644,
-      "tradeCount": 71,
-      "openPositions": 5
     },
     {
       "id": "ichimoku",
@@ -106,11 +106,11 @@
       "description": "25日移動平均から15%以上下に乖離＋RSI20未満という極端なパニック売り（カピチュレーション）だけに反応して買い、+10%の反発かRSI70超で早めに利確",
       "initialCapitalYen": 1000000,
       "cashJpy": 200000.0000066223,
-      "totalEquityJpy": 952011.8089452628,
-      "changePct": -4.7988191054737195,
+      "totalEquityJpy": 948787.2483617472,
+      "changePct": -5.121275163825276,
       "realizedPnlJpy": 0,
       "spreadCostTotalJpy": 3980.099502454538,
-      "unrealizedPnlJpy": -47988.191054737224,
+      "unrealizedPnlJpy": -51212.75163825273,
       "tradeCount": 8,
       "openPositions": 8
     },
@@ -147,14 +147,14 @@
       "name": "移動平均クロス（25日/75日）",
       "description": "短期線（25日）が長期線（75日）を上抜けたら買い（ゴールデンクロス）、下抜けたら売り（デッドクロス）",
       "initialCapitalYen": 1000000,
-      "cashJpy": 870588.4021498252,
-      "totalEquityJpy": 925234.1820750394,
-      "changePct": -7.476581792496064,
-      "realizedPnlJpy": -29411.59785023566,
-      "spreadCostTotalJpy": 5349.840466791957,
-      "unrealizedPnlJpy": -45354.220074724915,
-      "tradeCount": 11,
-      "openPositions": 1
+      "cashJpy": 924690.2177469023,
+      "totalEquityJpy": 924690.2177469023,
+      "changePct": -7.530978225309775,
+      "realizedPnlJpy": -75309.78225309774,
+      "spreadCostTotalJpy": 5621.708886877771,
+      "unrealizedPnlJpy": 0,
+      "tradeCount": 12,
+      "openPositions": 0
     },
     {
       "id": "grid",
@@ -162,27 +162,13 @@
       "description": "75日移動平均から3%刻みで下に引いた仮想グリッドラインに触れるたびに買い増し、平均取得単価+4.5%で利確",
       "initialCapitalYen": 1000000,
       "cashJpy": 0.0001612017158549861,
-      "totalEquityJpy": 911810.5884573609,
-      "changePct": -8.818941154263914,
+      "totalEquityJpy": 905501.984645437,
+      "changePct": -9.449801535456302,
       "realizedPnlJpy": 34734.91388218994,
       "spreadCostTotalJpy": 11655.97342929005,
-      "unrealizedPnlJpy": -122924.32542482877,
+      "unrealizedPnlJpy": -129232.92923675265,
       "tradeCount": 118,
       "openPositions": 15
-    },
-    {
-      "id": "stochastic",
-      "name": "ストキャスティクス",
-      "description": "売られすぎ圏（20以下）で%Kが%Dを上抜けたら買い、買われすぎ圏（80以上）で%Kが%Dを下抜けたら売り",
-      "initialCapitalYen": 1000000,
-      "cashJpy": 0.0000071793110691942275,
-      "totalEquityJpy": 904204.3141735173,
-      "changePct": -9.579568582648273,
-      "realizedPnlJpy": 159273.12824549686,
-      "spreadCostTotalJpy": 17820.334892248902,
-      "unrealizedPnlJpy": -255068.81407197966,
-      "tradeCount": 36,
-      "openPositions": 12
     },
     {
       "id": "breakout",
@@ -190,13 +176,27 @@
       "description": "直近20日の高値を出来高付きで更新したら買い、20日安値を割ったら手仕舞い",
       "initialCapitalYen": 1000000,
       "cashJpy": 817008.075213817,
-      "totalEquityJpy": 902519.889019697,
-      "changePct": -9.748011098030302,
+      "totalEquityJpy": 902037.554189867,
+      "changePct": -9.796244581013301,
       "realizedPnlJpy": -82991.94303414803,
       "spreadCostTotalJpy": 9080.692401057117,
-      "unrealizedPnlJpy": -14488.167946155043,
+      "unrealizedPnlJpy": -14970.502775985042,
       "tradeCount": 19,
       "openPositions": 1
+    },
+    {
+      "id": "stochastic",
+      "name": "ストキャスティクス",
+      "description": "売られすぎ圏（20以下）で%Kが%Dを上抜けたら買い、買われすぎ圏（80以上）で%Kが%Dを下抜けたら売り",
+      "initialCapitalYen": 1000000,
+      "cashJpy": 0.0000071793110691942275,
+      "totalEquityJpy": 898233.1181406076,
+      "changePct": -10.17668818593924,
+      "realizedPnlJpy": 159273.12824549686,
+      "spreadCostTotalJpy": 17820.334892248902,
+      "unrealizedPnlJpy": -261040.01010488934,
+      "tradeCount": 36,
+      "openPositions": 12
     },
     {
       "id": "bollinger",
@@ -204,11 +204,11 @@
       "description": "20日移動平均±2σの下限バンドを割ったら買い、中央線（20日SMA）まで戻ったら利確",
       "initialCapitalYen": 1000000,
       "cashJpy": 88890.67904327373,
-      "totalEquityJpy": 886248.2488228644,
-      "changePct": -11.375175117713562,
+      "totalEquityJpy": 880985.8649227568,
+      "changePct": -11.901413507724321,
       "realizedPnlJpy": 54282.882250922834,
       "spreadCostTotalJpy": 18076.049116770162,
-      "unrealizedPnlJpy": -168034.63342805853,
+      "unrealizedPnlJpy": -173297.01732816608,
       "tradeCount": 36,
       "openPositions": 10
     },
@@ -217,14 +217,14 @@
       "name": "ATRボラティリティブレイクアウト",
       "description": "前日終値からATR（14日）の1.5倍以上動いたらブレイクとみなして買い、平均取得単価からATRの2倍下落したら損切り",
       "initialCapitalYen": 1000000,
-      "cashJpy": 572705.061616574,
-      "totalEquityJpy": 873458.4492201016,
-      "changePct": -12.654155077989843,
-      "realizedPnlJpy": -127294.93876624605,
-      "spreadCostTotalJpy": 13190.967116365096,
-      "unrealizedPnlJpy": 753.3879863475713,
-      "tradeCount": 29,
-      "openPositions": 3
+      "cashJpy": 663535.2809223947,
+      "totalEquityJpy": 871726.2659619206,
+      "changePct": -12.82737340380794,
+      "realizedPnlJpy": -136464.71942483768,
+      "spreadCostTotalJpy": 13647.400379208419,
+      "unrealizedPnlJpy": 8190.985386758177,
+      "tradeCount": 30,
+      "openPositions": 2
     },
     {
       "id": "rsi-only",
@@ -232,11 +232,11 @@
       "description": "RSI14が30未満で買い、70超で売り。値動き%・出来高・トレンドは一切見ない素朴な比較用ベースライン",
       "initialCapitalYen": 1000000,
       "cashJpy": 1.524167601019144e-7,
-      "totalEquityJpy": 858694.0790376789,
-      "changePct": -14.130592096232112,
+      "totalEquityJpy": 852279.4525063685,
+      "changePct": -14.772054749363148,
       "realizedPnlJpy": 91597.82935008529,
       "spreadCostTotalJpy": 10891.250168971888,
-      "unrealizedPnlJpy": -232903.75031240628,
+      "unrealizedPnlJpy": -239318.37684371677,
       "tradeCount": 21,
       "openPositions": 11
     },
@@ -246,11 +246,11 @@
       "description": "20日出来高加重平均線（VWAP）から5%以上下に乖離したら買い、VWAPまで戻ったら利確",
       "initialCapitalYen": 1000000,
       "cashJpy": 0.0029242609853099566,
-      "totalEquityJpy": 849843.9621533043,
-      "changePct": -15.015603784669576,
+      "totalEquityJpy": 843897.7354266013,
+      "changePct": -15.610226457339873,
       "realizedPnlJpy": 70569.62745531715,
       "spreadCostTotalJpy": 29327.838952300295,
-      "unrealizedPnlJpy": -220725.66530201305,
+      "unrealizedPnlJpy": -226671.8920287158,
       "tradeCount": 64,
       "openPositions": 12
     },
@@ -274,11 +274,11 @@
       "description": "値動きを見ず、7日ごとに定額（約8,333円）を機械的に買い増す。含み益+50%到達時のみ全部売って利確、それ以外は損切りしない",
       "initialCapitalYen": 1000000,
       "cashJpy": 0.10414223290081281,
-      "totalEquityJpy": 835042.5302318513,
-      "changePct": -16.495746976814875,
+      "totalEquityJpy": 829657.5073688632,
+      "changePct": -17.03424926311368,
       "realizedPnlJpy": 31293.024665762652,
       "spreadCostTotalJpy": 5871.409846893321,
-      "unrealizedPnlJpy": -196250.49443391062,
+      "unrealizedPnlJpy": -201635.51729689867,
       "tradeCount": 133,
       "openPositions": 16
     },
@@ -287,13 +287,13 @@
       "name": "モメンタムランキング",
       "description": "候補16銘柄の直近20日騰落率を比較し、上位3銘柄だけを均等配分で買う。ランキング外に落ちたら手仕舞い",
       "initialCapitalYen": 1000000,
-      "cashJpy": 507413.021998416,
-      "totalEquityJpy": 805698.4943645152,
-      "changePct": -19.43015056354848,
-      "realizedPnlJpy": -192587.05999020688,
-      "spreadCostTotalJpy": 92527.05804316413,
-      "unrealizedPnlJpy": -1714.44564527886,
-      "tradeCount": 187,
+      "cashJpy": 505761.06244793057,
+      "totalEquityJpy": 803819.3846397938,
+      "changePct": -19.618061536020623,
+      "realizedPnlJpy": -194239.01790974237,
+      "spreadCostTotalJpy": 93518.78173925132,
+      "unrealizedPnlJpy": -1941.5974504648896,
+      "tradeCount": 189,
       "openPositions": 3
     },
     {
@@ -302,11 +302,11 @@
       "description": "値動きを一切見ず、毎週月曜に買い、金曜に手仕舞う。週末を跨いで持ち越さないという仮説の検証",
       "initialCapitalYen": 1000000,
       "cashJpy": 2.3196207621367648e-7,
-      "totalEquityJpy": 776626.3831915248,
-      "changePct": -22.337361680847522,
+      "totalEquityJpy": 771292.518857873,
+      "changePct": -22.870748114212695,
       "realizedPnlJpy": -194170.55821756698,
       "spreadCostTotalJpy": 87936.04895464543,
-      "unrealizedPnlJpy": -29203.058590908426,
+      "unrealizedPnlJpy": -34536.922924560124,
       "tradeCount": 187,
       "openPositions": 9
     },
@@ -1834,6 +1834,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 1002196.3491978247
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 1002196.3491978247
       }
     ],
     "trend-follow": [
@@ -3331,6 +3335,10 @@
       },
       {
         "date": "2026-11-11",
+        "totalEquityJpy": 946396.8171444179
+      },
+      {
+        "date": "2026-11-12",
         "totalEquityJpy": 946396.8171444179
       },
       {
@@ -4854,6 +4862,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 925234.1820750394
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 924690.2177469023
       }
     ],
     "breakout": [
@@ -6364,6 +6376,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 902519.889019697
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 902037.554189867
       }
     ],
     "bollinger": [
@@ -7874,6 +7890,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 886248.2488228644
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 880985.8649227568
       }
     ],
     "rsi-only": [
@@ -9384,6 +9404,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 858694.0790376789
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 852279.4525063685
       }
     ],
     "dca": [
@@ -10894,6 +10918,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 835042.5302318513
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 829657.5073688632
       }
     ],
     "grid": [
@@ -12404,6 +12432,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 911810.5884573609
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 905501.984645437
       }
     ],
     "momentum": [
@@ -13914,6 +13946,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 805698.4943645152
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 803819.3846397938
       }
     ],
     "volume-spike": [
@@ -15411,6 +15447,10 @@
       },
       {
         "date": "2026-11-11",
+        "totalEquityJpy": 839931.8901500503
+      },
+      {
+        "date": "2026-11-12",
         "totalEquityJpy": 839931.8901500503
       },
       {
@@ -16934,6 +16974,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 970002.3401318514
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 967276.4724204519
       }
     ],
     "ichimoku": [
@@ -18431,6 +18475,10 @@
       },
       {
         "date": "2026-11-11",
+        "totalEquityJpy": 953289.2720305461
+      },
+      {
+        "date": "2026-11-12",
         "totalEquityJpy": 953289.2720305461
       },
       {
@@ -19954,6 +20002,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 904204.3141735173
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 898233.1181406076
       }
     ],
     "atr-breakout": [
@@ -21464,6 +21516,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 873458.4492201016
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 871726.2659619206
       }
     ],
     "vwap-deviation": [
@@ -22974,6 +23030,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 849843.9621533043
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 843897.7354266013
       }
     ],
     "day-of-week": [
@@ -24484,6 +24544,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 776626.3831915248
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 771292.518857873
       }
     ],
     "parabolic-reversal": [
@@ -25994,6 +26058,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 952011.8089452628
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 948787.2483617472
       }
     ],
     "rsi-divergence": [
@@ -27504,6 +27572,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 1115878.7400655597
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 1108731.5534421187
       }
     ],
     "relative-strength-pair": [
@@ -29001,6 +29073,10 @@
       },
       {
         "date": "2026-11-11",
+        "totalEquityJpy": 1005920.8030679878
+      },
+      {
+        "date": "2026-11-12",
         "totalEquityJpy": 1005920.8030679878
       },
       {
@@ -30524,6 +30600,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 939219.1305791779
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 939219.1305791779
       }
     ],
     "perfect-order": [
@@ -32021,6 +32101,10 @@
       },
       {
         "date": "2026-11-11",
+        "totalEquityJpy": 1037521.9237502398
+      },
+      {
+        "date": "2026-11-12",
         "totalEquityJpy": 1037521.9237502398
       },
       {
@@ -33544,6 +33628,10 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 608114.6321473863
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 608114.6321473863
       }
     ],
     "buy-and-hold": [
@@ -34950,33 +35038,26 @@
       {
         "date": "2026-11-12",
         "totalEquityJpy": 972471.6552764142
+      },
+      {
+        "date": "2026-11-12",
+        "totalEquityJpy": 967268.3951932542
       }
     ]
   },
   "positions": {
     "contrarian": [],
     "trend-follow": [],
-    "ma-cross": [
-      {
-        "symbol": "SAND-JPY",
-        "name": "ザ・サンドボックス",
-        "quantity": 8219.08591415,
-        "avgEntryPriceJpy": 12.166803102493285,
-        "currentPriceJpy": 6.64864444732666,
-        "marketValueJpy": 54645.77992521417,
-        "unrealizedPnlJpy": -45354.220074724915,
-        "firstEntryDate": "2026-10-03"
-      }
-    ],
+    "ma-cross": [],
     "breakout": [
       {
         "symbol": "BTC-JPY",
         "name": "ビットコイン",
         "quantity": 0.00725501,
         "avgEntryPriceJpy": 13783576.004999999,
-        "currentPriceJpy": 11786588,
-        "marketValueJpy": 85511.81380588,
-        "unrealizedPnlJpy": -14488.167946155043,
+        "currentPriceJpy": 11720105,
+        "marketValueJpy": 85029.47897605,
+        "unrealizedPnlJpy": -14970.502775985042,
         "firstEntryDate": "2026-09-22"
       }
     ],
@@ -34986,9 +35067,9 @@
         "name": "ステラルーメン",
         "quantity": 3314.93137906,
         "avgEntryPriceJpy": 30.16653697013855,
-        "currentPriceJpy": 23.64560890197754,
-        "marketValueJpy": 78383.57092614581,
-        "unrealizedPnlJpy": -21616.429073740048,
+        "currentPriceJpy": 23.38247299194336,
+        "marketValueJpy": 77511.29344101601,
+        "unrealizedPnlJpy": -22488.706558869857,
         "firstEntryDate": "2026-10-09"
       },
       {
@@ -34996,9 +35077,9 @@
         "name": "ドージコイン",
         "quantity": 7565.84700829,
         "avgEntryPriceJpy": 13.217290792465208,
-        "currentPriceJpy": 10.797595977783203,
-        "marketValueJpy": 81692.95922523519,
-        "unrealizedPnlJpy": -18307.040774636676,
+        "currentPriceJpy": 10.724489212036133,
+        "marketValueJpy": 81139.84462032196,
+        "unrealizedPnlJpy": -18860.155379549906,
         "firstEntryDate": "2026-10-09"
       },
       {
@@ -35006,9 +35087,9 @@
         "name": "ソラナ",
         "quantity": 5.76384263,
         "avgEntryPriceJpy": 17349.536806640623,
-        "currentPriceJpy": 13335.3408203125,
-        "marketValueJpy": 76862.80590569635,
-        "unrealizedPnlJpy": -23137.193951172932,
+        "currentPriceJpy": 13248.6796875,
+        "marketValueJpy": 76363.30477402758,
+        "unrealizedPnlJpy": -23636.69508284171,
         "firstEntryDate": "2026-10-09"
       },
       {
@@ -35016,9 +35097,9 @@
         "name": "チリーズ",
         "quantity": 42335.54131295,
         "avgEntryPriceJpy": 2.3620815253257748,
-        "currentPriceJpy": 1.7137290239334106,
-        "marketValueJpy": 72551.64589193439,
-        "unrealizedPnlJpy": -27448.354108050906,
+        "currentPriceJpy": 1.6966229677200317,
+        "marketValueJpy": 71827.45174241124,
+        "unrealizedPnlJpy": -28172.548257574053,
         "firstEntryDate": "2026-10-09"
       },
       {
@@ -35026,9 +35107,9 @@
         "name": "ライトコイン",
         "quantity": 10.6277524,
         "avgEntryPriceJpy": 9409.327221679687,
-        "currentPriceJpy": 7991.27978515625,
-        "marketValueJpy": 84929.34291576582,
-        "unrealizedPnlJpy": -15070.657046825803,
+        "currentPriceJpy": 7911.46142578125,
+        "marketValueJpy": 84081.05315535411,
+        "unrealizedPnlJpy": -15918.946807237522,
         "firstEntryDate": "2026-10-15"
       },
       {
@@ -35036,9 +35117,9 @@
         "name": "カルダノ",
         "quantity": 2827.95752113,
         "avgEntryPriceJpy": 35.361210079193114,
-        "currentPriceJpy": 27.872560501098633,
-        "marketValueJpy": 78822.41710223284,
-        "unrealizedPnlJpy": -21177.58289747929,
+        "currentPriceJpy": 27.701204299926758,
+        "marketValueJpy": 78337.82904433657,
+        "unrealizedPnlJpy": -21662.170955375557,
         "firstEntryDate": "2026-10-15"
       },
       {
@@ -35046,9 +35127,9 @@
         "name": "ファイルコイン",
         "quantity": 659.27165287,
         "avgEntryPriceJpy": 151.68254173278808,
-        "currentPriceJpy": 120.29203033447266,
-        "marketValueJpy": 79305.12566569597,
-        "unrealizedPnlJpy": -20694.874334001986,
+        "currentPriceJpy": 119.8619613647461,
+        "marketValueJpy": 79021.59338517624,
+        "unrealizedPnlJpy": -20978.406614521715,
         "firstEntryDate": "2026-10-23"
       },
       {
@@ -35056,9 +35137,9 @@
         "name": "ポルカドット",
         "quantity": 467.38658492,
         "avgEntryPriceJpy": 162.6031604003906,
-        "currentPriceJpy": 135.72817993164062,
-        "marketValueJpy": 63437.53049565679,
-        "unrealizedPnlJpy": -12561.005341080756,
+        "currentPriceJpy": 134.41127014160156,
+        "marketValueJpy": 62822.02452624272,
+        "unrealizedPnlJpy": -13176.511310494827,
         "firstEntryDate": "2026-10-25"
       },
       {
@@ -35066,9 +35147,9 @@
         "name": "エックスアールピー",
         "quantity": 524.04897413,
         "avgEntryPriceJpy": 190.8218600463867,
-        "currentPriceJpy": 168.27247619628906,
-        "marketValueJpy": 88183.01852498013,
-        "unrealizedPnlJpy": -11816.981473907252,
+        "currentPriceJpy": 168.08505249023438,
+        "marketValueJpy": 88084.79932409454,
+        "unrealizedPnlJpy": -11915.200674792854,
         "firstEntryDate": "2026-11-06"
       },
       {
@@ -35076,9 +35157,9 @@
         "name": "コスモス",
         "quantity": 417.28893703,
         "avgEntryPriceJpy": 214.22486824035641,
-        "currentPriceJpy": 223.32044982910156,
-        "marketValueJpy": 93189.15312624724,
-        "unrealizedPnlJpy": 3795.4855728371012,
+        "currentPriceJpy": 222.64187622070312,
+        "marketValueJpy": 92905.99186650204,
+        "unrealizedPnlJpy": 3512.324313091906,
         "firstEntryDate": "2026-11-06"
       }
     ],
@@ -35088,9 +35169,9 @@
         "name": "ビットコインキャッシュ",
         "quantity": 1.99197325,
         "avgEntryPriceJpy": 50201.47734375,
-        "currentPriceJpy": 36710.79296875,
-        "marketValueJpy": 73126.91758003809,
-        "unrealizedPnlJpy": -26873.082399192965,
+        "currentPriceJpy": 36427.32421875,
+        "marketValueJpy": 72562.25541282714,
+        "unrealizedPnlJpy": -27437.7445664039,
         "firstEntryDate": "2026-10-06"
       },
       {
@@ -35098,9 +35179,9 @@
         "name": "イーサリアム",
         "quantity": 0.24576633,
         "avgEntryPriceJpy": 406890.54984374996,
-        "currentPriceJpy": 328496.03125,
-        "marketValueJpy": 80733.26401987781,
-        "unrealizedPnlJpy": -19266.73312690269,
+        "currentPriceJpy": 326316.34375,
+        "marketValueJpy": 80197.57022245594,
+        "unrealizedPnlJpy": -19802.426924324565,
         "firstEntryDate": "2026-10-08"
       },
       {
@@ -35108,9 +35189,9 @@
         "name": "ライトコイン",
         "quantity": 9.75665537,
         "avgEntryPriceJpy": 10249.413984374998,
-        "currentPriceJpy": 7991.27978515625,
-        "marketValueJpy": 77968.16282901718,
-        "unrealizedPnlJpy": -22031.83716098825,
+        "currentPriceJpy": 7911.46142578125,
+        "marketValueJpy": 77189.4026043965,
+        "unrealizedPnlJpy": -22810.597385608933,
         "firstEntryDate": "2026-10-08"
       },
       {
@@ -35118,9 +35199,9 @@
         "name": "エックスアールピー",
         "quantity": 445.96221121,
         "avgEntryPriceJpy": 224.23424560546874,
-        "currentPriceJpy": 168.27247619628906,
-        "marketValueJpy": 75043.16557027916,
-        "unrealizedPnlJpy": -24956.834428941907,
+        "currentPriceJpy": 168.08505249023438,
+        "marketValueJpy": 74959.58167989385,
+        "unrealizedPnlJpy": -25040.41831932723,
         "firstEntryDate": "2026-10-08"
       },
       {
@@ -35128,9 +35209,9 @@
         "name": "ドージコイン",
         "quantity": 7565.84700829,
         "avgEntryPriceJpy": 13.217290792465208,
-        "currentPriceJpy": 10.797595977783203,
-        "marketValueJpy": 81692.95922523519,
-        "unrealizedPnlJpy": -18307.040774636676,
+        "currentPriceJpy": 10.724489212036133,
+        "marketValueJpy": 81139.84462032196,
+        "unrealizedPnlJpy": -18860.155379549906,
         "firstEntryDate": "2026-10-09"
       },
       {
@@ -35138,9 +35219,9 @@
         "name": "ソラナ",
         "quantity": 5.70052319,
         "avgEntryPriceJpy": 17542.249482421874,
-        "currentPriceJpy": 13335.3408203125,
-        "marketValueJpy": 76018.41959274503,
-        "unrealizedPnlJpy": -23981.580386566362,
+        "currentPriceJpy": 13248.6796875,
+        "marketValueJpy": 75524.4057954757,
+        "unrealizedPnlJpy": -24475.59418383569,
         "firstEntryDate": "2026-10-09"
       },
       {
@@ -35148,9 +35229,9 @@
         "name": "チェーンリンク",
         "quantity": 46.98925419,
         "avgEntryPriceJpy": 2128.1461413574216,
-        "currentPriceJpy": 1625.8343505859375,
-        "marketValueJpy": 76396.74357051619,
-        "unrealizedPnlJpy": -23603.25641919536,
+        "currentPriceJpy": 1608.1982421875,
+        "marketValueJpy": 75568.03599005961,
+        "unrealizedPnlJpy": -24431.963999651933,
         "firstEntryDate": "2026-10-12"
       },
       {
@@ -35158,9 +35239,9 @@
         "name": "ステラルーメン",
         "quantity": 3201.35114936,
         "avgEntryPriceJpy": 31.2368107509613,
-        "currentPriceJpy": 23.64560890197754,
-        "marketValueJpy": 75697.89723566284,
-        "unrealizedPnlJpy": -24302.102764267922,
+        "currentPriceJpy": 23.38247299194336,
+        "marketValueJpy": 74855.50678763703,
+        "unrealizedPnlJpy": -25144.49321229373,
         "firstEntryDate": "2026-10-13"
       },
       {
@@ -35168,9 +35249,9 @@
         "name": "チリーズ",
         "quantity": 44491.57324116,
         "avgEntryPriceJpy": 2.2476166319847106,
-        "currentPriceJpy": 1.7137290239334106,
-        "marketValueJpy": 76246.50038383497,
-        "unrealizedPnlJpy": -23753.499616162135,
+        "currentPriceJpy": 1.6966229677200317,
+        "marketValueJpy": 75485.42503095002,
+        "unrealizedPnlJpy": -24514.574969047084,
         "firstEntryDate": "2026-10-16"
       },
       {
@@ -35178,9 +35259,9 @@
         "name": "ビットコイン",
         "quantity": 0.00777773,
         "avgEntryPriceJpy": 12857214.239999998,
-        "currentPriceJpy": 11786588,
-        "marketValueJpy": 91672.89908524,
-        "unrealizedPnlJpy": -8327.041825635188,
+        "currentPriceJpy": 11720105,
+        "marketValueJpy": 91155.81226165,
+        "unrealizedPnlJpy": -8844.128649225187,
         "firstEntryDate": "2026-10-19"
       },
       {
@@ -35188,9 +35269,9 @@
         "name": "カルダノ",
         "quantity": 2658.42637393,
         "avgEntryPriceJpy": 34.45568109512329,
-        "currentPriceJpy": 27.872560501098633,
-        "marketValueJpy": 74097.14994508018,
-        "unrealizedPnlJpy": -17500.741409916875,
+        "currentPriceJpy": 27.701204299926758,
+        "marketValueJpy": 73641.61210054842,
+        "unrealizedPnlJpy": -17956.27925444864,
         "firstEntryDate": "2026-10-19"
       }
     ],
@@ -35200,9 +35281,9 @@
         "name": "ビットコイン",
         "quantity": 0.005710819999999999,
         "avgEntryPriceJpy": 12775679.80441826,
-        "currentPriceJpy": 11786588,
-        "marketValueJpy": 67311.08248216,
-        "unrealizedPnlJpy": -5648.525258507888,
+        "currentPriceJpy": 11720105,
+        "marketValueJpy": 66931.41003609999,
+        "unrealizedPnlJpy": -6028.197704567888,
         "firstEntryDate": "2026-09-05"
       },
       {
@@ -35210,9 +35291,9 @@
         "name": "イーサリアム",
         "quantity": 0.16694322,
         "avgEntryPriceJpy": 399337.26453937264,
-        "currentPriceJpy": 328496.03125,
-        "marketValueJpy": 54840.185214095625,
-        "unrealizedPnlJpy": -11826.463594099061,
+        "currentPriceJpy": 326316.34375,
+        "marketValueJpy": 54476.301164251876,
+        "unrealizedPnlJpy": -12190.34764394281,
         "firstEntryDate": "2026-09-05"
       },
       {
@@ -35220,9 +35301,9 @@
         "name": "ビットコインキャッシュ",
         "quantity": 1.5508198800000002,
         "avgEntryPriceJpy": 42988.01297715902,
-        "currentPriceJpy": 36710.79296875,
-        "marketValueJpy": 56931.82754650172,
-        "unrealizedPnlJpy": -9734.837580174479,
+        "currentPriceJpy": 36427.32421875,
+        "marketValueJpy": 56492.218573642975,
+        "unrealizedPnlJpy": -10174.446553033229,
         "firstEntryDate": "2026-09-05"
       },
       {
@@ -35230,9 +35311,9 @@
         "name": "ライトコイン",
         "quantity": 7.10868517,
         "avgEntryPriceJpy": 9378.199300967235,
-        "currentPriceJpy": 7991.27978515625,
-        "marketValueJpy": 56807.492098061026,
-        "unrealizedPnlJpy": -9859.17419402913,
+        "currentPriceJpy": 7911.46142578125,
+        "marketValueJpy": 56240.08851047823,
+        "unrealizedPnlJpy": -10426.577781611924,
         "firstEntryDate": "2026-09-05"
       },
       {
@@ -35240,9 +35321,9 @@
         "name": "エックスアールピー",
         "quantity": 302.78342309,
         "avgEntryPriceJpy": 220.17938096070552,
-        "currentPriceJpy": 168.27247619628906,
-        "marketValueJpy": 50950.116354542944,
-        "unrealizedPnlJpy": -15716.550306576642,
+        "currentPriceJpy": 168.08505249023438,
+        "marketValueJpy": 50893.36756325549,
+        "unrealizedPnlJpy": -15773.299097864096,
         "firstEntryDate": "2026-09-05"
       },
       {
@@ -35250,9 +35331,9 @@
         "name": "ステラルーメン",
         "quantity": 2219.33166126,
         "avgEntryPriceJpy": 30.039073397279893,
-        "currentPriceJpy": 23.64560890197754,
-        "marketValueJpy": 52477.44848593006,
-        "unrealizedPnlJpy": -14189.2181795662,
+        "currentPriceJpy": 23.38247299194336,
+        "marketValueJpy": 51893.462629576745,
+        "unrealizedPnlJpy": -14773.204035919518,
         "firstEntryDate": "2026-09-05"
       },
       {
@@ -35260,9 +35341,9 @@
         "name": "ポルカドット",
         "quantity": 383.77611855,
         "avgEntryPriceJpy": 173.71238968841217,
-        "currentPriceJpy": 135.72817993164062,
-        "marketValueJpy": 52089.23407202104,
-        "unrealizedPnlJpy": -14577.432586642824,
+        "currentPriceJpy": 134.41127014160156,
+        "marketValueJpy": 51583.83554431935,
+        "unrealizedPnlJpy": -15082.83111434451,
         "firstEntryDate": "2026-09-05"
       },
       {
@@ -35270,9 +35351,9 @@
         "name": "コスモス",
         "quantity": 246.22359064,
         "avgEntryPriceJpy": 270.7566179168615,
-        "currentPriceJpy": 223.32044982910156,
-        "marketValueJpy": 54986.76302026136,
-        "unrealizedPnlJpy": -11679.903632770835,
+        "currentPriceJpy": 222.64187622070312,
+        "marketValueJpy": 54819.68218988796,
+        "unrealizedPnlJpy": -11846.98446314424,
         "firstEntryDate": "2026-09-05"
       },
       {
@@ -35280,9 +35361,9 @@
         "name": "カルダノ",
         "quantity": 1876.58094307,
         "avgEntryPriceJpy": 35.525601446146496,
-        "currentPriceJpy": 27.872560501098633,
-        "marketValueJpy": 52305.11587092731,
-        "unrealizedPnlJpy": -14361.550794011244,
+        "currentPriceJpy": 27.701204299926758,
+        "marketValueJpy": 51983.5520893313,
+        "unrealizedPnlJpy": -14683.114575607253,
         "firstEntryDate": "2026-09-05"
       },
       {
@@ -35290,9 +35371,9 @@
         "name": "チェーンリンク",
         "quantity": 33.88106157,
         "avgEntryPriceJpy": 1967.6675841529632,
-        "currentPriceJpy": 1625.8343505859375,
-        "marketValueJpy": 55084.99373482311,
-        "unrealizedPnlJpy": -11581.672833156588,
+        "currentPriceJpy": 1608.1982421875,
+        "marketValueJpy": 54487.463660320456,
+        "unrealizedPnlJpy": -12179.202907659243,
         "firstEntryDate": "2026-09-05"
       },
       {
@@ -35300,9 +35381,9 @@
         "name": "ドージコイン",
         "quantity": 4911.26142693,
         "avgEntryPriceJpy": 13.574245162472199,
-        "currentPriceJpy": 10.797595977783203,
-        "marketValueJpy": 53029.816629261164,
-        "unrealizedPnlJpy": -13636.850036879698,
+        "currentPriceJpy": 10.724489212036133,
+        "marketValueJpy": 52670.77019059997,
+        "unrealizedPnlJpy": -13995.896475540892,
         "firstEntryDate": "2026-09-05"
       },
       {
@@ -35310,9 +35391,9 @@
         "name": "ソラナ",
         "quantity": 3.89609521,
         "avgEntryPriceJpy": 17111.149105928267,
-        "currentPriceJpy": 13335.3408203125,
-        "marketValueJpy": 51955.757493737,
-        "unrealizedPnlJpy": -14710.9085754659,
+        "currentPriceJpy": 13248.6796875,
+        "marketValueJpy": 51618.11746929304,
+        "unrealizedPnlJpy": -15048.548599909856,
         "firstEntryDate": "2026-09-05"
       },
       {
@@ -35320,9 +35401,9 @@
         "name": "ファイルコイン",
         "quantity": 449.95015052,
         "avgEntryPriceJpy": 148.16456130680544,
-        "currentPriceJpy": 120.29203033447266,
-        "marketValueJpy": 54125.41715535238,
-        "unrealizedPnlJpy": -12541.249506374497,
+        "currentPriceJpy": 119.8619613647461,
+        "marketValueJpy": 53931.907557689934,
+        "unrealizedPnlJpy": -12734.759104036946,
         "firstEntryDate": "2026-09-05"
       },
       {
@@ -35330,9 +35411,9 @@
         "name": "チリーズ",
         "quantity": 28982.74724517,
         "avgEntryPriceJpy": 2.3002190269479414,
-        "currentPriceJpy": 1.7137290239334106,
-        "marketValueJpy": 49668.57514737393,
-        "unrealizedPnlJpy": -16998.09151918914,
+        "currentPriceJpy": 1.6966229677200317,
+        "marketValueJpy": 49172.794643779904,
+        "unrealizedPnlJpy": -17493.87202278317,
         "firstEntryDate": "2026-09-05"
       },
       {
@@ -35340,9 +35421,9 @@
         "name": "アバランチ",
         "quantity": 30.44566777,
         "avgEntryPriceJpy": 1642.269774880634,
-        "currentPriceJpy": 1376.039794921875,
-        "marketValueJpy": 41894.45043449034,
-        "unrealizedPnlJpy": -8105.549520238136,
+        "currentPriceJpy": 1380.5106201171875,
+        "marketValueJpy": 42030.56769304457,
+        "unrealizedPnlJpy": -7969.432261683906,
         "firstEntryDate": "2026-09-21"
       },
       {
@@ -35350,9 +35431,9 @@
         "name": "ザ・サンドボックス",
         "quantity": 4600.05804076,
         "avgEntryPriceJpy": 9.057856726395498,
-        "currentPriceJpy": 6.64864444732666,
-        "marketValueJpy": 30584.15035007933,
-        "unrealizedPnlJpy": -11082.516316228332,
+        "currentPriceJpy": 6.615539073944092,
+        "marketValueJpy": 30431.863711058482,
+        "unrealizedPnlJpy": -11234.802955249177,
         "firstEntryDate": "2026-10-02"
       }
     ],
@@ -35362,9 +35443,9 @@
         "name": "ステラルーメン",
         "quantity": 3659.55371246,
         "avgEntryPriceJpy": 27.325736375669837,
-        "currentPriceJpy": 23.64560890197754,
-        "marketValueJpy": 86532.37584060912,
-        "unrealizedPnlJpy": -13467.624158676692,
+        "currentPriceJpy": 23.38247299194336,
+        "marketValueJpy": 85569.41584416201,
+        "unrealizedPnlJpy": -14430.584155123815,
         "firstEntryDate": "2026-10-15"
       },
       {
@@ -35372,9 +35453,9 @@
         "name": "ドージコイン",
         "quantity": 8117.5354853,
         "avgEntryPriceJpy": 12.319009899081465,
-        "currentPriceJpy": 10.797595977783203,
-        "marketValueJpy": 87649.8685055877,
-        "unrealizedPnlJpy": -12350.13149396806,
+        "currentPriceJpy": 10.724489212036133,
+        "marketValueJpy": 87056.42174042034,
+        "unrealizedPnlJpy": -12943.578259135418,
         "firstEntryDate": "2026-10-15"
       },
       {
@@ -35382,9 +35463,9 @@
         "name": "チリーズ",
         "quantity": 49315.28450391,
         "avgEntryPriceJpy": 2.0277688957065183,
-        "currentPriceJpy": 1.7137290239334106,
-        "marketValueJpy": 84513.03437788413,
-        "unrealizedPnlJpy": -15486.96562206222,
+        "currentPriceJpy": 1.6966229677200317,
+        "marketValueJpy": 83669.44434898147,
+        "unrealizedPnlJpy": -16330.555650964878,
         "firstEntryDate": "2026-10-18"
       },
       {
@@ -35392,9 +35473,9 @@
         "name": "エックスアールピー",
         "quantity": 488.75671719,
         "avgEntryPriceJpy": 204.600768594587,
-        "currentPriceJpy": 168.27247619628906,
-        "marketValueJpy": 82244.30305913066,
-        "unrealizedPnlJpy": -17755.696933710537,
+        "currentPriceJpy": 168.08505249023438,
+        "marketValueJpy": 82152.6984638358,
+        "unrealizedPnlJpy": -17847.30152900541,
         "firstEntryDate": "2026-10-23"
       },
       {
@@ -35402,9 +35483,9 @@
         "name": "カルダノ",
         "quantity": 3191.30148197,
         "avgEntryPriceJpy": 31.335178002954933,
-        "currentPriceJpy": 27.872560501098633,
-        "marketValueJpy": 88949.74363345456,
-        "unrealizedPnlJpy": -11050.25636516927,
+        "currentPriceJpy": 27.701204299926758,
+        "marketValueJpy": 88402.89433471,
+        "unrealizedPnlJpy": -11597.105663913826,
         "firstEntryDate": "2026-10-23"
       },
       {
@@ -35412,9 +35493,9 @@
         "name": "チェーンリンク",
         "quantity": 55.13647107,
         "avgEntryPriceJpy": 1813.6815431201217,
-        "currentPriceJpy": 1625.8343505859375,
-        "marketValueJpy": 89642.76863569378,
-        "unrealizedPnlJpy": -10357.231296741764,
+        "currentPriceJpy": 1608.1982421875,
+        "marketValueJpy": 88670.37585519595,
+        "unrealizedPnlJpy": -11329.624077239598,
         "firstEntryDate": "2026-10-24"
       },
       {
@@ -35422,9 +35503,9 @@
         "name": "ソラナ",
         "quantity": 5.41711312,
         "avgEntryPriceJpy": 15383.347359179501,
-        "currentPriceJpy": 13335.3408203125,
-        "marketValueJpy": 72239.0497173864,
-        "unrealizedPnlJpy": -11094.28309154222,
+        "currentPriceJpy": 13248.6796875,
+        "marketValueJpy": 71769.59655783375,
+        "unrealizedPnlJpy": -11563.736251094877,
         "firstEntryDate": "2026-10-25"
       },
       {
@@ -35432,9 +35513,9 @@
         "name": "ポルカドット",
         "quantity": 466.19921561,
         "avgEntryPriceJpy": 152.44855333602754,
-        "currentPriceJpy": 135.72817993164062,
-        "marketValueJpy": 63276.371020303806,
-        "unrealizedPnlJpy": -7795.024965831487,
+        "currentPriceJpy": 134.41127014160156,
+        "marketValueJpy": 62662.42870915846,
+        "unrealizedPnlJpy": -8408.967276976828,
         "firstEntryDate": "2026-10-26"
       },
       {
@@ -35442,9 +35523,9 @@
         "name": "コスモス",
         "quantity": 414.74357599,
         "avgEntryPriceJpy": 241.11283642072715,
-        "currentPriceJpy": 223.32044982910156,
-        "marketValueJpy": 92620.72195381697,
-        "unrealizedPnlJpy": -7379.278040407324,
+        "currentPriceJpy": 222.64187622070312,
+        "marketValueJpy": 92339.28790889736,
+        "unrealizedPnlJpy": -7660.71208532693,
         "firstEntryDate": "2026-10-30"
       },
       {
@@ -35452,9 +35533,9 @@
         "name": "ライトコイン",
         "quantity": 7.61405603,
         "avgEntryPriceJpy": 8755.73626220431,
-        "currentPriceJpy": 7991.27978515625,
-        "marketValueJpy": 60846.05203558605,
-        "unrealizedPnlJpy": -5820.614448740333,
+        "currentPriceJpy": 7911.46142578125,
+        "marketValueJpy": 60238.31057508213,
+        "unrealizedPnlJpy": -6428.355909244258,
         "firstEntryDate": "2026-10-30"
       },
       {
@@ -35462,9 +35543,9 @@
         "name": "ファイルコイン",
         "quantity": 420.63048284999996,
         "avgEntryPriceJpy": 139.41112980726763,
-        "currentPriceJpy": 120.29203033447266,
-        "marketValueJpy": 50598.49480259608,
-        "unrealizedPnlJpy": -8042.076042898929,
+        "currentPriceJpy": 119.8619613647461,
+        "marketValueJpy": 50417.59468420119,
+        "unrealizedPnlJpy": -8222.976161293815,
         "firstEntryDate": "2026-10-31"
       },
       {
@@ -35472,9 +35553,9 @@
         "name": "ザ・サンドボックス",
         "quantity": 2270.8320674,
         "avgEntryPriceJpy": 7.339453632831572,
-        "currentPriceJpy": 6.64864444732666,
-        "marketValueJpy": 15097.955015730331,
-        "unrealizedPnlJpy": -1568.7116508990287,
+        "currentPriceJpy": 6.615539073944092,
+        "marketValueJpy": 15022.778272249945,
+        "unrealizedPnlJpy": -1643.8883943794153,
         "firstEntryDate": "2026-11-01"
       },
       {
@@ -35482,9 +35563,9 @@
         "name": "アバランチ",
         "quantity": 12.06451387,
         "avgEntryPriceJpy": 1381.4619342041017,
-        "currentPriceJpy": 1376.039794921875,
-        "marketValueJpy": 16601.25119150692,
-        "unrealizedPnlJpy": -65.41547457549564,
+        "currentPriceJpy": 1380.5106201171875,
+        "marketValueJpy": 16655.189524086112,
+        "unrealizedPnlJpy": -11.47714199630252,
         "firstEntryDate": "2026-11-01"
       },
       {
@@ -35492,9 +35573,9 @@
         "name": "ビットコイン",
         "quantity": 0.00138866,
         "avgEntryPriceJpy": 12001968.284999998,
-        "currentPriceJpy": 11786588,
-        "marketValueJpy": 16367.563292079998,
-        "unrealizedPnlJpy": -299.0899865680976,
+        "currentPriceJpy": 11720105,
+        "marketValueJpy": 16275.241009299998,
+        "unrealizedPnlJpy": -391.4122693480976,
         "firstEntryDate": "2026-11-06"
       },
       {
@@ -35502,9 +35583,9 @@
         "name": "イーサリアム",
         "quantity": 0.01409769,
         "avgEntryPriceJpy": 356296.745625,
-        "currentPriceJpy": 328496.03125,
-        "marketValueJpy": 4631.035214792812,
-        "unrealizedPnlJpy": -391.92585303729345,
+        "currentPriceJpy": 326316.34375,
+        "marketValueJpy": 4600.306656120937,
+        "unrealizedPnlJpy": -422.65441170916847,
         "firstEntryDate": "2026-11-06"
       }
     ],
@@ -35514,9 +35595,9 @@
         "name": "ビットコイン",
         "quantity": 0.00833196,
         "avgEntryPriceJpy": 12001968.284999998,
-        "currentPriceJpy": 11786588,
-        "marketValueJpy": 98205.37975247999,
-        "unrealizedPnlJpy": -1794.5399194085855,
+        "currentPriceJpy": 11720105,
+        "marketValueJpy": 97651.4460558,
+        "unrealizedPnlJpy": -2348.4736160885855,
         "firstEntryDate": "2026-11-06"
       },
       {
@@ -35524,19 +35605,19 @@
         "name": "アバランチ",
         "quantity": 73.09207704,
         "avgEntryPriceJpy": 1368.1373419189451,
-        "currentPriceJpy": 1376.039794921875,
-        "marketValueJpy": 100577.6067005355,
-        "unrealizedPnlJpy": 577.6067036951288,
+        "currentPriceJpy": 1380.5106201171875,
+        "marketValueJpy": 100904.38860014365,
+        "unrealizedPnlJpy": 904.388603303283,
         "firstEntryDate": "2026-11-10"
       },
       {
-        "symbol": "ETH-JPY",
-        "name": "イーサリアム",
-        "quantity": 0.30290316,
-        "avgEntryPriceJpy": 330138.51140624995,
-        "currentPriceJpy": 328496.03125,
-        "marketValueJpy": 99502.48591308376,
-        "unrealizedPnlJpy": -497.51242956540324,
+        "symbol": "LTC-JPY",
+        "name": "ライトコイン",
+        "quantity": 12.5770047,
+        "avgEntryPriceJpy": 7951.018732910155,
+        "currentPriceJpy": 7911.46142578125,
+        "marketValueJpy": 99502.48753591948,
+        "unrealizedPnlJpy": -497.5124376795873,
         "firstEntryDate": "2026-11-12"
       }
     ],
@@ -35547,9 +35628,9 @@
         "name": "ビットコイン",
         "quantity": 0.0073102,
         "avgEntryPriceJpy": 13679509.259999998,
-        "currentPriceJpy": 11786588,
-        "marketValueJpy": 86162.3155976,
-        "unrealizedPnlJpy": -13837.632994851985,
+        "currentPriceJpy": 11720105,
+        "marketValueJpy": 85676.311571,
+        "unrealizedPnlJpy": -14323.637021451985,
         "firstEntryDate": "2026-10-02"
       },
       {
@@ -35557,9 +35638,9 @@
         "name": "ビットコインキャッシュ",
         "quantity": 2.21311362,
         "avgEntryPriceJpy": 45185.208281249994,
-        "currentPriceJpy": 36710.79296875,
-        "marketValueJpy": 81245.15592014087,
-        "unrealizedPnlJpy": -18754.843949630293,
+        "currentPriceJpy": 36427.32421875,
+        "marketValueJpy": 80617.80736867149,
+        "unrealizedPnlJpy": -19382.192501099667,
         "firstEntryDate": "2026-11-05"
       },
       {
@@ -35567,9 +35648,9 @@
         "name": "ライトコイン",
         "quantity": 11.19674251,
         "avgEntryPriceJpy": 8931.169028320312,
-        "currentPriceJpy": 7991.27978515625,
-        "marketValueJpy": 89476.30207976265,
-        "unrealizedPnlJpy": -10523.697843626775,
+        "currentPriceJpy": 7911.46142578125,
+        "marketValueJpy": 88582.59646227013,
+        "unrealizedPnlJpy": -11417.403461119295,
         "firstEntryDate": "2026-11-05"
       },
       {
@@ -35577,9 +35658,9 @@
         "name": "カルダノ",
         "quantity": 3163.83215756,
         "avgEntryPriceJpy": 31.60723926544189,
-        "currentPriceJpy": 27.872560501098633,
-        "marketValueJpy": 88184.10322691251,
-        "unrealizedPnlJpy": -11815.896772785643,
+        "currentPriceJpy": 27.701204299926758,
+        "marketValueJpy": 87641.96096724762,
+        "unrealizedPnlJpy": -12358.039032450542,
         "firstEntryDate": "2026-11-05"
       },
       {
@@ -35587,10 +35668,20 @@
         "name": "アバランチ",
         "quantity": 71.76419735,
         "avgEntryPriceJpy": 1393.452496948242,
-        "currentPriceJpy": 1376.039794921875,
-        "marketValueJpy": 98750.39140422698,
-        "unrealizedPnlJpy": -1249.6085846169474,
+        "currentPriceJpy": 1380.5106201171875,
+        "marketValueJpy": 99071.23658586072,
+        "unrealizedPnlJpy": -928.7634029831888,
         "firstEntryDate": "2026-11-05"
+      },
+      {
+        "symbol": "ATOM-JPY",
+        "name": "コスモス",
+        "quantity": 446.91721634,
+        "avgEntryPriceJpy": 223.75508560180663,
+        "currentPriceJpy": 222.64187622070312,
+        "marketValueJpy": 99502.48756127148,
+        "unrealizedPnlJpy": -497.5124378063513,
+        "firstEntryDate": "2026-11-12"
       }
     ],
     "ichimoku": [],
@@ -35600,9 +35691,9 @@
         "name": "エックスアールピー",
         "quantity": 457.89349905,
         "avgEntryPriceJpy": 218.39139495849608,
-        "currentPriceJpy": 168.27247619628906,
-        "marketValueJpy": 77050.87291932663,
-        "unrealizedPnlJpy": -22949.127080629667,
+        "currentPriceJpy": 168.08505249023438,
+        "marketValueJpy": 76965.05282275633,
+        "unrealizedPnlJpy": -23034.947177199967,
         "firstEntryDate": "2026-10-09"
       },
       {
@@ -35610,9 +35701,9 @@
         "name": "ビットコインキャッシュ",
         "quantity": 2.244637,
         "avgEntryPriceJpy": 44550.633222656244,
-        "currentPriceJpy": 36710.79296875,
-        "marketValueJpy": 82402.4041969961,
-        "unrealizedPnlJpy": -17597.59550800735,
+        "currentPriceJpy": 36427.32421875,
+        "marketValueJpy": 81766.11975240234,
+        "unrealizedPnlJpy": -18233.879952601103,
         "firstEntryDate": "2026-10-09"
       },
       {
@@ -35620,9 +35711,9 @@
         "name": "ステラルーメン",
         "quantity": 3253.90428887,
         "avgEntryPriceJpy": 30.732311439514156,
-        "currentPriceJpy": 23.64560890197754,
-        "marketValueJpy": 76940.54821908737,
-        "unrealizedPnlJpy": -23059.45178083631,
+        "currentPriceJpy": 23.38247299194336,
+        "marketValueJpy": 76084.32915287143,
+        "unrealizedPnlJpy": -23915.67084705224,
         "firstEntryDate": "2026-10-09"
       },
       {
@@ -35630,9 +35721,9 @@
         "name": "チリーズ",
         "quantity": 41627.72209796,
         "avgEntryPriceJpy": 2.402245305776596,
-        "currentPriceJpy": 1.7137290239334106,
-        "marketValueJpy": 71338.63555950827,
-        "unrealizedPnlJpy": -28661.364440488815,
+        "currentPriceJpy": 1.6966229677200317,
+        "marketValueJpy": 70626.54940526564,
+        "unrealizedPnlJpy": -29373.450594731436,
         "firstEntryDate": "2026-10-09"
       },
       {
@@ -35640,9 +35731,9 @@
         "name": "ソラナ",
         "quantity": 5.8869231,
         "avgEntryPriceJpy": 16986.80247070312,
-        "currentPriceJpy": 13335.3408203125,
-        "marketValueJpy": 78504.12592147061,
-        "unrealizedPnlJpy": -21495.873938448676,
+        "currentPriceJpy": 13248.6796875,
+        "marketValueJpy": 77993.95849684453,
+        "unrealizedPnlJpy": -22006.04136307475,
         "firstEntryDate": "2026-10-14"
       },
       {
@@ -35650,9 +35741,9 @@
         "name": "ライトコイン",
         "quantity": 10.15099458,
         "avgEntryPriceJpy": 9851.251435546874,
-        "currentPriceJpy": 7991.27978515625,
-        "marketValueJpy": 81119.43778638466,
-        "unrealizedPnlJpy": -18880.56214206888,
+        "currentPriceJpy": 7911.46142578125,
+        "marketValueJpy": 80309.20205298455,
+        "unrealizedPnlJpy": -19690.797875468998,
         "firstEntryDate": "2026-10-14"
       },
       {
@@ -35660,9 +35751,9 @@
         "name": "ドージコイン",
         "quantity": 7523.73164553,
         "avgEntryPriceJpy": 13.291276817321776,
-        "currentPriceJpy": 10.797595977783203,
-        "marketValueJpy": 81238.21455369492,
-        "unrealizedPnlJpy": -18761.78544628818,
+        "currentPriceJpy": 10.724489212036133,
+        "marketValueJpy": 80688.17886674135,
+        "unrealizedPnlJpy": -19311.821133241763,
         "firstEntryDate": "2026-10-14"
       },
       {
@@ -35670,9 +35761,9 @@
         "name": "カルダノ",
         "quantity": 2735.48136176,
         "avgEntryPriceJpy": 36.556637306213375,
-        "currentPriceJpy": 27.872560501098633,
-        "marketValueJpy": 76244.86975528327,
-        "unrealizedPnlJpy": -23755.130244483702,
+        "currentPriceJpy": 27.701204299926758,
+        "marketValueJpy": 75776.12806075561,
+        "unrealizedPnlJpy": -24223.871939011366,
         "firstEntryDate": "2026-10-16"
       },
       {
@@ -35680,9 +35771,9 @@
         "name": "チェーンリンク",
         "quantity": 51.14719957,
         "avgEntryPriceJpy": 1955.141255493164,
-        "currentPriceJpy": 1625.8343505859375,
-        "marketValueJpy": 83156.87399718029,
-        "unrealizedPnlJpy": -16843.125985068924,
+        "currentPriceJpy": 1608.1982421875,
+        "marketValueJpy": 82254.83644128725,
+        "unrealizedPnlJpy": -17745.16354096196,
         "firstEntryDate": "2026-10-17"
       },
       {
@@ -35690,9 +35781,9 @@
         "name": "ザ・サンドボックス",
         "quantity": 10566.21387323,
         "avgEntryPriceJpy": 9.464127945899962,
-        "currentPriceJpy": 6.64864444732666,
-        "marketValueJpy": 70250.99919751656,
-        "unrealizedPnlJpy": -29749.000802475366,
+        "currentPriceJpy": 6.615539073944092,
+        "marketValueJpy": 69901.20074200322,
+        "unrealizedPnlJpy": -30098.799257988718,
         "firstEntryDate": "2026-10-18"
       },
       {
@@ -35700,9 +35791,9 @@
         "name": "ファイルコイン",
         "quantity": 607.88062457,
         "avgEntryPriceJpy": 164.50598350524902,
-        "currentPriceJpy": 120.29203033447266,
-        "marketValueJpy": 73123.19453051263,
-        "unrealizedPnlJpy": -26876.80546816027,
+        "currentPriceJpy": 119.8619613647461,
+        "marketValueJpy": 72861.76393658707,
+        "unrealizedPnlJpy": -27138.236062085827,
         "firstEntryDate": "2026-10-21"
       },
       {
@@ -35710,9 +35801,9 @@
         "name": "アバランチ",
         "quantity": 38.39579184,
         "avgEntryPriceJpy": 1543.7402362060545,
-        "currentPriceJpy": 1376.039794921875,
-        "marketValueJpy": 52834.1375293766,
-        "unrealizedPnlJpy": -6438.9912350235,
+        "currentPriceJpy": 1380.5106201171875,
+        "marketValueJpy": 53005.79840292885,
+        "unrealizedPnlJpy": -6267.330361471254,
         "firstEntryDate": "2026-10-21"
       }
     ],
@@ -35722,9 +35813,9 @@
         "name": "アバランチ",
         "quantity": 83.1707715,
         "avgEntryPriceJpy": 1202.3454656982422,
-        "currentPriceJpy": 1376.039794921875,
-        "marketValueJpy": 114446.29135835412,
-        "unrealizedPnlJpy": 14446.29136670454,
+        "currentPriceJpy": 1380.5106201171875,
+        "marketValueJpy": 114818.13333908991,
+        "unrealizedPnlJpy": 14818.133347440318,
         "firstEntryDate": "2026-09-15"
       },
       {
@@ -35732,19 +35823,9 @@
         "name": "ビットコインキャッシュ",
         "quantity": 2.56326408,
         "avgEntryPriceJpy": 39012.757382812495,
-        "currentPriceJpy": 36710.79296875,
-        "marketValueJpy": 94099.45696511344,
-        "unrealizedPnlJpy": -5900.542696004641,
-        "firstEntryDate": "2026-09-18"
-      },
-      {
-        "symbol": "LTC-JPY",
-        "name": "ライトコイン",
-        "quantity": 11.53853222,
-        "avgEntryPriceJpy": 8666.613574218749,
-        "currentPriceJpy": 7991.27978515625,
-        "marketValueJpy": 92207.63928006007,
-        "unrealizedPnlJpy": -7792.360684352328,
+        "currentPriceJpy": 36427.32421875,
+        "marketValueJpy": 93372.85170043595,
+        "unrealizedPnlJpy": -6627.147960682141,
         "firstEntryDate": "2026-09-18"
       }
     ],
@@ -35754,9 +35835,9 @@
         "name": "ステラルーメン",
         "quantity": 3086.02740981,
         "avgEntryPriceJpy": 32.40411918640137,
-        "currentPriceJpy": 23.64560890197754,
-        "marketValueJpy": 72970.99719315002,
-        "unrealizedPnlJpy": -27029.00280683471,
+        "currentPriceJpy": 23.38247299194336,
+        "marketValueJpy": 72158.95256227924,
+        "unrealizedPnlJpy": -27841.04743770549,
         "firstEntryDate": "2026-10-07"
       },
       {
@@ -35764,9 +35845,9 @@
         "name": "ドージコイン",
         "quantity": 7040.10936941,
         "avgEntryPriceJpy": 14.204324784278866,
-        "currentPriceJpy": 10.797595977783203,
-        "marketValueJpy": 76016.25661029526,
-        "unrealizedPnlJpy": -23983.74338964906,
+        "currentPriceJpy": 10.724489212036133,
+        "marketValueJpy": 75501.57698379205,
+        "unrealizedPnlJpy": -24498.423016152272,
         "firstEntryDate": "2026-10-07"
       },
       {
@@ -35774,9 +35855,9 @@
         "name": "ライトコイン",
         "quantity": 10.1151032,
         "avgEntryPriceJpy": 9886.206591796874,
-        "currentPriceJpy": 7991.27978515625,
-        "marketValueJpy": 80832.6197269293,
-        "unrealizedPnlJpy": -19167.380205616355,
+        "currentPriceJpy": 7911.46142578125,
+        "marketValueJpy": 80025.24878459648,
+        "unrealizedPnlJpy": -19974.75114794917,
         "firstEntryDate": "2026-10-09"
       },
       {
@@ -35784,9 +35865,9 @@
         "name": "ソラナ",
         "quantity": 5.76384263,
         "avgEntryPriceJpy": 17349.536806640623,
-        "currentPriceJpy": 13335.3408203125,
-        "marketValueJpy": 76862.80590569635,
-        "unrealizedPnlJpy": -23137.193951172932,
+        "currentPriceJpy": 13248.6796875,
+        "marketValueJpy": 76363.30477402758,
+        "unrealizedPnlJpy": -23636.69508284171,
         "firstEntryDate": "2026-10-09"
       },
       {
@@ -35794,9 +35875,9 @@
         "name": "チリーズ",
         "quantity": 33998.44306182,
         "avgEntryPriceJpy": 2.3620815253257748,
-        "currentPriceJpy": 1.7137290239334106,
-        "marketValueJpy": 58264.11864358842,
-        "unrealizedPnlJpy": -22042.975602576862,
+        "currentPriceJpy": 1.6966229677200317,
+        "marketValueJpy": 57682.539365405566,
+        "unrealizedPnlJpy": -22624.55488075972,
         "firstEntryDate": "2026-10-09"
       },
       {
@@ -35804,9 +35885,9 @@
         "name": "ザ・サンドボックス",
         "quantity": 9683.74481712,
         "avgEntryPriceJpy": 10.326583557128906,
-        "currentPriceJpy": 6.64864444732666,
-        "marketValueJpy": 64383.77620767321,
-        "unrealizedPnlJpy": -35616.22379223044,
+        "currentPriceJpy": 6.615539073944092,
+        "marketValueJpy": 64063.19221976094,
+        "unrealizedPnlJpy": -35936.80778014271,
         "firstEntryDate": "2026-10-11"
       },
       {
@@ -35814,9 +35895,9 @@
         "name": "カルダノ",
         "quantity": 2744.5279695,
         "avgEntryPriceJpy": 36.43613805770874,
-        "currentPriceJpy": 27.872560501098633,
-        "marketValueJpy": 76497.02187684613,
-        "unrealizedPnlJpy": -23502.978123098907,
+        "currentPriceJpy": 27.701204299926758,
+        "marketValueJpy": 76026.72998998265,
+        "unrealizedPnlJpy": -23973.270009962383,
         "firstEntryDate": "2026-10-13"
       },
       {
@@ -35824,9 +35905,9 @@
         "name": "コスモス",
         "quantity": 338.85230291,
         "avgEntryPriceJpy": 278.9553424072265,
-        "currentPriceJpy": 223.32044982910156,
-        "marketValueJpy": 75672.64871148817,
-        "unrealizedPnlJpy": -18852.011472248105,
+        "currentPriceJpy": 222.64187622070312,
+        "marketValueJpy": 75442.71248158842,
+        "unrealizedPnlJpy": -19081.947702147863,
         "firstEntryDate": "2026-10-21"
       },
       {
@@ -35834,9 +35915,9 @@
         "name": "ポルカドット",
         "quantity": 648.41604545,
         "avgEntryPriceJpy": 154.22197013854978,
-        "currentPriceJpy": 135.72817993164062,
-        "marketValueJpy": 88008.32968740046,
-        "unrealizedPnlJpy": -11991.67031134597,
+        "currentPriceJpy": 134.41127014160156,
+        "marketValueJpy": 87154.42424912895,
+        "unrealizedPnlJpy": -12845.575749617488,
         "firstEntryDate": "2026-11-05"
       },
       {
@@ -35844,9 +35925,9 @@
         "name": "ファイルコイン",
         "quantity": 716.8629833,
         "avgEntryPriceJpy": 139.49667137145994,
-        "currentPriceJpy": 120.29203033447266,
-        "marketValueJpy": 86232.90373278417,
-        "unrealizedPnlJpy": -13767.096266980308,
+        "currentPriceJpy": 119.8619613647461,
+        "marketValueJpy": 85924.60320812122,
+        "unrealizedPnlJpy": -14075.39679164325,
         "firstEntryDate": "2026-11-05"
       },
       {
@@ -35854,9 +35935,9 @@
         "name": "ビットコイン",
         "quantity": 0.00651335,
         "avgEntryPriceJpy": 12001968.284999998,
-        "currentPriceJpy": 11786588,
-        "marketValueJpy": 76770.1729498,
-        "unrealizedPnlJpy": -1402.8471793047388,
+        "currentPriceJpy": 11720105,
+        "marketValueJpy": 76337.14590175,
+        "unrealizedPnlJpy": -1835.8742273547389,
         "firstEntryDate": "2026-11-06"
       },
       {
@@ -35864,9 +35945,9 @@
         "name": "イーサリアム",
         "quantity": 0.05276261,
         "avgEntryPriceJpy": 332903.360625,
-        "currentPriceJpy": 328496.03125,
-        "marketValueJpy": 17332.30798339156,
-        "unrealizedPnlJpy": -232.5422009546673,
+        "currentPriceJpy": 326316.34375,
+        "marketValueJpy": 17217.30198190719,
+        "unrealizedPnlJpy": -347.5482024390423,
         "firstEntryDate": "2026-11-12"
       }
     ],
@@ -35876,9 +35957,9 @@
         "name": "ビットコイン",
         "quantity": 0.00826764,
         "avgEntryPriceJpy": 12095340.825,
-        "currentPriceJpy": 11786588,
-        "marketValueJpy": 97447.26641232,
-        "unrealizedPnlJpy": -2552.6572060829935,
+        "currentPriceJpy": 11720105,
+        "marketValueJpy": 96897.6089022,
+        "unrealizedPnlJpy": -3102.3147162029936,
         "firstEntryDate": "2026-11-09"
       },
       {
@@ -35886,9 +35967,9 @@
         "name": "イーサリアム",
         "quantity": 0.28067549,
         "avgEntryPriceJpy": 356283.33515625,
-        "currentPriceJpy": 328496.03125,
-        "marketValueJpy": 92200.78453414908,
-        "unrealizedPnlJpy": -7799.21513966563,
+        "currentPriceJpy": 326316.34375,
+        "marketValueJpy": 91588.9996770397,
+        "unrealizedPnlJpy": -8410.999996775005,
         "firstEntryDate": "2026-11-09"
       },
       {
@@ -35896,9 +35977,9 @@
         "name": "ビットコインキャッシュ",
         "quantity": 2.56396406,
         "avgEntryPriceJpy": 39002.10673828125,
-        "currentPriceJpy": 36710.79296875,
-        "marketValueJpy": 94125.15378597571,
-        "unrealizedPnlJpy": -5874.846155261241,
+        "currentPriceJpy": 36427.32421875,
+        "marketValueJpy": 93398.35009884258,
+        "unrealizedPnlJpy": -6601.649842394366,
         "firstEntryDate": "2026-11-09"
       },
       {
@@ -35906,9 +35987,9 @@
         "name": "ライトコイン",
         "quantity": 12.13379798,
         "avgEntryPriceJpy": 8241.442631835936,
-        "currentPriceJpy": 7991.27978515625,
-        "marketValueJpy": 96964.57451474374,
-        "unrealizedPnlJpy": -3035.42544371303,
+        "currentPriceJpy": 7911.46142578125,
+        "marketValueJpy": 95996.07466699246,
+        "unrealizedPnlJpy": -4003.925291464319,
         "firstEntryDate": "2026-11-09"
       },
       {
@@ -35916,9 +35997,9 @@
         "name": "エックスアールピー",
         "quantity": 544.17378733,
         "avgEntryPriceJpy": 183.7648235321045,
-        "currentPriceJpy": 168.27247619628906,
-        "marketValueJpy": 91569.47067513189,
-        "unrealizedPnlJpy": -8430.529324362515,
+        "currentPriceJpy": 168.08505249023438,
+        "marketValueJpy": 91467.47960717269,
+        "unrealizedPnlJpy": -8532.520392321718,
         "firstEntryDate": "2026-11-09"
       },
       {
@@ -35926,9 +36007,9 @@
         "name": "ステラルーメン",
         "quantity": 4155.72445338,
         "avgEntryPriceJpy": 24.06319310188293,
-        "currentPriceJpy": 23.64560890197754,
-        "marketValueJpy": 98264.63512900787,
-        "unrealizedPnlJpy": -1735.364870891958,
+        "currentPriceJpy": 23.38247299194336,
+        "marketValueJpy": 97171.11479311645,
+        "unrealizedPnlJpy": -2828.885206783398,
         "firstEntryDate": "2026-11-09"
       },
       {
@@ -35936,9 +36017,9 @@
         "name": "ポルカドット",
         "quantity": 705.29992303,
         "avgEntryPriceJpy": 141.78365364074705,
-        "currentPriceJpy": 135.72817993164062,
-        "marketValueJpy": 95729.07485878811,
-        "unrealizedPnlJpy": -4270.925140942948,
+        "currentPriceJpy": 134.41127014160156,
+        "marketValueJpy": 94800.25848523612,
+        "unrealizedPnlJpy": -5199.741514494952,
         "firstEntryDate": "2026-11-09"
       },
       {
@@ -35946,9 +36027,9 @@
         "name": "コスモス",
         "quantity": 468.73406447,
         "avgEntryPriceJpy": 213.3405860137939,
-        "currentPriceJpy": 223.32044982910156,
-        "marketValueJpy": 104677.9021276635,
-        "unrealizedPnlJpy": 4677.902129006237,
+        "currentPriceJpy": 222.64187622070312,
+        "marketValueJpy": 104359.83156215682,
+        "unrealizedPnlJpy": 4359.831563499563,
         "firstEntryDate": "2026-11-09"
       },
       {
@@ -35956,9 +36037,9 @@
         "name": "カルダノ",
         "quantity": 202.6193881,
         "avgEntryPriceJpy": 28.770783720016478,
-        "currentPriceJpy": 27.872560501098633,
-        "marketValueJpy": 5647.521153512835,
-        "unrealizedPnlJpy": -181.9974389943462,
+        "currentPriceJpy": 27.701204299926758,
+        "marketValueJpy": 5612.801064884249,
+        "unrealizedPnlJpy": -216.717527622932,
         "firstEntryDate": "2026-11-09"
       }
     ],
@@ -35968,9 +36049,9 @@
         "name": "ステラルーメン",
         "quantity": 3639.34160006,
         "avgEntryPriceJpy": 27.477497577667233,
-        "currentPriceJpy": 23.64560890197754,
-        "marketValueJpy": 86054.44813571592,
-        "unrealizedPnlJpy": -13945.551864236324,
+        "currentPriceJpy": 23.38247299194336,
+        "marketValueJpy": 85096.80667185888,
+        "unrealizedPnlJpy": -14903.19332809336,
         "firstEntryDate": "2026-10-19"
       },
       {
@@ -35978,9 +36059,9 @@
         "name": "チリーズ",
         "quantity": 49893.33550659,
         "avgEntryPriceJpy": 2.00427570104599,
-        "currentPriceJpy": 1.7137290239334106,
-        "marketValueJpy": 85503.65715849066,
-        "unrealizedPnlJpy": -14496.342841502794,
+        "currentPriceJpy": 1.6966229677200317,
+        "marketValueJpy": 84650.17895664196,
+        "unrealizedPnlJpy": -15349.821043351496,
         "firstEntryDate": "2026-10-26"
       },
       {
@@ -35988,9 +36069,9 @@
         "name": "カルダノ",
         "quantity": 3293.27485962,
         "avgEntryPriceJpy": 30.364911603927606,
-        "currentPriceJpy": 27.872560501098633,
-        "marketValueJpy": 91792.00277150555,
-        "unrealizedPnlJpy": -8207.997228292837,
+        "currentPriceJpy": 27.701204299926758,
+        "marketValueJpy": 91227.67970214623,
+        "unrealizedPnlJpy": -8772.32029765216,
         "firstEntryDate": "2026-10-30"
       },
       {
@@ -35998,9 +36079,9 @@
         "name": "ファイルコイン",
         "quantity": 763.765269,
         "avgEntryPriceJpy": 130.93027931213376,
-        "currentPriceJpy": 120.29203033447266,
-        "marketValueJpy": 91874.87490696467,
-        "unrealizedPnlJpy": -8125.12509211231,
+        "currentPriceJpy": 119.8619613647461,
+        "marketValueJpy": 91546.4031646129,
+        "unrealizedPnlJpy": -8453.596834464071,
         "firstEntryDate": "2026-10-30"
       },
       {
@@ -36008,9 +36089,9 @@
         "name": "アバランチ",
         "quantity": 77.27845189,
         "avgEntryPriceJpy": 1294.0217816162108,
-        "currentPriceJpy": 1376.039794921875,
-        "marketValueJpy": 106338.22509059559,
-        "unrealizedPnlJpy": 6338.225095355153,
+        "currentPriceJpy": 1380.5106201171875,
+        "marketValueJpy": 106683.72354036014,
+        "unrealizedPnlJpy": 6683.723545119709,
         "firstEntryDate": "2026-10-30"
       },
       {
@@ -36018,9 +36099,9 @@
         "name": "ザ・サンドボックス",
         "quantity": 13655.72886023,
         "avgEntryPriceJpy": 7.322933914661407,
-        "currentPriceJpy": 6.64864444732666,
-        "marketValueJpy": 90792.0858607666,
-        "unrealizedPnlJpy": -9207.914139232216,
+        "currentPriceJpy": 6.615539073944092,
+        "marketValueJpy": 90340.00785803758,
+        "unrealizedPnlJpy": -9659.992141961244,
         "firstEntryDate": "2026-10-31"
       },
       {
@@ -36028,9 +36109,9 @@
         "name": "コスモス",
         "quantity": 445.95281779,
         "avgEntryPriceJpy": 224.23896881103514,
-        "currentPriceJpy": 223.32044982910156,
-        "marketValueJpy": 99590.38387141816,
-        "unrealizedPnlJpy": -409.6161281868791,
+        "currentPriceJpy": 222.64187622070312,
+        "marketValueJpy": 99287.77205867495,
+        "unrealizedPnlJpy": -712.2279409300903,
         "firstEntryDate": "2026-11-03"
       },
       {
@@ -36038,9 +36119,9 @@
         "name": "エックスアールピー",
         "quantity": 594.66725281,
         "avgEntryPriceJpy": 168.1612692260742,
-        "currentPriceJpy": 168.27247619628906,
-        "marketValueJpy": 100066.13114318335,
-        "unrealizedPnlJpy": 66.13114347098937,
+        "currentPriceJpy": 168.08505249023438,
+        "marketValueJpy": 99954.67640279233,
+        "unrealizedPnlJpy": -45.32359692002062,
         "firstEntryDate": "2026-11-11"
       }
     ],
@@ -36050,9 +36131,9 @@
         "name": "イーサリアム",
         "quantity": 0.26053558,
         "avgEntryPriceJpy": 383824.73203124997,
-        "currentPriceJpy": 328496.03125,
-        "marketValueJpy": 85584.90402941687,
-        "unrealizedPnlJpy": -14415.095148689412,
+        "currentPriceJpy": 326316.34375,
+        "marketValueJpy": 85017.01788238563,
+        "unrealizedPnlJpy": -14982.981295720661,
         "firstEntryDate": "2026-10-18"
       },
       {
@@ -36060,9 +36141,9 @@
         "name": "コスモス",
         "quantity": 369.39692944,
         "avgEntryPriceJpy": 270.7115084838867,
-        "currentPriceJpy": 223.32044982910156,
-        "marketValueJpy": 82493.8884480297,
-        "unrealizedPnlJpy": -17506.111549988564,
+        "currentPriceJpy": 222.64187622070312,
+        "marketValueJpy": 82243.22544068829,
+        "unrealizedPnlJpy": -17756.774557329965,
         "firstEntryDate": "2026-10-18"
       },
       {
@@ -36070,9 +36151,9 @@
         "name": "エックスアールピー",
         "quantity": 481.35755074,
         "avgEntryPriceJpy": 207.74578033447264,
-        "currentPriceJpy": 168.27247619628906,
-        "marketValueJpy": 80999.22699880066,
-        "unrealizedPnlJpy": -19000.772999571156,
+        "currentPriceJpy": 168.08505249023438,
+        "marketValueJpy": 80909.00918270356,
+        "unrealizedPnlJpy": -19090.990815668254,
         "firstEntryDate": "2026-10-20"
       },
       {
@@ -36080,9 +36161,9 @@
         "name": "ソラナ",
         "quantity": 5.97919746,
         "avgEntryPriceJpy": 16724.6525390625,
-        "currentPriceJpy": 13335.3408203125,
-        "marketValueJpy": 79734.63596104682,
-        "unrealizedPnlJpy": -20265.36401989823,
+        "currentPriceJpy": 13248.6796875,
+        "marketValueJpy": 79216.4719358536,
+        "unrealizedPnlJpy": -20783.528045091454,
         "firstEntryDate": "2026-10-20"
       },
       {
@@ -36090,9 +36171,9 @@
         "name": "ライトコイン",
         "quantity": 10.29205763,
         "avgEntryPriceJpy": 9716.230078125,
-        "currentPriceJpy": 7991.27978515625,
-        "marketValueJpy": 82246.71208628215,
-        "unrealizedPnlJpy": -17753.287824119754,
+        "currentPriceJpy": 7911.46142578125,
+        "marketValueJpy": 81425.2169316626,
+        "unrealizedPnlJpy": -18574.782978739306,
         "firstEntryDate": "2026-10-21"
       },
       {
@@ -36100,9 +36181,9 @@
         "name": "ドージコイン",
         "quantity": 7690.31966549,
         "avgEntryPriceJpy": 13.003360633850097,
-        "currentPriceJpy": 10.797595977783203,
-        "marketValueJpy": 83036.9646879619,
-        "unrealizedPnlJpy": -16963.03531199402,
+        "currentPriceJpy": 10.724489212036133,
+        "marketValueJpy": 82474.75028965683,
+        "unrealizedPnlJpy": -17525.249710299086,
         "firstEntryDate": "2026-10-21"
       },
       {
@@ -36110,9 +36191,9 @@
         "name": "ビットコイン",
         "quantity": 0.00758067,
         "avgEntryPriceJpy": 13191440.054999996,
-        "currentPriceJpy": 11786588,
-        "marketValueJpy": 89350.23405396,
-        "unrealizedPnlJpy": -10649.71982777682,
+        "currentPriceJpy": 11720105,
+        "marketValueJpy": 88846.24837035,
+        "unrealizedPnlJpy": -11153.70551138682,
         "firstEntryDate": "2026-10-21"
       },
       {
@@ -36120,9 +36201,9 @@
         "name": "ステラルーメン",
         "quantity": 3575.72860625,
         "avgEntryPriceJpy": 27.966328268051143,
-        "currentPriceJpy": 23.64560890197754,
-        "marketValueJpy": 84550.28016300075,
-        "unrealizedPnlJpy": -15449.719836847751,
+        "currentPriceJpy": 23.38247299194336,
+        "marketValueJpy": 83609.3775621599,
+        "unrealizedPnlJpy": -16390.622437688595,
         "firstEntryDate": "2026-10-22"
       },
       {
@@ -36130,9 +36211,9 @@
         "name": "チェーンリンク",
         "quantity": 52.89876553,
         "avgEntryPriceJpy": 1890.403282470703,
-        "currentPriceJpy": 1625.8343505859375,
-        "marketValueJpy": 86004.63010226532,
-        "unrealizedPnlJpy": -13995.369894294754,
+        "currentPriceJpy": 1608.1982421875,
+        "marketValueJpy": 85071.70173923472,
+        "unrealizedPnlJpy": -14928.298257325363,
         "firstEntryDate": "2026-10-22"
       },
       {
@@ -36140,9 +36221,9 @@
         "name": "チリーズ",
         "quantity": 49024.3244199,
         "avgEntryPriceJpy": 2.0398037338256834,
-        "currentPriceJpy": 1.7137290239334106,
-        "marketValueJpy": 84014.40763711008,
-        "unrealizedPnlJpy": -15985.592362883552,
+        "currentPriceJpy": 1.6966229677200317,
+        "marketValueJpy": 83175.79478776036,
+        "unrealizedPnlJpy": -16824.205212233286,
         "firstEntryDate": "2026-10-27"
       },
       {
@@ -36150,9 +36231,9 @@
         "name": "アバランチ",
         "quantity": 70.52524622,
         "avgEntryPriceJpy": 1417.931951293945,
-        "currentPriceJpy": 1376.039794921875,
-        "marketValueJpy": 97045.54534538354,
-        "unrealizedPnlJpy": -2954.454642826984,
+        "currentPriceJpy": 1380.5106201171875,
+        "marketValueJpy": 97360.85139308953,
+        "unrealizedPnlJpy": -2639.14859512099,
         "firstEntryDate": "2026-11-01"
       },
       {
@@ -36160,9 +36241,9 @@
         "name": "ポルカドット",
         "quantity": 671.09477292,
         "avgEntryPriceJpy": 149.01025016784666,
-        "currentPriceJpy": 135.72817993164062,
-        "marketValueJpy": 91086.47209006926,
-        "unrealizedPnlJpy": -8913.527909074182,
+        "currentPriceJpy": 134.41127014160156,
+        "marketValueJpy": 90202.70081356687,
+        "unrealizedPnlJpy": -9797.299185576572,
         "firstEntryDate": "2026-11-04"
       },
       {
@@ -36170,9 +36251,9 @@
         "name": "カルダノ",
         "quantity": 3219.32527363,
         "avgEntryPriceJpy": 30.20297312736511,
-        "currentPriceJpy": 27.872560501098633,
-        "marketValueJpy": 89730.83846196809,
-        "unrealizedPnlJpy": -7502.35626572613,
+        "currentPriceJpy": 27.701204299926758,
+        "marketValueJpy": 89179.18711274225,
+        "unrealizedPnlJpy": -8054.007614951974,
         "firstEntryDate": "2026-11-04"
       }
     ],
@@ -36186,9 +36267,9 @@
         "name": "ビットコイン",
         "quantity": 0.07826452,
         "avgEntryPriceJpy": 12138322.665,
-        "currentPriceJpy": 11786588,
-        "marketValueJpy": 922471.65225776,
-        "unrealizedPnlJpy": -27528.34472358573,
+        "currentPriceJpy": 11720105,
+        "marketValueJpy": 917268.3921746,
+        "unrealizedPnlJpy": -32731.60480674573,
         "firstEntryDate": "2026-09-08"
       }
     ]
@@ -37659,6 +37740,16 @@
         "quantity": 820.70114497,
         "reason": "デッドクロス（25日線が75日線を下抜け）を検知",
         "realizedPnlJpy": -159.04525352120982
+      },
+      {
+        "date": "2026-11-12",
+        "symbol": "SAND-JPY",
+        "name": "ザ・サンドボックス",
+        "action": "sell",
+        "priceJpy": 6.582461378574371,
+        "quantity": 8219.08591415,
+        "reason": "デッドクロス（25日線が75日線を下抜け）を検知",
+        "realizedPnlJpy": -45898.184402862076
       }
     ],
     "breakout": [
@@ -42434,6 +42525,25 @@
         "quantity": 9109.08785322,
         "reason": "上位3位から陥落、手仕舞い",
         "realizedPnlJpy": -2135.5308865290426
+      },
+      {
+        "date": "2026-11-12",
+        "symbol": "ETH-JPY",
+        "name": "イーサリアム",
+        "action": "sell",
+        "priceJpy": 324684.76203125,
+        "quantity": 0.30290316,
+        "reason": "上位3位から陥落、手仕舞い",
+        "realizedPnlJpy": -1651.9579195355036
+      },
+      {
+        "date": "2026-11-12",
+        "symbol": "LTC-JPY",
+        "name": "ライトコイン",
+        "action": "buy",
+        "priceJpy": 7951.018732910155,
+        "quantity": 12.5770047,
+        "reason": "20日騰落率-11.8%で全銘柄中3位、上位3入りのため買い"
       }
     ],
     "volume-spike": [
@@ -43338,6 +43448,15 @@
         "quantity": 0.27151588,
         "reason": "MACD線がシグナル線を下抜け、売りシグナル",
         "realizedPnlJpy": -8972.503970453705
+      },
+      {
+        "date": "2026-11-12",
+        "symbol": "ATOM-JPY",
+        "name": "コスモス",
+        "action": "buy",
+        "priceJpy": 223.75508560180663,
+        "quantity": 446.91721634,
+        "reason": "MACD線がシグナル線を上抜け、買いシグナル"
       }
     ],
     "ichimoku": [
@@ -44277,6 +44396,16 @@
         "quantity": 720.89462027,
         "reason": "平均取得単価からATRの2倍下落、ボラティリティ・ストップで損切り",
         "realizedPnlJpy": -12300.83252476962
+      },
+      {
+        "date": "2026-11-12",
+        "symbol": "LTC-JPY",
+        "name": "ライトコイン",
+        "action": "sell",
+        "priceJpy": 7871.904118652344,
+        "quantity": 11.53853222,
+        "reason": "平均取得単価からATRの2倍下落、ボラティリティ・ストップで損切り",
+        "realizedPnlJpy": -9169.780658591626
       }
     ],
     "vwap-deviation": [
