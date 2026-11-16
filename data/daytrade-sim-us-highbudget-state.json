@@ -1,9 +1,9 @@
 {
-  "cashJpy": 2925091.4182879096,
-  "realizedPnlTotalJpy": -9480.382803056003,
-  "taxPaidTotalJpy": 10163.83408703152,
-  "secFeeTotalUsd": 0.4041127519430915,
-  "finraFeeTotalUsd": 0.38000000000000017,
+  "cashJpy": 2925160.998245885,
+  "realizedPnlTotalJpy": -9430.88250505838,
+  "taxPaidTotalJpy": 10173.890072569739,
+  "secFeeTotalUsd": 0.4141127519430915,
+  "finraFeeTotalUsd": 0.3900000000000002,
   "positions": {
     "WDAY": {
       "tranches": [
@@ -34,32 +34,26 @@
         }
       ]
     },
-    "ABNB": {
+    "AMD": {
       "tranches": [
         {
           "trancheNumber": 1,
-          "shares": 0.37774,
-          "entryPriceUsd": 182.6649932861328,
-          "entryFxRate": 160.025,
-          "entryDate": "2026-11-14"
+          "shares": 0.13705,
+          "entryPriceUsd": 503.45001220703125,
+          "entryFxRate": 159.5929931640625,
+          "entryDate": "2026-11-17"
         }
       ]
     }
   },
   "pendingOrders": {
-    "ABNB": {
-      "action": "sell",
-      "reason": "前日比急騰（3.1%）＋RSI 61で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
-      "queuedDate": "2026-11-14"
-    },
     "AMD": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "reason": "前日比急落（-8.8%）を確認、RSI 50・出来高1.5倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-11-14"
+      "action": "sell",
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "queuedDate": "2026-11-17"
     }
   },
-  "lastRunDate": "2026-11-14",
+  "lastRunDate": "2026-11-17",
   "log": [
     {
       "date": "2026-09-08",
@@ -1194,6 +1188,29 @@
       "shares": 0.37774,
       "reason": "前日比急落（-3.1%）を確認、RSI 54・出来高1.4倍で裏付けあり（ルール1: 急落は買い、打診買い）",
       "trancheNumber": 1
+    },
+    {
+      "date": "2026-11-17",
+      "symbol": "ABNB",
+      "action": "sell",
+      "priceUsd": 184.3800048828125,
+      "fxRate": 159.2929931640625,
+      "shares": 0.37774,
+      "reason": "前日比急騰（3.1%）＋RSI 61で過熱、利益確定（ルール8: もう一段跳ねたら利確）",
+      "realizedPnlJpy": 49.50029799762342,
+      "tax": 10.055985538217199,
+      "secFeeUsd": 0.01,
+      "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-11-17",
+      "symbol": "AMD",
+      "action": "buy",
+      "priceUsd": 503.45001220703125,
+      "fxRate": 159.5929931640625,
+      "shares": 0.13705,
+      "reason": "前日比急落（-8.8%）を確認、RSI 50・出来高1.5倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
     }
   ],
   "equityHistory": [
@@ -1396,6 +1413,10 @@
     {
       "date": "2026-11-14",
       "totalEquityJpy": 2979208.06310995
+    },
+    {
+      "date": "2026-11-17",
+      "totalEquityJpy": 2978790.54045498
     }
   ]
 }
