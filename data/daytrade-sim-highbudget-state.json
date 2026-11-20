@@ -1,5 +1,5 @@
 {
-  "cash": 352017.006704406,
+  "cash": 175567.006704406,
   "realizedPnlTotal": -113268.42803955078,
   "taxPaidTotal": 27961.565256042482,
   "commissionPaidTotal": 11253,
@@ -131,26 +131,34 @@
           "entryDate": "2026-11-19"
         }
       ]
+    },
+    "7267.T": {
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 100,
+          "entryPrice": 1764.5,
+          "entryDate": "2026-11-20"
+        }
+      ]
     }
   },
   "pendingOrders": {
-    "7267.T": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "limitPrice": 1767.5,
-      "reason": "朝の急落（-4.7%）を確認、RSI 46・出来高1.5倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
-      "queuedDate": "2026-11-11"
-    },
     "4543.T": {
       "action": "buy",
       "trancheNumber": 1,
       "limitPrice": 2400,
       "reason": "朝の急落（-6.2%）を確認、RSI 50・出来高2.2倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
       "queuedDate": "2026-11-13"
+    },
+    "9552.T": {
+      "action": "sell",
+      "reason": "株価が75日移動平均を3%超下回りトレンドが崩れたため手仕舞い（トレンド割れ決済）",
+      "queuedDate": "2026-11-20"
     }
   },
-  "lastRunDate": "2026-11-19",
-  "lastRunSession": "afternoon",
+  "lastRunDate": "2026-11-20",
+  "lastRunSession": "morning",
   "log": [
     {
       "date": "2026-09-07",
@@ -1016,6 +1024,15 @@
       "shares": 100,
       "reason": "朝の急落（-4.5%）を確認、RSI 58・出来高1.4倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
       "trancheNumber": 1
+    },
+    {
+      "date": "2026-11-20",
+      "symbol": "7267.T",
+      "action": "buy",
+      "price": 1764.5,
+      "shares": 100,
+      "reason": "朝の急落（-4.7%）を確認、RSI 46・出来高1.5倍で裏付けあり（ルール1: 朝の急落は買い、打診買い）",
+      "trancheNumber": 1
     }
   ],
   "equityHistory": [
@@ -1613,8 +1630,13 @@
       "date": "2026-11-19",
       "session": "afternoon",
       "totalEquity": 2892187.004873351
+    },
+    {
+      "date": "2026-11-20",
+      "session": "morning",
+      "totalEquity": 2859487.0140286246
     }
   ],
-  "lastMorningRunDate": "2026-11-19",
+  "lastMorningRunDate": "2026-11-20",
   "lastAfternoonRunDate": "2026-11-19"
 }
