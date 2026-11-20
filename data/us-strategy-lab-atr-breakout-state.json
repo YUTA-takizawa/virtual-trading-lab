@@ -1,7 +1,7 @@
 {
-  "cashUsd": 0.0011140999029066734,
-  "realizedPnlTotalUsd": -1596.9711779805577,
-  "feesPaidTotalUsd": 0.4340205252657968,
+  "cashUsd": 0.0006675101539030948,
+  "realizedPnlTotalUsd": -1698.4998867319432,
+  "feesPaidTotalUsd": 0.462529598611655,
   "positions": {
     "CRWD": {
       "lots": [
@@ -75,15 +75,6 @@
         }
       ]
     },
-    "ABNB": {
-      "lots": [
-        {
-          "quantity": 5.1733,
-          "entryPriceUsd": 193.3000030517578,
-          "entryDate": "2026-11-10"
-        }
-      ]
-    },
     "CEG": {
       "lots": [
         {
@@ -92,19 +83,22 @@
           "entryDate": "2026-11-11"
         }
       ]
+    },
+    "PDD": {
+      "lots": [
+        {
+          "quantity": 10.32535,
+          "entryPriceUsd": 87.01599884033203,
+          "entryDate": "2026-11-21"
+        }
+      ]
     }
   },
   "pendingOrders": {
-    "ABNB": {
+    "CEG": {
       "action": "sell",
       "reason": "平均取得単価からATRの2倍下落、ボラティリティ・ストップで損切り",
-      "queuedDate": "2026-11-20"
-    },
-    "PDD": {
-      "action": "buy",
-      "budgetUsd": 1000,
-      "reason": "ATR基準（14日ATR×1.5）を超える上振れブレイクを検知、買い",
-      "queuedDate": "2026-11-20"
+      "queuedDate": "2026-11-21"
     }
   },
   "log": [
@@ -475,6 +469,24 @@
       "priceUsd": 270.25,
       "quantity": 3.05462,
       "reason": "ATR基準（14日ATR×1.5）を超える上振れブレイクを検知、買い"
+    },
+    {
+      "date": "2026-11-21",
+      "symbol": "ABNB",
+      "action": "sell",
+      "priceUsd": 173.67999267578125,
+      "quantity": 5.1733,
+      "reason": "平均取得単価からATRの2倍下落、ボラティリティ・ストップで損切り",
+      "realizedPnlUsd": -101.52870875138535,
+      "feesUsd": 0.028509073345858157
+    },
+    {
+      "date": "2026-11-21",
+      "symbol": "PDD",
+      "action": "buy",
+      "priceUsd": 87.01599884033203,
+      "quantity": 10.32535,
+      "reason": "ATR基準（14日ATR×1.5）を超える上振れブレイクを検知、買い"
     }
   ],
   "equityHistory": [
@@ -697,6 +709,10 @@
     {
       "date": "2026-11-20",
       "totalEquityUsd": 8576.2488968532
+    },
+    {
+      "date": "2026-11-21",
+      "totalEquityUsd": 8424.88862391709
     }
   ]
 }
