@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-23T06:35:54.124Z",
-  "lastPublishedAt": "2026-11-23T06:35:54.124Z",
+  "generatedAt": "2026-11-23T18:38:58.404Z",
+  "lastPublishedAt": "2026-11-23T18:38:58.404Z",
   "strategies": [
     {
       "id": "buy-and-hold",
@@ -21,14 +21,14 @@
       "name": "スイングブラケット（固定¥20,000利確/損切り）",
       "description": "¥3,000,000を¥500,000×6枠に分散。1単元(100株)¥200,000〜¥500,000の値動きが穏やかな大型株を対象に、前日比急落＋RSI・出来高裏付け＋75日トレンド内で1単元だけ買い、含み損益が±¥20,000に達したら理由を問わず機械的に手仕舞う（リスクリワード1:1、勝率51%あれば理論上資産が増える設計）",
       "initialCapitalYen": 3000000,
-      "cashJpy": 1182700,
-      "totalEquityJpy": 3151300,
-      "changePct": 5.043333333333333,
-      "realizedPnlJpy": 213700,
-      "unrealizedPnlJpy": -62400,
-      "tradeCount": 44,
-      "openPositions": 6,
-      "pendingOrderCount": 2
+      "cashJpy": 2029100,
+      "totalEquityJpy": 3168400,
+      "changePct": 5.613333333333333,
+      "realizedPnlJpy": 166400,
+      "unrealizedPnlJpy": 2000,
+      "tradeCount": 46,
+      "openPositions": 4,
+      "pendingOrderCount": 1
     }
   ],
   "equityHistories": {
@@ -272,6 +272,10 @@
       {
         "date": "2026-11-23",
         "totalEquityJpy": 3151300
+      },
+      {
+        "date": "2026-11-24",
+        "totalEquityJpy": 3168400
       }
     ],
     "buy-and-hold": [
@@ -498,6 +502,10 @@
       {
         "date": "2026-11-23",
         "totalEquityJpy": 3325800
+      },
+      {
+        "date": "2026-11-24",
+        "totalEquityJpy": 3325800
       }
     ]
   },
@@ -542,26 +550,6 @@
         "marketValueJpy": 323900,
         "unrealizedPnlJpy": 7300,
         "firstEntryDate": "2026-11-10"
-      },
-      {
-        "symbol": "4631.T",
-        "name": "DIC",
-        "quantity": 100,
-        "avgEntryPriceJpy": 4889,
-        "currentPriceJpy": 4463,
-        "marketValueJpy": 446300,
-        "unrealizedPnlJpy": -42600,
-        "firstEntryDate": "2026-11-19"
-      },
-      {
-        "symbol": "5105.T",
-        "name": "TOYO",
-        "quantity": 100,
-        "avgEntryPriceJpy": 4048,
-        "currentPriceJpy": 3830,
-        "marketValueJpy": 383000,
-        "unrealizedPnlJpy": -21800,
-        "firstEntryDate": "2026-11-19"
       }
     ],
     "buy-and-hold": [
@@ -993,6 +981,26 @@
         "quantity": 100,
         "reason": "含み益が+¥20,000に到達、利益確定（+¥20,000ブラケット）",
         "realizedPnlJpy": 21500
+      },
+      {
+        "date": "2026-11-24",
+        "symbol": "4631.T",
+        "name": "DIC",
+        "action": "sell",
+        "priceJpy": 4620,
+        "quantity": 100,
+        "reason": "含み損が-¥42,600に到達、機械的に損切り（-¥20,000ブラケット、絶対に妥協しない）",
+        "realizedPnlJpy": -26900
+      },
+      {
+        "date": "2026-11-24",
+        "symbol": "5105.T",
+        "name": "TOYO",
+        "action": "sell",
+        "priceJpy": 3844,
+        "quantity": 100,
+        "reason": "含み損が-¥21,800に到達、機械的に損切り（-¥20,000ブラケット、絶対に妥協しない）",
+        "realizedPnlJpy": -20400
       }
     ],
     "buy-and-hold": [
@@ -1010,18 +1018,13 @@
   "pendingOrders": {
     "swing-bracket": [
       {
-        "symbol": "4631.T",
-        "name": "DIC",
-        "action": "sell",
-        "reason": "含み損が-¥42,600に到達、機械的に損切り（-¥20,000ブラケット、絶対に妥協しない）",
-        "queuedDate": "2026-11-23"
-      },
-      {
-        "symbol": "5105.T",
-        "name": "TOYO",
-        "action": "sell",
-        "reason": "含み損が-¥21,800に到達、機械的に損切り（-¥20,000ブラケット、絶対に妥協しない）",
-        "queuedDate": "2026-11-23"
+        "symbol": "6460.T",
+        "name": "セガサミー",
+        "action": "buy",
+        "quantity": 100,
+        "limitPriceJpy": 3382,
+        "reason": "前日比急落（-3.8%）＋RSI・出来高裏付けあり、1単元（100株）買い",
+        "queuedDate": "2026-11-24"
       }
     ],
     "buy-and-hold": []
