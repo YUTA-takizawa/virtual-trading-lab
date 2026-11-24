@@ -1,5 +1,5 @@
 {
-  "cashJpy": 2029100,
+  "cashJpy": 1690900,
   "realizedPnlTotalJpy": 166400,
   "positions": {
     "9507.T": {
@@ -37,17 +37,18 @@
           "entryDate": "2026-11-10"
         }
       ]
-    }
-  },
-  "pendingOrders": {
+    },
     "6460.T": {
-      "action": "buy",
-      "quantity": 100,
-      "limitPriceJpy": 3382,
-      "reason": "前日比急落（-3.8%）＋RSI・出来高裏付けあり、1単元（100株）買い",
-      "queuedDate": "2026-11-24"
+      "lots": [
+        {
+          "quantity": 100,
+          "entryPriceJpy": 3382,
+          "entryDate": "2026-11-25"
+        }
+      ]
     }
   },
+  "pendingOrders": {},
   "log": [
     {
       "date": "2026-09-07",
@@ -437,6 +438,14 @@
       "quantity": 100,
       "reason": "含み損が-¥21,800に到達、機械的に損切り（-¥20,000ブラケット、絶対に妥協しない）",
       "realizedPnlJpy": -20400
+    },
+    {
+      "date": "2026-11-25",
+      "symbol": "6460.T",
+      "action": "buy",
+      "priceJpy": 3382,
+      "quantity": 100,
+      "reason": "前日比急落（-3.8%）＋RSI・出来高裏付けあり、1単元（100株）買い"
     }
   ],
   "equityHistory": [
@@ -682,6 +691,10 @@
     },
     {
       "date": "2026-11-24",
+      "totalEquityJpy": 3168400
+    },
+    {
+      "date": "2026-11-25",
       "totalEquityJpy": 3168400
     }
   ]
