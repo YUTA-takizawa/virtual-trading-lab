@@ -1,19 +1,31 @@
 {
-  "cashJpy": 2976058.095715283,
+  "cashJpy": 2965038.9171369676,
   "realizedPnlTotalJpy": -13738.002885101007,
   "taxPaidTotalJpy": 10203.901399615539,
   "secFeeTotalUsd": 0.4441127519430915,
   "finraFeeTotalUsd": 0.4200000000000002,
-  "positions": {},
-  "pendingOrders": {
+  "positions": {
     "ADSK": {
-      "action": "buy",
-      "trancheNumber": 1,
-      "reason": "前日比急落（-3.5%）を確認、RSI 32・出来高1.6倍で裏付けあり（ルール1: 急落は買い、打診買い）",
-      "queuedDate": "2026-11-27"
+      "tranches": [
+        {
+          "trancheNumber": 1,
+          "shares": 0.27978,
+          "entryPriceUsd": 246.61500549316406,
+          "entryFxRate": 159.70299377441407,
+          "entryDate": "2026-11-28"
+        }
+      ]
     }
   },
-  "lastRunDate": "2026-11-27",
+  "pendingOrders": {
+    "VRTX": {
+      "action": "buy",
+      "trancheNumber": 1,
+      "reason": "前日比急落（-5.2%）を確認、RSI 45・出来高1.3倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "queuedDate": "2026-11-28"
+    }
+  },
+  "lastRunDate": "2026-11-28",
   "log": [
     {
       "date": "2026-09-08",
@@ -1210,6 +1222,16 @@
       "tax": 0,
       "secFeeUsd": 0.01,
       "finraFeeUsd": 0.01
+    },
+    {
+      "date": "2026-11-28",
+      "symbol": "ADSK",
+      "action": "buy",
+      "priceUsd": 246.61500549316406,
+      "fxRate": 159.70299377441407,
+      "shares": 0.27978,
+      "reason": "前日比急落（-3.5%）を確認、RSI 32・出来高1.6倍で裏付けあり（ルール1: 急落は買い、打診買い）",
+      "trancheNumber": 1
     }
   ],
   "equityHistory": [
@@ -1448,6 +1470,10 @@
     {
       "date": "2026-11-27",
       "totalEquityJpy": 2976058.095715283
+    },
+    {
+      "date": "2026-11-28",
+      "totalEquityJpy": 2976282.774209291
     }
   ]
 }
